@@ -187,79 +187,44 @@
 
     <h2>🎵 Mixes</h2>
 
-    <div class="projects">
+    <!--
+    ============================================================
+    🔒 ZONA DEL CREADOR — SOLO EDITA ESTA PARTE
+    ============================================================
+    Para cambiar una portada:
+      1. Sube la imagen a la carpeta "covers" del repositorio.
+      2. Pon aquí su ruta, por ejemplo: "covers/dstige.jpg"
 
+    Para cambiar un enlace:
+      Reemplaza TU_LINK... por la dirección de YouTube o BandLab.
 
-        <!-- DSTIGE -->
+    NO necesitas tocar el HTML de las tarjetas.
+    ============================================================
+    -->
 
-        <div class="card">
+    <script>
+        const mixes = [
+            {
+                title: "Don't Stop 'Til You Get Enough",
+                description: "This Is It in the Mix · 4:40",
+                cover: "covers/dstige.jpg",
+                youtube: "TU_LINK_DE_YOUTUBE",
+                bandlab: "TU_LINK_DE_BANDLAB"
+            },
 
-            <!-- Cambia esta imagen por tu portada -->
-            <img class="cover"
-                 src="dstige.jpg"
-                 alt="Don't Stop 'Til You Get Enough — This Is It in the Mix">
+            {
+                title: "Chicago: The Mix",
+                description: "Fan-made remix",
+                cover: "covers/chicago.jpg",
+                youtube: "TU_LINK_DE_YOUTUBE",
+                bandlab: "TU_LINK_DE_BANDLAB"
+            }
 
-            <h3>
-                Don't Stop 'Til You Get Enough
-            </h3>
+            // Para agregar otro mix, copia uno de los bloques de arriba.
+        ];
+    </script>
 
-            <p>
-                This Is It in the Mix · 4:40
-            </p>
-
-            <div class="links">
-
-                <!-- Cambia los enlaces -->
-
-                <a href="TU_LINK_DE_YOUTUBE"
-                   target="_blank">
-                    ▶ YouTube
-                </a>
-
-                <a href="TU_LINK_DE_BANDLAB"
-                   target="_blank">
-                    🎧 BandLab
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- CHICAGO -->
-
-        <div class="card">
-
-            <img class="cover"
-                 src="chicago.jpg"
-                 alt="Chicago — The Mix">
-
-            <h3>
-                Chicago: The Mix
-            </h3>
-
-            <p>
-                Fan-made remix
-            </p>
-
-            <div class="links">
-
-                <a href="TU_LINK_DE_YOUTUBE"
-                   target="_blank">
-                    ▶ YouTube
-                </a>
-
-                <a href="TU_LINK_DE_BANDLAB"
-                   target="_blank">
-                    🎧 BandLab
-                </a>
-
-            </div>
-
-        </div>
-
-
-    </div>
+    <div class="projects" id="projects-list"></div>
 
 </section>
 
@@ -293,6 +258,42 @@
     © 2026 JisusDev · Fan-made music projects
 
 </footer>
+
+
+<script>
+    const projectsList = document.getElementById("projects-list");
+
+    mixes.forEach(mix => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+            <img class="cover"
+                 src="${mix.cover}"
+                 alt="${mix.title}">
+
+            <h3>${mix.title}</h3>
+
+            <p>${mix.description}</p>
+
+            <div class="links">
+                <a href="${mix.youtube}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    ▶ YouTube
+                </a>
+
+                <a href="${mix.bandlab}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    🎧 BandLab
+                </a>
+            </div>
+        `;
+
+        projectsList.appendChild(card);
+    });
+</script>
 
 </body>
 </html>
