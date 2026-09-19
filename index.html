@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JisusDev — This Is It in the Mix</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: white;
+        }
+
+        header {
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            background: rgba(8, 8, 8, 0.95);
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+            background:
+                radial-gradient(circle at center, #252525 0%, #080808 60%);
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            letter-spacing: 5px;
+        }
+
+        .hero p {
+            color: #aaa;
+            font-size: 20px;
+            margin: 20px 0 35px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 25px;
+            margin: 5px;
+            border-radius: 30px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 80px 8%;
+        }
+
+        section h2 {
+            font-size: 35px;
+            margin-bottom: 35px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #121212;
+            border: 1px solid #242424;
+            border-radius: 15px;
+            padding: 20px;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #555;
+        }
+
+        .cover {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #222;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #999;
+            margin-bottom: 18px;
+        }
+
+        .links a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+        .about {
+            max-width: 800px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">JISUSDEV</div>
+
+    <nav>
+        <a href="#projects">Mixes</a>
+        <a href="#about">About</a>
+    </nav>
+</header>
+
+
+<section class="hero">
+
+    <div>
+
+        <h1>JISUSDEV</h1>
+
+        <p>
+            This Is It in the Mix — Fan-made remixes & edits
+        </p>
+
+        <a class="button" href="#projects">
+            Explorar mixes
+        </a>
+
+    </div>
+
+</section>
+
+
+<section id="projects">
+
+    <h2>🎵 Mixes</h2>
+
+    <div class="projects">
+
+
+        <!-- DSTIGE -->
+
+        <div class="card">
+
+            <!-- Cambia esta imagen por tu portada -->
+            <img class="cover"
+                 src="dstige.jpg"
+                 alt="Don't Stop 'Til You Get Enough — This Is It in the Mix">
+
+            <h3>
+                Don't Stop 'Til You Get Enough
+            </h3>
+
+            <p>
+                This Is It in the Mix · 4:40
+            </p>
+
+            <div class="links">
+
+                <!-- Cambia los enlaces -->
+
+                <a href="TU_LINK_DE_YOUTUBE"
+                   target="_blank">
+                    ▶ YouTube
+                </a>
+
+                <a href="TU_LINK_DE_BANDLAB"
+                   target="_blank">
+                    🎧 BandLab
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHICAGO -->
+
+        <div class="card">
+
+            <img class="cover"
+                 src="chicago.jpg"
+                 alt="Chicago — The Mix">
+
+            <h3>
+                Chicago: The Mix
+            </h3>
+
+            <p>
+                Fan-made remix
+            </p>
+
+            <div class="links">
+
+                <a href="TU_LINK_DE_YOUTUBE"
+                   target="_blank">
+                    ▶ YouTube
+                </a>
+
+                <a href="TU_LINK_DE_BANDLAB"
+                   target="_blank">
+                    🎧 BandLab
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<section id="about">
+
+    <h2>ℹ️ About</h2>
+
+    <div class="about">
+
+        <p>
+            JisusDev es un proyecto dedicado a crear remixes,
+            edits y experimentos musicales inspirados en Michael Jackson.
+        </p>
+
+        <br>
+
+        <p>
+            Todos los proyectos son fan-made y no oficiales.
+            Los derechos de las grabaciones y composiciones originales
+            pertenecen a sus respectivos propietarios.
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 JisusDev · Fan-made music projects
+
+</footer>
+
+</body>
+</html>
