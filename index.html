@@ -21,7 +21,7 @@
         .card { background: #121212; border: 1px solid #242424; border-radius: 15px; padding: 20px; transition: .2s; }
         .card:hover { transform: translateY(-5px); border-color: #555; }
         .cover { width: 100%; aspect-ratio: 1/1; background: #222; border-radius: 10px; object-fit: cover; margin-bottom: 18px; }
-        .upcoming-cover { width: 100%; aspect-ratio: 1/1; background: radial-gradient(circle at center, #303030 0%, #151515 65%, #0d0d0d 100%); border-radius: 10px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; font-size: 55px; color: #777; }
+        .upcoming-cover { width: 100%; aspect-ratio: 1/1; background: #222; border-radius: 10px; object-fit: cover; margin-bottom: 18px; }
         .card h3 { font-size: 22px; margin-bottom: 10px; }
         .card p { color: #999; margin-bottom: 18px; }
         .links a { color: white; margin-right: 15px; text-decoration: none; }
@@ -66,6 +66,7 @@
             {
                 title: "Thriller Night",
                 description: "Xscape: This Is It in the Mix · Próximamente",
+                cover: "https://raw.githubusercontent.com/Jisusdev-PGE/JisusDev-/main/Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe",
                 upcoming: true
             }
         ];
@@ -91,7 +92,7 @@
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = mix.upcoming ? `
-            <div class="upcoming-cover">🎵</div>
+            <img class="upcoming-cover" src="${mix.cover}" alt="${mix.title}">
             <h3>${mix.title}</h3>
             <p>${mix.description}</p>
             <div class="links"><span style="color:#777;">⏳ En producción</span></div>
