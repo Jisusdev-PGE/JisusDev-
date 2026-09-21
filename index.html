@@ -45,6 +45,7 @@
       margin-inline: auto;
     }
 
+    /* Header */
     .site-header {
       position: sticky;
       top: 0;
@@ -65,7 +66,10 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
-    .nav { display: flex; gap: 2rem; }
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
     .nav a {
       color: var(--muted);
       font-size: 0.8125rem;
@@ -75,6 +79,7 @@
     }
     .nav a:hover { color: var(--text); }
 
+    /* Hero */
     .hero {
       padding: 5.5rem 0 4.5rem;
       border-bottom: 1px solid var(--line);
@@ -178,6 +183,7 @@
       margin-top: 0.25rem;
     }
 
+    /* Sections */
     .section {
       padding: 4.5rem 0;
       border-bottom: 1px solid var(--line);
@@ -198,7 +204,11 @@
       font-weight: 400;
     }
 
-    .catalog { display: flex; flex-direction: column; }
+    /* Catalog rows — formal list */
+    .catalog {
+      display: flex;
+      flex-direction: column;
+    }
     .catalog-item {
       display: grid;
       grid-template-columns: 88px 1fr auto;
@@ -271,7 +281,11 @@
       .thumb { width: 72px; }
     }
 
-    .about-grid { display: grid; gap: 2rem; }
+    /* About */
+    .about-grid {
+      display: grid;
+      gap: 2rem;
+    }
     @media (min-width: 800px) {
       .about-grid { grid-template-columns: 200px 1fr; gap: 3rem; }
     }
@@ -298,7 +312,10 @@
       line-height: 1.65;
     }
 
-    .site-footer { padding: 2.25rem 0 3rem; }
+    /* Footer */
+    .site-footer {
+      padding: 2.25rem 0 3rem;
+    }
     .site-footer .inner {
       display: flex;
       flex-wrap: wrap;
@@ -309,6 +326,7 @@
       letter-spacing: 0.04em;
     }
 
+    /* Play overlay on feature */
     .play-hit {
       position: absolute;
       inset: 0;
@@ -357,6 +375,7 @@
       .play-hit::after { background: rgba(12,12,13,0.2); }
     }
 
+    /* Modal */
     .modal {
       position: fixed;
       inset: 0;
@@ -369,7 +388,10 @@
       pointer-events: none;
       transition: opacity 0.22s var(--ease);
     }
-    .modal.open { opacity: 1; pointer-events: auto; }
+    .modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
     .modal-backdrop {
       position: absolute;
       inset: 0;
@@ -420,7 +442,9 @@
       color: var(--text);
       border-color: var(--line-strong);
     }
-    .modal-body { background: #000; }
+    .modal-body {
+      background: #000;
+    }
     .modal-body video {
       width: 100%;
       display: block;
@@ -461,6 +485,7 @@
             <a class="btn btn-secondary" href="#catalogo">Ver catálogo</a>
           </div>
         </div>
+
         <article class="hero-feature" id="featured"></article>
       </div>
     </section>
