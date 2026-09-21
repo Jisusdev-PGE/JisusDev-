@@ -49,20 +49,21 @@
     .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.2rem; }
     .btn {
       display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.4rem;
-      border-radius: 999px; text-decoration: none; font-weight: 600; font-size: .9rem;
+      border-radius: 999px; text-decoration: none; font-weight: 600; font-size: .9rem; border: none; cursor: pointer;
+      font-family: inherit;
     }
     .btn-solid { background: var(--accent); color: var(--accent-fg); }
-    .btn-ghost { box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
+    .btn-ghost { box-shadow: 0 0 0 1px rgba(255,255,255,.12); background: transparent; color: var(--fg); }
     .featured { background: var(--surface); border-radius: 20px; padding: 8px; box-shadow: 0 0 0 1px rgba(255,255,255,.08); }
-    .featured img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; display: block; }
+    .featured img, .featured video { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; display: block; background: #111; }
     .featured-body { padding: 1rem .75rem 1.1rem; }
     .featured-body h2 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 500; margin-top: .25rem; }
     .featured-body p { color: var(--muted); font-size: .9rem; margin-top: .25rem; }
     section { padding: 4.5rem 8%; max-width: 72rem; margin: 0 auto; }
     h2 { font-family: var(--font-display); font-size: 2.4rem; font-weight: 500; margin-top: .4rem; }
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
     .card { background: var(--surface); border-radius: 20px; padding: 8px; box-shadow: 0 0 0 1px rgba(255,255,255,.08); }
-    .card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; display: block; }
+    .card video, .card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; display: block; background: #0d0d0d; }
     .card-body { padding: 1rem .75rem 1.1rem; }
     .card h3 { font-family: var(--font-display); font-size: 1.55rem; font-weight: 500; }
     .card p { color: var(--muted); font-size: .9rem; margin: .35rem 0 1rem; }
@@ -71,7 +72,6 @@
       display: inline-flex; align-items: center; min-height: 44px; padding: 0 1rem;
       border-radius: 999px; text-decoration: none; font-size: .85rem; font-weight: 500;
     }
-    .links a.primary { background: var(--accent); color: var(--accent-fg); }
     .links a.ghost { box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
     .links span { color: var(--subtle); }
     .cover-wrap { position: relative; }
@@ -82,6 +82,7 @@
     .about { max-width: 40rem; color: var(--muted); line-height: 1.65; }
     .about p + p { margin-top: 1rem; }
     footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border); color: var(--subtle); font-size: .875rem; }
+    video { outline: none; }
     @media (max-width: 640px) {
       header, .hero, section { padding-left: 1.25rem; padding-right: 1.25rem; }
       nav a { margin-left: 1.1rem; }
@@ -100,16 +101,22 @@
     <h1>This Is It<em>in the Mix</em></h1>
     <p class="lead">JisusDev reimagina piezas de Michael Jackson en mezclas y edits no oficiales, con respeto al original y una estética de estudio.</p>
     <div class="actions">
-      <a class="btn btn-solid" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener noreferrer">Escuchar ahora</a>
-      <a class="btn btn-ghost" href="#mixes">Ver catálogo</a>
+      <a class="btn btn-solid" href="#mixes">Escuchar mixes</a>
+      <a class="btn btn-ghost" href="#about">About</a>
     </div>
   </div>
   <article class="featured">
-    <img src="https://raw.githubusercontent.com/Jisusdev-PGE/JisusDev-/main/Gemini_Generated_Image_fiajdofiajdofiaj.jpe" alt="Portada de Don't Stop 'Til You Get Enough">
+    <video
+      controls
+      playsinline
+      preload="metadata"
+      poster="Gemini_Generated_Image_fiajdofiajdofiaj.jpe"
+      src="Don't Stop 'til I Get Enough.mp4">
+    </video>
     <div class="featured-body">
       <p class="kicker">Destacado</p>
       <h2>Don't Stop 'Til You Get Enough</h2>
-      <p>Xscape: This Is It in the Mix · 4:40</p>
+      <p>Xscape: This Is It in the Mix</p>
     </div>
   </article>
 </section>
@@ -135,44 +142,68 @@
   const mixes = [
     {
       title: "Don't Stop 'Til You Get Enough",
-      description: "Xscape: This Is It in the Mix · 4:40",
-      cover: "https://raw.githubusercontent.com/Jisusdev-PGE/JisusDev-/main/Gemini_Generated_Image_fiajdofiajdofiaj.jpe",
+      description: "Xscape: This Is It in the Mix",
+      cover: "Gemini_Generated_Image_fiajdofiajdofiaj.jpe",
+      video: "Don't Stop 'til I Get Enough.mp4",
       youtube: "https://www.youtube.com/watch?v=u54H4FnSOtI",
       bandlab: "https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_11c277cf85f34aeca59384d719fc85ef"
     },
     {
       title: "Chicago: The Mix",
       description: "Xscape: This Is It in the Mix · Fan-made remix",
-      cover: "https://raw.githubusercontent.com/Jisusdev-PGE/JisusDev-/main/Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",
+      cover: "Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",
+      video: "Chicago The mix.mp4",
       youtube: "https://www.youtube.com/watch?v=VTSwj-y_zt0",
       bandlab: "https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_b5ca7c5be83f4e95bb1b2c56e3d1028f"
     },
     {
       title: "Thriller Night",
       description: "Xscape: This Is It in the Mix · Próximamente",
-      cover: "https://raw.githubusercontent.com/Jisusdev-PGE/JisusDev-/main/Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe",
+      cover: "Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe",
       upcoming: true
     }
   ];
 
   const list = document.getElementById("projects-list");
+
   mixes.forEach((mix) => {
     const card = document.createElement("article");
     card.className = "card";
+
     if (mix.upcoming) {
       card.innerHTML =
-        '<div class="cover-wrap"><img src="' + mix.cover + '" alt="Portada de ' + mix.title + '"><div class="badge">En producción</div></div>' +
-        '<div class="card-body"><h3>' + mix.title + '</h3><p>' + mix.description + '</p><div class="links"><span>Próximamente</span></div></div>';
+        '<div class="cover-wrap">' +
+          '<img src="' + mix.cover + '" alt="Portada de ' + mix.title + '">' +
+          '<div class="badge">En producción</div>' +
+        '</div>' +
+        '<div class="card-body">' +
+          '<h3>' + mix.title + '</h3>' +
+          '<p>' + mix.description + '</p>' +
+          '<div class="links"><span>Próximamente</span></div>' +
+        '</div>';
     } else {
       card.innerHTML =
-        '<img src="' + mix.cover + '" alt="Portada de ' + mix.title + '">' +
-        '<div class="card-body"><h3>' + mix.title + '</h3><p>' + mix.description + '</p><div class="links">' +
-        '<a class="primary" href="' + mix.youtube + '" target="_blank" rel="noopener noreferrer">YouTube</a>' +
-        '<a class="ghost" href="' + mix.bandlab + '" target="_blank" rel="noopener noreferrer">BandLab</a>' +
-        '</div></div>';
+        '<video controls playsinline preload="metadata" poster="' + mix.cover + '" src="' + mix.video + '"></video>' +
+        '<div class="card-body">' +
+          '<h3>' + mix.title + '</h3>' +
+          '<p>' + mix.description + '</p>' +
+          '<div class="links">' +
+            (mix.youtube ? '<a class="ghost" href="' + mix.youtube + '" target="_blank" rel="noopener noreferrer">YouTube</a>' : '') +
+            (mix.bandlab ? '<a class="ghost" href="' + mix.bandlab + '" target="_blank" rel="noopener noreferrer">BandLab</a>' : '') +
+          '</div>' +
+        '</div>';
     }
+
     list.appendChild(card);
   });
+
+  // Solo un vídeo a la vez
+  document.addEventListener("play", function (e) {
+    if (e.target.tagName !== "VIDEO") return;
+    document.querySelectorAll("video").forEach(function (v) {
+      if (v !== e.target) v.pause();
+    });
+  }, true);
 </script>
 </body>
 </html>
