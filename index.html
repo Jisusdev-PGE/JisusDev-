@@ -420,14 +420,38 @@
       color: var(--text);
       border-color: var(--line-strong);
     }
-    .modal-body { background: #000; }
-    .modal-body video {
+    .modal-body {
+      background: #000;
+    }
+    .modal-body video,
+    .modal-body audio {
       width: 100%;
       display: block;
+      background: #000;
+    }
+    .modal-body video {
       max-height: 68vh;
       min-height: 220px;
-      background: #000;
       object-fit: contain;
+    }
+    .modal-body video.hidden { display: none; }
+    .modal-audio-layout {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.5rem 1.25rem 1.75rem;
+      background: #0a0a0b;
+    }
+    .modal-audio-layout.visible { display: flex; }
+    .modal-audio-layout img {
+      width: min(280px, 70%);
+      aspect-ratio: 1;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .modal-audio-layout audio {
+      width: min(420px, 100%);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -524,6 +548,10 @@
       </div>
       <div class="modal-body">
         <video id="modal-video" controls playsinline preload="metadata"></video>
+        <div class="modal-audio-layout" id="modal-audio-layout">
+          <img id="modal-audio-cover" src="" alt="">
+          <audio id="modal-audio" controls preload="metadata"></audio>
+        </div>
       </div>
     </div>
   </div>
@@ -564,22 +592,53 @@
       if (!src) return;
       var modal = document.getElementById("player-modal");
       var video = document.getElementById("modal-video");
+      var audio = document.getElementById("modal-audio");
+      var audioLayout = document.getElementById("modal-audio-layout");
+      var audioCover = document.getElementById("modal-audio-cover");
       document.getElementById("modal-title").textContent = mix.title;
       document.getElementById("modal-desc").textContent = mix.description;
-      video.poster = mix.cover || "";
-      video.src = videoUrl(src);
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("modal-open");
-      video.play().catch(function () {});
+
+      video.pause();
+      audio.pause();
+      video.removeAttribute("src");
+      audio.removeAttribute("src");
+      video.load();
+      audio.load();
+
+      if (mix.audio) {
+        video.classList.add("hidden");
+        audioLayout.classList.add("visible");
+        audioCover.src = mix.cover || "";
+        audio.src = videoUrl(mix.audio);
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+        audio.play().catch(function () {});
+      } else {
+        video.classList.remove("hidden");
+        audioLayout.classList.remove("visible");
+        video.poster = mix.cover || "";
+        video.src = videoUrl(mix.video);
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+        video.play().catch(function () {});
+      }
     }
 
     function closePlayer() {
       var modal = document.getElementById("player-modal");
       var video = document.getElementById("modal-video");
+      var audio = document.getElementById("modal-audio");
+      var audioLayout = document.getElementById("modal-audio-layout");
       video.pause();
+      audio.pause();
       video.removeAttribute("src");
+      audio.removeAttribute("src");
       video.load();
+      audio.load();
+      video.classList.remove("hidden");
+      audioLayout.classList.remove("visible");
       modal.classList.remove("open");
       modal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("modal-open");
