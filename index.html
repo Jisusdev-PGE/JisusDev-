@@ -5,287 +5,268 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JisusDev — Música & Roblox</title>
   <meta name="description" content="Remixes fan-made y juegos en Roblox por JisusDev.">
-  <meta name="theme-color" content="#0a0a0b">
+  <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0b; --card: #161618; --card-2: #1c1c1f;
-      --line: rgba(255,255,255,0.08); --text: #f4f4f5; --muted: #a1a1aa; --faint: #71717a;
-      --accent: #fafafa; --ink: #09090b; --pink: #f472b6; --violet: #a78bfa;
-      --r: 28px; --pill: 999px; --max: 440px;
-      --font: "Inter", system-ui, -apple-system, sans-serif;
-      --spring: cubic-bezier(0.32, 0.72, 0, 1);
-      --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --bg: #000; --surface: #1c1c1e; --fill: rgba(255,255,255,0.08); --fill-2: rgba(255,255,255,0.12);
+      --line: rgba(255,255,255,0.1); --label: #f5f5f7; --secondary: #a1a1a6; --tertiary: #6e6e73;
+      --white: #f5f5f7; --ink: #000; --blue: #0a84ff;
+      --radius: 20px; --radius-lg: 28px; --pill: 980px;
+      --font: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+      --spring: cubic-bezier(0.32, 0.72, 0, 1);
+      --bounce: cubic-bezier(0.34, 1.4, 0.64, 1);
+      --pad: 1.25rem; --max: 720px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--bg); color: var(--text); font-family: var(--font);
-      font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+      background: var(--bg); color: var(--label); font-family: var(--font);
+      font-size: 17px; line-height: 1.47; -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
     body.modal-open { overflow: hidden; }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
     button { font-family: inherit; border: none; background: none; cursor: pointer; color: inherit; }
-    .shell { width: min(var(--max), 100%); margin-inline: auto; min-height: 100dvh; }
+    .wrap { width: min(var(--max), calc(100% - 2 * var(--pad))); margin-inline: auto; }
+
     .boot {
-      position: fixed; inset: 0; z-index: 400; background: var(--bg);
+      position: fixed; inset: 0; z-index: 400; background: #000;
       display: grid; place-items: center;
-      transition: opacity 0.65s var(--ease), visibility 0.65s;
+      transition: opacity 0.7s var(--ease), visibility 0.7s;
     }
     .boot.done { opacity: 0; visibility: hidden; pointer-events: none; }
-    .boot-logo {
-      width: 56px; height: 56px; border-radius: 18px;
-      background: linear-gradient(135deg, #27272a, #18181b);
-      display: grid; place-items: center; font-weight: 700; font-size: 18px;
-      animation: bootPop 1.2s var(--bounce) infinite;
-      box-shadow: 0 0 0 1px var(--line), 0 12px 40px rgba(0,0,0,0.4);
+    .boot span {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--tertiary); animation: pulse 1.4s ease-in-out infinite;
     }
-    @keyframes bootPop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
-    .in-view {
-      opacity: 0; transform: translateY(28px) scale(0.96); filter: blur(8px);
-      transition: opacity 0.75s var(--spring), transform 0.75s var(--spring), filter 0.75s var(--ease);
+    @keyframes pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+
+    .reveal {
+      opacity: 0; transform: translateY(36px) scale(0.98); filter: blur(8px);
+      transition: opacity 0.9s var(--spring), transform 0.9s var(--spring), filter 0.9s var(--ease);
     }
-    .in-view.show { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-    .delay-1 { transition-delay: 0.06s; } .delay-2 { transition-delay: 0.12s; }
-    .delay-3 { transition-delay: 0.2s; } .delay-4 { transition-delay: 0.28s; }
-    .delay-5 { transition-delay: 0.36s; }
-    .topbar {
-      position: sticky; top: 0; z-index: 50;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.75rem 1rem;
-      background: rgba(10,10,11,0.75);
-      backdrop-filter: blur(20px) saturate(1.4);
-      -webkit-backdrop-filter: blur(20px) saturate(1.4);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s, background 0.3s;
+    .reveal.in { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    .d1 { transition-delay: 0.08s; } .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.28s; } .d4 { transition-delay: 0.4s; } .d5 { transition-delay: 0.52s; }
+
+    .nav {
+      position: sticky; top: 0; z-index: 50; height: 52px; display: flex; align-items: center;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid transparent; transition: border-color 0.35s, background 0.35s;
     }
-    .topbar.scrolled { border-bottom-color: var(--line); background: rgba(10,10,11,0.9); }
-    .brand-row { display: flex; align-items: center; gap: 0.65rem; }
-    .avatar {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--violet), var(--pink));
-      padding: 2px; transition: transform 0.4s var(--bounce);
+    .nav.scrolled { border-bottom-color: var(--line); background: rgba(0,0,0,0.88); }
+    .nav .inner {
+      width: min(var(--max), calc(100% - 2 * var(--pad))); margin-inline: auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     }
-    .avatar:hover { transform: scale(1.08) rotate(-4deg); }
-    .avatar span {
-      display: grid; place-items: center; width: 100%; height: 100%;
-      border-radius: 50%; background: var(--bg); font-size: 12px; font-weight: 700;
+    .logo { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; transition: opacity 0.25s; }
+    .logo:hover { opacity: 0.7; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 0.15rem; justify-content: flex-end; }
+    .nav-links a {
+      padding: 0.4rem 0.7rem; font-size: 13px; font-weight: 500; color: var(--secondary);
+      border-radius: var(--pill); transition: color 0.25s, background 0.25s, transform 0.3s var(--bounce);
     }
-    .brand-name { font-size: 16px; font-weight: 700; letter-spacing: -0.02em; }
-    .top-links { display: flex; gap: 0.25rem; flex-wrap: wrap; justify-content: flex-end; }
-    .top-links a {
-      padding: 0.35rem 0.65rem; font-size: 12px; font-weight: 500; color: var(--muted);
-      border-radius: var(--pill); transition: background 0.25s, color 0.25s, transform 0.3s var(--bounce);
+    .nav-links a:hover { color: var(--label); background: var(--fill); transform: scale(1.04); }
+
+    .hero { padding: 4.5rem 0 3.5rem; text-align: center; }
+    @media (min-width: 768px) { .hero { padding: 6rem 0 4.5rem; } }
+    .chip {
+      display: inline-flex; padding: 0.4rem 0.9rem; font-size: 12px; font-weight: 500;
+      color: var(--secondary); background: var(--fill); border-radius: var(--pill); margin-bottom: 1.5rem;
     }
-    .top-links a:hover { background: rgba(255,255,255,0.08); color: var(--text); transform: scale(1.04); }
-    .stories {
-      display: flex; gap: 0.85rem; padding: 1rem 1rem 0.5rem;
-      overflow-x: auto; scrollbar-width: none;
+    .hero h1 {
+      font-size: clamp(2.25rem, 7vw, 3.75rem); font-weight: 700;
+      letter-spacing: -0.035em; line-height: 1.08; margin-bottom: 1.15rem;
     }
-    .stories::-webkit-scrollbar { display: none; }
-    .story {
-      flex-shrink: 0; display: flex; flex-direction: column; align-items: center;
-      gap: 0.4rem; width: 68px; cursor: pointer;
+    .hero h1 .soft { color: var(--secondary); font-weight: 500; }
+    .hero-lead {
+      font-size: clamp(15px, 2.5vw, 19px); color: var(--secondary);
+      max-width: 28rem; margin: 0 auto 1.75rem; line-height: 1.55;
     }
-    .story-ring {
-      width: 64px; height: 64px; border-radius: 50%; padding: 2.5px;
-      background: linear-gradient(135deg, var(--pink), var(--violet), #60a5fa);
-      transition: transform 0.4s var(--bounce);
-    }
-    .story:hover .story-ring { transform: scale(1.08); }
-    .story-ring img {
-      width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
-      border: 2.5px solid var(--bg); background: var(--card);
-    }
-    .story span {
-      font-size: 11px; color: var(--muted);
-      max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    }
-    .profile { padding: 1.25rem 1rem 0.5rem; text-align: center; }
-    .profile h1 {
-      font-size: 1.65rem; font-weight: 700; letter-spacing: -0.03em;
-      line-height: 1.15; margin-bottom: 0.5rem;
-    }
-    .profile h1 em {
-      font-style: normal;
-      background: linear-gradient(90deg, var(--pink), var(--violet));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .profile p {
-      color: var(--muted); font-size: 14px; max-width: 20rem;
-      margin: 0 auto 1rem; line-height: 1.55;
-    }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;
-      min-height: 40px; padding: 0 1.15rem; font-size: 14px; font-weight: 600;
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 44px; padding: 0 1.25rem; font-size: 15px; font-weight: 500;
       border-radius: var(--pill);
-      transition: transform 0.35s var(--bounce), box-shadow 0.3s, background 0.25s;
+      transition: transform 0.35s var(--spring), box-shadow 0.3s, background 0.25s;
     }
-    .btn:active { transform: scale(0.94); }
-    .btn-main { background: var(--accent); color: var(--ink); }
-    .btn-main:hover { transform: scale(1.05); box-shadow: 0 8px 28px rgba(255,255,255,0.12); }
-    .btn-soft { background: rgba(255,255,255,0.08); color: var(--text); }
-    .btn-soft:hover { background: rgba(255,255,255,0.12); transform: scale(1.05); }
-    .btn-roblox { background: linear-gradient(135deg, #00b2ff, #0081c2); color: #fff; }
-    .btn-roblox:hover { transform: scale(1.05); box-shadow: 0 8px 28px rgba(0,162,255,0.35); }
-    .btn-xs { min-height: 32px; padding: 0 0.85rem; font-size: 12px; }
-    .feed { padding: 1rem 0.85rem 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
-    .section-label {
-      font-size: 13px; font-weight: 600; color: var(--faint);
-      letter-spacing: 0.04em; text-transform: uppercase; padding: 0.5rem 0.25rem 0;
+    .btn:active { transform: scale(0.96); }
+    .btn-fill { background: var(--white); color: var(--ink); }
+    .btn-fill:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(255,255,255,0.12); }
+    .btn-ghost { background: var(--fill); color: var(--label); }
+    .btn-ghost:hover { background: var(--fill-2); transform: scale(1.04); }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-blue:hover { transform: scale(1.04); box-shadow: 0 10px 28px rgba(10,132,255,0.35); }
+    .btn-sm { min-height: 36px; padding: 0 1rem; font-size: 13px; }
+
+    .section { padding: 2.5rem 0 1rem; }
+    @media (min-width: 768px) { .section { padding: 3.5rem 0 1.5rem; } }
+    .section-title {
+      font-size: clamp(22px, 4vw, 28px); font-weight: 700;
+      letter-spacing: -0.025em; margin-bottom: 1.5rem;
     }
-    .post {
-      background: var(--card); border-radius: var(--r); overflow: hidden;
-      border: 1px solid var(--line); box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-      transition: transform 0.45s var(--spring), box-shadow 0.45s var(--ease), border-color 0.35s;
+    @media (min-width: 768px) { .section-title { margin-bottom: 2rem; } }
+
+    .mix-grid { display: grid; gap: 1.25rem; }
+    @media (min-width: 640px) { .mix-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
+    @media (min-width: 900px) {
+      .mix-grid { grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+      :root { --max: 980px; }
     }
-    .post:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
-      border-color: rgba(255,255,255,0.14);
+
+    .mix-card {
+      background: var(--surface); border-radius: var(--radius-lg); overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+      transition: transform 0.5s var(--spring), box-shadow 0.5s var(--ease);
     }
-    .post-head { display: flex; align-items: center; gap: 0.65rem; padding: 0.85rem 1rem 0.65rem; }
-    .post-av { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: var(--card-2); }
-    .post-user strong { display: block; font-size: 13px; font-weight: 600; }
-    .post-user span { font-size: 12px; color: var(--faint); }
-    .post-media { position: relative; aspect-ratio: 1; background: #0c0c0d; overflow: hidden; }
-    .post-media img {
-      width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--spring);
+    .mix-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
     }
-    .post:hover .post-media img { transform: scale(1.05); }
-    .post-play {
+    .mix-cover { position: relative; aspect-ratio: 1; overflow: hidden; background: #111; }
+    .mix-cover img {
+      width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--spring);
+    }
+    .mix-card:hover .mix-cover img { transform: scale(1.07); }
+    .mix-play {
       position: absolute; inset: 0; display: grid; place-items: center;
       border: none; background: transparent; cursor: pointer;
     }
-    .post-play::after {
-      content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0);
-      transition: background 0.35s;
+    .mix-play::before {
+      content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background 0.4s;
     }
-    .post:hover .post-play::after { background: rgba(0,0,0,0.28); }
-    .orb {
-      position: relative; z-index: 1; width: 58px; height: 58px; border-radius: 50%;
+    .mix-card:hover .mix-play::before { background: rgba(0,0,0,0.32); }
+    .play-dot {
+      position: relative; z-index: 1; width: 56px; height: 56px; border-radius: 50%;
       background: rgba(255,255,255,0.95); color: #000; display: grid; place-items: center;
-      opacity: 0; transform: scale(0.7); box-shadow: 0 8px 28px rgba(0,0,0,0.35);
-      transition: opacity 0.35s var(--spring), transform 0.45s var(--bounce);
+      opacity: 0; transform: scale(0.75); box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+      transition: opacity 0.4s var(--spring), transform 0.5s var(--bounce);
     }
-    .post:hover .orb { opacity: 1; transform: scale(1); }
-    .orb svg { margin-left: 2px; }
+    .mix-card:hover .play-dot { opacity: 1; transform: scale(1); }
+    .play-dot svg { margin-left: 2px; }
     @media (hover: none) {
-      .orb { opacity: 1; transform: scale(1); }
-      .post-play::after { background: rgba(0,0,0,0.18); }
+      .play-dot { opacity: 1; transform: scale(1); }
+      .mix-play::before { background: rgba(0,0,0,0.2); }
     }
-    .post-body { padding: 0.85rem 1rem 1rem; }
-    .post-body h3 { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
-    .post-body p { font-size: 13px; color: var(--muted); margin-top: 0.2rem; }
-    .post-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.85rem; }
-    .games { padding: 0.5rem 0.85rem 1.5rem; display: flex; flex-direction: column; gap: 0.85rem; }
+    .mix-body { padding: 1.15rem 1.2rem 1.35rem; }
+    .mix-body h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; }
+    .mix-body p { font-size: 13px; color: var(--secondary); margin-top: 0.3rem; }
+    .mix-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+
+    .game-list { display: grid; gap: 1rem; }
+    @media (min-width: 640px) { .game-list { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; } }
+    @media (min-width: 900px) { .game-list { gap: 1.5rem; } }
     .game-card {
-      display: grid; grid-template-columns: 72px 1fr; gap: 0.9rem; align-items: center;
-      padding: 0.9rem; border-radius: var(--r);
-      background: var(--card); border: 1px solid var(--line);
-      transition: transform 0.4s var(--spring), box-shadow 0.4s, border-color 0.3s;
+      display: flex; align-items: center; gap: 1.1rem;
+      padding: 1.15rem 1.25rem; background: var(--surface); border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.45s var(--spring), box-shadow 0.4s, border-color 0.3s;
     }
     .game-card:hover {
-      transform: translateY(-3px) scale(1.015);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
-      border-color: rgba(0,162,255,0.35);
+      transform: translateY(-4px) scale(1.015);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+      border-color: rgba(10,132,255,0.35);
     }
     .game-icon {
-      width: 72px; height: 72px; border-radius: 20px;
-      display: grid; place-items: center; font-size: 28px;
+      flex-shrink: 0; width: 56px; height: 56px; border-radius: 16px;
+      display: grid; place-items: center; font-size: 24px;
       background: linear-gradient(145deg, #1e293b, #0f172a);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
       transition: transform 0.4s var(--bounce);
     }
-    .game-card:hover .game-icon { transform: scale(1.06) rotate(-3deg); }
-    .game-info h3 { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
-    .game-info p { font-size: 12px; color: var(--faint); margin: 0.2rem 0 0.55rem; }
-    .game-info .btn { width: 100%; }
-    .community-card { margin-top: 0.25rem; border-color: rgba(0,162,255,0.2); }
-    .community-icon {
-      background: linear-gradient(145deg, #0ea5e9, #0369a1) !important;
-      font-size: 26px;
+    .game-card:hover .game-icon { transform: scale(1.08) rotate(-4deg); }
+    .game-card.community .game-icon { background: linear-gradient(145deg, #0a84ff, #0056b3); }
+    .game-info { flex: 1; min-width: 0; }
+    .game-info h3 { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
+    .game-info p { font-size: 12px; color: var(--tertiary); margin: 0.25rem 0 0.7rem; }
+
+    .about { padding: 3rem 0 2rem; }
+    @media (min-width: 768px) { .about { padding: 4rem 0 3rem; } }
+    .about-card {
+      padding: 1.75rem 1.5rem; background: var(--surface); border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.06);
     }
-    .bubble {
-      margin: 0.5rem 0.85rem 1.5rem; padding: 1.35rem 1.25rem;
-      border-radius: var(--r); background: var(--card); border: 1px solid var(--line);
+    @media (min-width: 640px) { .about-card { padding: 2.25rem 2rem; } }
+    .about-card h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .about-card p { font-size: 15px; color: var(--secondary); line-height: 1.65; }
+    .about-card p + p { margin-top: 0.85rem; }
+    .about-card .note {
+      margin-top: 1.35rem; padding-top: 1.15rem; border-top: 1px solid var(--line);
+      font-size: 13px; color: var(--tertiary);
     }
-    .bubble h2 { font-size: 17px; font-weight: 700; margin-bottom: 0.65rem; }
-    .bubble p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-    .bubble p + p { margin-top: 0.65rem; }
-    .bubble .fine {
-      margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid var(--line);
-      font-size: 12px; color: var(--faint);
+    .footer {
+      padding: 2rem 0 3rem; text-align: center; font-size: 12px; color: var(--tertiary);
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
-    .foot { text-align: center; padding: 1rem 1rem 2.5rem; font-size: 12px; color: var(--faint); }
+
     .modal {
       position: fixed; inset: 0; z-index: 100;
       display: flex; align-items: flex-end; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease);
+      opacity: 0; pointer-events: none; transition: opacity 0.35s var(--ease);
     }
+    @media (min-width: 700px) { .modal { align-items: center; padding: 1.5rem; } }
     .modal.open { opacity: 1; pointer-events: auto; }
     .scrim {
-      position: absolute; inset: 0; background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      position: absolute; inset: 0; background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     }
     .sheet {
-      position: relative; z-index: 1; width: min(440px, 100%); max-height: 92dvh; overflow: auto;
-      background: var(--card-2); border-radius: 28px 28px 0 0;
-      transform: translateY(110%); transition: transform 0.5s var(--spring);
+      position: relative; z-index: 1; width: min(640px, 100%); max-height: 92dvh; overflow: auto;
+      background: var(--surface); border-radius: 24px 24px 0 0;
+      transform: translateY(100%); transition: transform 0.5s var(--spring);
       box-shadow: 0 -12px 48px rgba(0,0,0,0.45);
     }
     .modal.open .sheet { transform: translateY(0); }
-    @media (min-width: 520px) {
-      .modal { align-items: center; padding: 1rem; }
+    @media (min-width: 700px) {
       .sheet {
-        border-radius: 28px; transform: scale(0.9) translateY(30px); opacity: 0;
-        transition: transform 0.5s var(--spring), opacity 0.3s;
+        border-radius: 24px; transform: scale(0.92) translateY(20px); opacity: 0;
+        transition: transform 0.5s var(--spring), opacity 0.35s;
       }
       .modal.open .sheet { transform: scale(1) translateY(0); opacity: 1; }
     }
-    .grab { display: flex; justify-content: center; padding: 0.7rem 0 0.2rem; }
-    .grab i { width: 40px; height: 5px; border-radius: var(--pill); background: rgba(255,255,255,0.2); }
-    @media (min-width: 520px) { .grab { display: none; } }
-    .sheet-top {
+    .handle { display: flex; justify-content: center; padding: 0.75rem 0 0.35rem; }
+    .handle i { width: 36px; height: 5px; border-radius: var(--pill); background: rgba(255,255,255,0.2); }
+    @media (min-width: 700px) { .handle { display: none; } }
+    .sheet-head {
       display: flex; align-items: flex-start; justify-content: space-between;
-      gap: 0.75rem; padding: 0.5rem 1.1rem 0.9rem;
+      gap: 1rem; padding: 0.5rem 1.35rem 1rem;
     }
-    .sheet-top h3 { font-size: 16px; font-weight: 600; }
-    .sheet-top p { font-size: 12px; color: var(--muted); margin-top: 0.15rem; }
-    .x {
-      width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08);
-      display: grid; place-items: center; color: var(--muted);
+    .sheet-head h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.015em; }
+    .sheet-head p { font-size: 13px; color: var(--secondary); margin-top: 0.2rem; }
+    .close-x {
+      width: 30px; height: 30px; border-radius: 50%; background: var(--fill);
+      display: grid; place-items: center; color: var(--secondary); flex-shrink: 0;
       transition: transform 0.35s var(--bounce), background 0.25s;
     }
-    .x:hover { transform: scale(1.1) rotate(90deg); background: rgba(255,255,255,0.12); color: var(--text); }
-    .media-box { background: #000; }
-    .media-box video {
-      width: 100%; display: block; max-height: 55dvh; min-height: 180px; object-fit: contain;
+    .close-x:hover { transform: scale(1.1) rotate(90deg); background: var(--fill-2); color: var(--label); }
+    .media { background: #000; }
+    .media video {
+      width: 100%; display: block; max-height: 58dvh; min-height: 200px; object-fit: contain;
     }
-    .media-box video.hide { display: none; }
-    .audio-box {
-      display: none; flex-direction: column; align-items: center; gap: 1.25rem;
-      padding: 1.75rem 1.25rem 2rem; background: #0c0c0d;
+    .media video.hide { display: none; }
+    .audio-panel {
+      display: none; flex-direction: column; align-items: center; gap: 1.5rem;
+      padding: 2rem 1.5rem 2.25rem; background: #0a0a0a;
     }
-    .audio-box.on { display: flex; }
-    .audio-box img {
-      width: min(220px, 70%); aspect-ratio: 1; object-fit: cover; border-radius: 24px;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.5); animation: popIn 0.55s var(--bounce);
+    .audio-panel.on { display: flex; }
+    .audio-panel img {
+      width: min(240px, 65%); aspect-ratio: 1; object-fit: cover; border-radius: 20px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5); animation: artIn 0.55s var(--bounce);
     }
-    @keyframes popIn {
-      from { opacity: 0; transform: scale(0.85); }
+    @keyframes artIn {
+      from { opacity: 0; transform: scale(0.88); }
       to { opacity: 1; transform: scale(1); }
     }
-    .audio-box audio { width: min(100%, 320px); }
+    .audio-panel audio { width: min(100%, 360px); }
+
     @media (prefers-reduced-motion: reduce) {
       .boot { display: none; }
-      .in-view { opacity: 1; transform: none; filter: none; transition: none; }
-      .boot-logo { animation: none; }
+      .reveal { opacity: 1; transform: none; filter: none; transition: none; }
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
@@ -294,78 +275,83 @@
   </style>
 </head>
 <body>
-  <div class="boot" id="boot"><div class="boot-logo">J</div></div>
-  <div class="shell">
-    <header class="topbar" id="topbar">
-      <a class="brand-row" href="#inicio">
-        <div class="avatar"><span>J</span></div>
-        <span class="brand-name">JisusDev</span>
-      </a>
-      <nav class="top-links">
-        <a href="#feed">Mixes</a>
+  <div class="boot" id="boot"><span>JisusDev</span></div>
+
+  <header class="nav" id="nav">
+    <div class="inner">
+      <a class="logo" href="#inicio">JisusDev</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#mixes">Mixes</a>
         <a href="#juegos">Juegos</a>
         <a href="#about">Info</a>
       </nav>
-    </header>
-    <div class="stories in-view" id="stories"></div>
-    <section class="profile" id="inicio">
-      <h1 class="in-view">This Is It<br><em>in the Mix</em></h1>
-      <p class="in-view delay-1">Música fan-made y juegos en Roblox. Hecho por amor al arte.</p>
-      <div class="cta-row in-view delay-2">
-        <button type="button" class="btn btn-main" id="play-feat">Reproducir</button>
-        <a class="btn btn-soft" href="#juegos">Ver juegos</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap">
+        <div class="chip reveal">Música · Roblox · 2026</div>
+        <h1 class="reveal d1">This Is It<br><span class="soft">in the Mix</span></h1>
+        <p class="hero-lead reveal d2">Remixes fan-made y juegos en Roblox. Hecho por amor al arte.</p>
+        <div class="hero-cta reveal d3">
+          <button type="button" class="btn btn-fill" id="play-feat">Reproducir destacado</button>
+          <a class="btn btn-ghost" href="#juegos">Ver juegos</a>
+        </div>
       </div>
     </section>
-    <section class="feed" id="feed">
-      <p class="section-label in-view">Feed · Mixes</p>
-      <div id="posts"></div>
-    </section>
-    <section id="juegos">
-      <div class="games">
-        <p class="section-label in-view">Roblox · Juegos</p>
-        <div id="games-list"></div>
-        <a class="game-card community-card in-view" href="https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios" target="_blank" rel="noopener noreferrer">
-          <div class="game-icon community-icon" aria-hidden="true">🎮</div>
-          <div class="game-info">
-            <h3>Pancho Games Studios</h3>
-            <p>Comunidad · Roblox</p>
-            <span class="btn btn-roblox btn-xs">Unirse a la comunidad</span>
-          </div>
-        </a>
+
+    <section class="section" id="mixes">
+      <div class="wrap">
+        <h2 class="section-title reveal">Mixes</h2>
+        <div class="mix-grid" id="mix-grid"></div>
       </div>
     </section>
-    <section id="about">
-      <div class="bubble in-view">
-        <h2>Sobre JisusDev</h2>
-        <p>Proyecto personal de remixes inspirados en Michael Jackson y de juegos en Roblox bajo Pancho Games Studios.</p>
-        <p>Música y juegos hechos por diversión, sin fines comerciales en los mixes.</p>
-        <p class="fine">Mixes fan-made · No oficiales · No monetizados. Juegos disponibles en Roblox.</p>
+
+    <section class="section" id="juegos">
+      <div class="wrap">
+        <h2 class="section-title reveal">Juegos Roblox</h2>
+        <div class="game-list" id="game-list"></div>
       </div>
     </section>
-    <footer class="foot">© 2026 JisusDev · Fan-made</footer>
-  </div>
+
+    <section class="about" id="about">
+      <div class="wrap">
+        <div class="about-card reveal">
+          <h2>Sobre JisusDev</h2>
+          <p>Proyecto personal de remixes inspirados en Michael Jackson y de juegos en Roblox bajo Pancho Games Studios.</p>
+          <p>Música y experiencias hechas por diversión, sin fines comerciales en los mixes.</p>
+          <p class="note">Mixes fan-made · No oficiales · No monetizados. Juegos disponibles en Roblox.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap">© 2026 JisusDev · Fan-made</div></footer>
+
   <div class="modal" id="modal" aria-hidden="true">
     <div class="scrim" data-close></div>
     <div class="sheet" role="dialog" aria-modal="true">
-      <div class="grab"><i></i></div>
-      <div class="sheet-top">
+      <div class="handle"><i></i></div>
+      <div class="sheet-head">
         <div>
           <h3 id="m-title"></h3>
           <p id="m-desc"></p>
         </div>
-        <button type="button" class="x" data-close aria-label="Cerrar">
+        <button type="button" class="close-x" data-close aria-label="Cerrar">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l10 10M11 1L1 11"/></svg>
         </button>
       </div>
-      <div class="media-box">
+      <div class="media">
         <video id="m-video" controls playsinline preload="none"></video>
-        <div class="audio-box" id="m-audio-box">
+        <div class="audio-panel" id="m-audio">
           <img id="m-art" src="" alt="" decoding="async">
-          <audio id="m-audio" controls preload="none"></audio>
+          <audio id="m-audio-el" controls preload="none"></audio>
         </div>
       </div>
     </div>
   </div>
+
   <script>
     var mixes = [
       {
@@ -410,6 +396,13 @@
         tag: "Acción · Combate",
         icon: "⚔️",
         url: "https://www.roblox.com/es/games/121209803244913/Blox-War"
+      },
+      {
+        name: "Pancho Games Studios",
+        tag: "Comunidad",
+        icon: "🎮",
+        url: "https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios",
+        community: true
       }
     ];
     function enc(n) { return encodeURI(n); }
@@ -417,22 +410,22 @@
       if (!mix || !(mix.video || mix.audio)) return;
       var modal = document.getElementById("modal");
       var video = document.getElementById("m-video");
-      var audio = document.getElementById("m-audio");
-      var box = document.getElementById("m-audio-box");
+      var audio = document.getElementById("m-audio-el");
+      var panel = document.getElementById("m-audio");
       document.getElementById("m-title").textContent = mix.title;
       document.getElementById("m-desc").textContent = mix.description;
       video.pause(); audio.pause();
       video.removeAttribute("src"); audio.removeAttribute("src");
       video.load(); audio.load();
       if (mix.audio) {
-        video.classList.add("hide"); box.classList.add("on");
+        video.classList.add("hide"); panel.classList.add("on");
         document.getElementById("m-art").src = mix.cover || "";
         audio.src = enc(mix.audio);
         modal.classList.add("open"); modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
         audio.play().catch(function () {});
       } else {
-        video.classList.remove("hide"); box.classList.remove("on");
+        video.classList.remove("hide"); panel.classList.remove("on");
         video.poster = mix.cover || ""; video.src = enc(mix.video);
         modal.classList.add("open"); modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
@@ -442,66 +435,48 @@
     function closePlayer() {
       var modal = document.getElementById("modal");
       var video = document.getElementById("m-video");
-      var audio = document.getElementById("m-audio");
-      var box = document.getElementById("m-audio-box");
+      var audio = document.getElementById("m-audio-el");
+      var panel = document.getElementById("m-audio");
       video.pause(); audio.pause();
       video.removeAttribute("src"); audio.removeAttribute("src");
       video.load(); audio.load();
-      video.classList.remove("hide"); box.classList.remove("on");
+      video.classList.remove("hide"); panel.classList.remove("on");
       modal.classList.remove("open"); modal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("modal-open");
     }
-    var stories = document.getElementById("stories");
-    mixes.forEach(function (m) {
-      var s = document.createElement("div");
-      s.className = "story";
-      s.innerHTML =
-        '<div class="story-ring"><img src="' + m.cover + '" alt="" loading="lazy"></div>' +
-        '<span>' + m.title.split(" ")[0] + '</span>';
-      s.addEventListener("click", function () { openPlayer(m); });
-      stories.appendChild(s);
-    });
-    var posts = document.getElementById("posts");
+    var grid = document.getElementById("mix-grid");
     mixes.forEach(function (mix, i) {
-      var post = document.createElement("article");
-      post.className = "post in-view delay-" + Math.min(i + 1, 5);
+      var card = document.createElement("article");
+      card.className = "mix-card reveal d" + Math.min(i + 1, 5);
       var label = mix.demo ? "Escuchar Demo" : "Reproducir";
-      var extra =
-        (mix.youtube ? '<a class="btn btn-soft btn-xs" href="' + mix.youtube + '" target="_blank" rel="noopener noreferrer">YouTube</a>' : '') +
-        (mix.bandlab ? '<a class="btn btn-soft btn-xs" href="' + mix.bandlab + '" target="_blank" rel="noopener noreferrer">BandLab</a>' : '');
-      post.innerHTML =
-        '<div class="post-head">' +
-          '<img class="post-av" src="' + mix.cover + '" alt="">' +
-          '<div class="post-user"><strong>jisusdev</strong><span>' + mix.description + '</span></div>' +
-        '</div>' +
-        '<div class="post-media">' +
-          '<img src="' + mix.cover + '" alt="" loading="lazy" decoding="async">' +
-          '<button type="button" class="post-play" data-play="' + i + '" aria-label="Play">' +
-            '<span class="orb"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>' +
-          '</button>' +
-        '</div>' +
-        '<div class="post-body">' +
-          '<h3>' + mix.title + '</h3><p>' + mix.description + '</p>' +
-          '<div class="post-actions">' +
-            '<button type="button" class="btn btn-main btn-xs" data-play="' + i + '">' + label + '</button>' + extra +
-          '</div></div>';
-      posts.appendChild(post);
-    });
-    var gamesList = document.getElementById("games-list");
-    games.forEach(function (g, i) {
-      var card = document.createElement("a");
-      card.className = "game-card in-view delay-" + Math.min(i + 1, 5);
-      card.href = g.url;
-      card.target = "_blank";
-      card.rel = "noopener noreferrer";
+      var links =
+        (mix.youtube ? '<a class="btn btn-ghost btn-sm" href="' + mix.youtube + '" target="_blank" rel="noopener noreferrer">YouTube</a>' : '') +
+        (mix.bandlab ? '<a class="btn btn-ghost btn-sm" href="' + mix.bandlab + '" target="_blank" rel="noopener noreferrer">BandLab</a>' : '');
       card.innerHTML =
+        '<div class="mix-cover">' +
+          '<img src="' + mix.cover + '" alt="" loading="lazy" decoding="async">' +
+          '<button type="button" class="mix-play" data-play="' + i + '" aria-label="Play">' +
+            '<span class="play-dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>' +
+          '</button></div>' +
+        '<div class="mix-body">' +
+          '<h3>' + mix.title + '</h3><p>' + mix.description + '</p>' +
+          '<div class="mix-actions">' +
+            '<button type="button" class="btn btn-fill btn-sm" data-play="' + i + '">' + label + '</button>' + links +
+          '</div></div>';
+      grid.appendChild(card);
+    });
+    var gameList = document.getElementById("game-list");
+    games.forEach(function (g, i) {
+      var a = document.createElement("a");
+      a.className = "game-card reveal d" + Math.min(i + 1, 5) + (g.community ? " community" : "");
+      a.href = g.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+      var btnLabel = g.community ? "Unirse" : "Jugar";
+      a.innerHTML =
         '<div class="game-icon" aria-hidden="true">' + g.icon + '</div>' +
         '<div class="game-info">' +
-          '<h3>' + g.name + '</h3>' +
-          '<p>' + g.tag + ' · Roblox</p>' +
-          '<span class="btn btn-roblox btn-xs">Jugar en Roblox</span>' +
-        '</div>';
-      gamesList.appendChild(card);
+          '<h3>' + g.name + '</h3><p>' + g.tag + ' · Roblox</p>' +
+          '<span class="btn btn-blue btn-sm">' + btnLabel + '</span></div>';
+      gameList.appendChild(a);
     });
     document.getElementById("play-feat").addEventListener("click", function () { openPlayer(mixes[0]); });
     document.addEventListener("click", function (e) {
@@ -510,29 +485,29 @@
       if (e.target.closest("[data-close]")) closePlayer();
     });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closePlayer(); });
-    var topbar = document.getElementById("topbar");
+    var nav = document.getElementById("nav");
     window.addEventListener("scroll", function () {
-      topbar.classList.toggle("scrolled", window.scrollY > 6);
+      nav.classList.toggle("scrolled", window.scrollY > 8);
     }, { passive: true });
     function observe() {
-      var els = document.querySelectorAll(".in-view");
+      var els = document.querySelectorAll(".reveal");
       if (!("IntersectionObserver" in window)) {
-        els.forEach(function (el) { el.classList.add("show"); });
+        els.forEach(function (el) { el.classList.add("in"); });
         return;
       }
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
-          if (en.isIntersecting) { en.target.classList.add("show"); io.unobserve(en.target); }
+          if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
         });
-      }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
       els.forEach(function (el) { io.observe(el); });
     }
     window.addEventListener("load", function () {
       setTimeout(function () {
         document.getElementById("boot").classList.add("done");
-        document.querySelectorAll(".profile .in-view, .stories").forEach(function (el) { el.classList.add("show"); });
+        document.querySelectorAll(".hero .reveal").forEach(function (el) { el.classList.add("in"); });
         observe();
-      }, 500);
+      }, 450);
     });
   </script>
 </body>
