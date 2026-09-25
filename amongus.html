@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Among Us Mini — JisusDev</title>
+<meta name="theme-color" content="#0b0e1a">
+<style>
+  :root {
+    --bg: #0b0e1a; --panel: #151a2e; --line: rgba(255,255,255,0.12);
+    --text: #eef1ff; --muted: #9aa3c7; --red: #e74c3c; --cyan: #39c5cf;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+    overflow: hidden; -webkit-user-select: none; user-select: none;
+  }
+  #app { height: 100%; display: flex; flex-direction: column; }
+  .top {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+    padding: 0.65rem 0.9rem; background: rgba(10,12,24,0.92);
+    border-bottom: 1px solid var(--line); z-index: 5;
+  }
+  .top a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 600; }
+  .top a:hover { color: #fff; }
+  .brand { font-weight: 800; letter-spacing: -0.02em; font-size: 15px; }
+  .hud-bits { display: flex; gap: 0.55rem; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+  .pill {
+    font-size: 12px; font-weight: 700; padding: 0.28rem 0.65rem;
+    border-radius: 999px; background: rgba(255,255,255,0.08);
+  }
+  .pill.role-crew { background: rgba(57,197,207,0.2); color: var(--cyan); }
+  .pill.role-imp { background: rgba(231,76,60,0.22); color: #ff8b7e; }
+  .bar-wrap { width: min(140px, 28vw); height: 8px; background: rgba(255,255,255,0.1); border-radius: 99px; overflow: hidden; }
+  .bar { height: 100%; width: 0%; background: linear-gradient(90deg, #2ecc71, #39c5cf); transition: width 0.25s; }
+  #stage-wrap {
+    flex: 1; position: relative; display: grid; place-items: center; min-height: 0;
+    background: radial-gradient(ellipse at center, #12182c 0%, #080a14 70%);
+  }
+  canvas { display: block; max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.45); }
+  .overlay {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: rgba(5,7,14,0.82); backdrop-filter: blur(10px); z-index: 10; padding: 1rem;
+  }
+  .overlay.hidden { display: none; }
+  .card {
+    width: min(400px, 100%); background: var(--panel); border: 1px solid var(--line);
+    border-radius: 22px; padding: 1.5rem 1.35rem; text-align: center;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  }
+  .card h1 { font-size: clamp(1.4rem, 5vw, 1.85rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.45rem; }
+  .card p { color: var(--muted); font-size: 14px; line-height: 1.5; margin-bottom: 1.1rem; }
+  .btns { display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center; }
+  .btn {
+    border: none; cursor: pointer; font: inherit; font-weight: 700; font-size: 14px;
+    min-height: 44px; padding: 0 1.15rem; border-radius: 999px;
+    transition: transform 0.15s, filter 0.15s;
+  }
+  .btn:active { transform: scale(0.96); }
+  .btn-primary { background: #fff; color: #0b0e1a; }
+  .btn-danger { background: var(--red); color: #fff; }
+  .btn-ghost { background: rgba(255,255,255,0.1); color: #fff; }
+  .btn:hover { filter: brightness(1.08); }
+  .mobile-pad { display: none; position: absolute; bottom: 12px; left: 0; right: 0; padding: 0 12px; z-index: 6; pointer-events: none; }
+  .mobile-pad .row { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+  .dpad, .actions { pointer-events: auto; display: grid; gap: 6px; }
+  .dpad { grid-template-columns: repeat(3, 48px); grid-template-rows: repeat(3, 48px); }
+  .dpad button, .actions button {
+    width: 48px; height: 48px; border: none; border-radius: 14px;
+    background: rgba(255,255,255,0.12); color: #fff; font-size: 18px; font-weight: 800;
+  }
+  .dpad .up { grid-column: 2; grid-row: 1; }
+  .dpad .left { grid-column: 1; grid-row: 2; }
+  .dpad .down { grid-column: 2; grid-row: 2; }
+  .dpad .right { grid-column: 3; grid-row: 2; }
+  .actions { display: flex; flex-direction: column; gap: 8px; }
+  .actions .use { background: rgba(57,197,207,0.35); }
+  .actions .kill { background: rgba(231,76,60,0.4); }
+  @media (max-width: 900px), (pointer: coarse) { .mobile-pad { display: block; } }
+  .hint {
+    position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; color: var(--muted); background: rgba(0,0,0,0.45);
+    padding: 0.35rem 0.75rem; border-radius: 999px; z-index: 4; white-space: nowrap;
+  }
+  .toast {
+    position: absolute; bottom: 90px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.75); color: #fff; padding: 0.55rem 1rem; border-radius: 12px;
+    font-size: 13px; font-weight: 600; z-index: 7; opacity: 0; transition: opacity 0.25s; pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="top">
+    <div style="display:flex;gap:0.75rem;align-items:center">
+      <a href="./">← Web</a>
+      <span class="brand">Among Mini</span>
+    </div>
+    <div class="hud-bits">
+      <span class="pill" id="rolePill">—</span>
+      <span class="pill" id="alivePill">Vivos 0</span>
+      <div class="bar-wrap" title="Tasks"><div class="bar" id="taskBar"></div></div>
+    </div>
+  </div>
+  <div id="stage-wrap">
+    <div class="hint" id="hint">WASD / flechas · E usar · K matar · R reportar</div>
+    <canvas id="c" width="960" height="540"></canvas>
+    <div class="toast" id="toast"></div>
+    <div class="mobile-pad">
+      <div class="row">
+        <div class="dpad">
+          <button class="up" data-k="up">▲</button>
+          <button class="left" data-k="left">◀</button>
+          <button class="down" data-k="down">▼</button>
+          <button class="right" data-k="right">▶</button>
+        </div>
+        <div class="actions">
+          <button class="use" id="btnUse">E</button>
+          <button class="kill" id="btnKill">K</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="overlay" id="menu">
+  <div class="card">
+    <h1>Among Us Mini</h1>
+    <p>Fan game local con bots. Completa tasks o elimina a la tripulación. No es el juego oficial.</p>
+    <div class="btns">
+      <button class="btn btn-primary" id="playCrew">Jugar Crewmate</button>
+      <button class="btn btn-danger" id="playImp">Jugar Impostor</button>
+    </div>
+  </div>
+</div>
+<div class="overlay hidden" id="end">
+  <div class="card">
+    <h1 id="endTitle">Fin</h1>
+    <p id="endMsg"></p>
+    <div class="btns">
+      <button class="btn btn-primary" id="again">Otra ronda</button>
+      <a class="btn btn-ghost" href="./">Volver a la web</a>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const COLORS = ['#c51111','#132ed1','#117f2d','#ed54ba','#f07d0d','#f6f658','#38fedc','#c87db5','#6b2fbb','#71efef'];
+  const names = ['Red','Blue','Green','Pink','Orange','Yellow','Cyan','Purple','Lime','White'];
+  const walls = [
+    [0,0,960,24],[0,516,960,24],[0,0,24,540],[936,0,24,540],
+    [180,24,24,160],[180,240,24,140],[180,420,24,96],
+    [420,24,24,120],[420,200,24,180],[420,440,24,76],
+    [660,24,24,200],[660,280,24,236],
+    [24,180,120,24],[240,180,140,24],[480,180,140,24],[720,180,120,24],
+    [24,360,120,24],[240,360,140,24],[480,360,140,24],[720,360,120,24],
+  ];
+  const rooms = [
+    { name: 'Cafeteria', x: 40, y: 40 }, { name: 'Weapons', x: 250, y: 40 },
+    { name: 'O2', x: 500, y: 40 }, { name: 'Nav', x: 720, y: 40 },
+    { name: 'Medbay', x: 40, y: 220 }, { name: 'Admin', x: 250, y: 220 },
+    { name: 'Storage', x: 500, y: 220 }, { name: 'Shields', x: 720, y: 220 },
+    { name: 'Electrical', x: 40, y: 400 }, { name: 'Security', x: 250, y: 400 },
+    { name: 'Reactor', x: 500, y: 400 }, { name: 'Engine', x: 720, y: 400 },
+  ];
+  const taskSpots = [
+    { x: 90, y: 90, label: 'Swipe card', done: false },
+    { x: 300, y: 80, label: 'Download', done: false },
+    { x: 560, y: 90, label: 'Asteroids', done: false },
+    { x: 800, y: 90, label: 'Chart course', done: false },
+    { x: 90, y: 270, label: 'Scan', done: false },
+    { x: 300, y: 270, label: 'Upload', done: false },
+    { x: 560, y: 280, label: 'Fuel', done: false },
+    { x: 800, y: 270, label: 'Prime shields', done: false },
+    { x: 90, y: 450, label: 'Calibrate', done: false },
+    { x: 560, y: 450, label: 'Fix wiring', done: false },
+  ];
+  let players = [], bodies = [], me = null, keys = {}, touch = { up:false,down:false,left:false,right:false };
+  let running = false, killCd = 0, taskProgress = 0, meeting = false, lastTime = 0;
+  function toast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 1800);
+  }
+  function rectHit(x, y, r, wx, wy, ww, wh) {
+    const nx = Math.max(wx, Math.min(x, wx + ww));
+    const ny = Math.max(wy, Math.min(y, wy + wh));
+    const dx = x - nx, dy = y - ny;
+    return dx * dx + dy * dy < r * r;
+  }
+  function blocked(x, y, r) {
+    for (const w of walls) if (rectHit(x, y, r, w[0], w[1], w[2], w[3])) return true;
+    return x < r || y < r || x > W - r || y > H - r;
+  }
+  function tryMove(p, dx, dy, dt) {
+    const sp = p.speed * dt;
+    let nx = p.x + dx * sp, ny = p.y + dy * sp;
+    if (!blocked(nx, p.y, p.r)) p.x = nx;
+    if (!blocked(p.x, ny, p.r)) p.y = ny;
+  }
+  function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
+  function spawn(role) {
+    players = []; bodies = [];
+    taskSpots.forEach(t => t.done = false);
+    taskProgress = 0; killCd = 0; meeting = false;
+    const used = new Set();
+    function pickColor() {
+      let i; do { i = Math.floor(Math.random() * COLORS.length); } while (used.has(i));
+      used.add(i); return i;
+    }
+    const spawnPoints = [[120,120],[300,120],[540,120],[780,120],[120,300],[300,300],[540,300],[780,300],[120,460],[300,460],[540,460],[780,460]];
+    me = { id: 0, name: 'Tú', color: pickColor(), x: spawnPoints[0][0], y: spawnPoints[0][1], r: 16, speed: 160, role, alive: true, isMe: true };
+    players.push(me);
+    for (let i = 0; i < 7; i++) {
+      const ci = pickColor();
+      const sp = spawnPoints[(i + 1) % spawnPoints.length];
+      players.push({ id: i + 1, name: names[ci], color: ci, x: sp[0] + (Math.random()*40-20), y: sp[1] + (Math.random()*40-20), r: 16, speed: 90 + Math.random()*40, role: 'crew', alive: true, isMe: false, dir: Math.random()*Math.PI*2, wait: 0, taskTarget: null });
+    }
+    if (role === 'crew') {
+      const bots = players.filter(p => !p.isMe);
+      bots[Math.floor(Math.random() * bots.length)].role = 'imp';
+    }
+    updateHud(); running = true;
+    document.getElementById('menu').classList.add('hidden');
+    document.getElementById('end').classList.add('hidden');
+    toast(role === 'imp' ? 'Eres el IMPOSTOR' : 'Eres CREWMATE — haz tasks');
+  }
+  function updateHud() {
+    if (!me) return;
+    const rolePill = document.getElementById('rolePill');
+    rolePill.textContent = me.role === 'imp' ? 'Impostor' : 'Crewmate';
+    rolePill.className = 'pill ' + (me.role === 'imp' ? 'role-imp' : 'role-crew');
+    document.getElementById('alivePill').textContent = 'Vivos ' + players.filter(p => p.alive).length;
+    const done = taskSpots.filter(t => t.done).length;
+    taskProgress = done / taskSpots.length;
+    document.getElementById('taskBar').style.width = (taskProgress * 100) + '%';
+  }
+  function nearestTask(p) {
+    let best = null, bd = 1e9;
+    for (const t of taskSpots) {
+      if (t.done) continue;
+      const d = Math.hypot(t.x - p.x, t.y - p.y);
+      if (d < bd) { bd = d; best = t; }
+    }
+    return best && bd < 48 ? best : null;
+  }
+  function nearestAlive(p, maxD) {
+    let best = null, bd = maxD;
+    for (const o of players) {
+      if (o === p || !o.alive) continue;
+      const d = dist(p, o);
+      if (d < bd) { bd = d; best = o; }
+    }
+    return best;
+  }
+  function nearestBody(p, maxD) {
+    let best = null, bd = maxD;
+    for (const b of bodies) {
+      const d = Math.hypot(b.x - p.x, b.y - p.y);
+      if (d < bd) { bd = d; best = b; }
+    }
+    return best;
+  }
+  function kill(attacker, victim) {
+    if (!victim.alive || killCd > 0) return;
+    victim.alive = false;
+    bodies.push({ x: victim.x, y: victim.y, color: victim.color, name: victim.name });
+    if (attacker.isMe) { killCd = 12; toast('Eliminaste a ' + victim.name); }
+    updateHud(); checkWin();
+  }
+  function doTask(p) {
+    const t = nearestTask(p);
+    if (!t || p.role === 'imp') return;
+    t.done = true; toast('Task: ' + t.label + ' OK');
+    updateHud(); checkWin();
+  }
+  function report() {
+    if (!me || !me.alive) return;
+    const b = nearestBody(me, 55);
+    if (!b) { toast('No hay cuerpo cerca'); return; }
+    meeting = true; toast('Body reported! Meeting...');
+    setTimeout(() => {
+      if (Math.random() < 0.45) {
+        const pool = players.filter(p => p.alive && !p.isMe);
+        if (pool.length) {
+          const ej = pool[Math.floor(Math.random() * pool.length)];
+          ej.alive = false; toast(ej.name + ' fue expulsado');
+          if (ej.role === 'imp' && me.role === 'crew') { endGame('Crewmates ganan', 'Expulsaron al impostor.'); return; }
+        }
+      } else toast('Nadie fue expulsado (skip)');
+      bodies = []; meeting = false; updateHud(); checkWin();
+    }, 1600);
+  }
+  function checkWin() {
+    if (!running) return;
+    const aliveCrew = players.filter(p => p.alive && p.role === 'crew').length;
+    const aliveImp = players.filter(p => p.alive && p.role === 'imp').length;
+    if (taskProgress >= 1) { endGame('Crewmates ganan', 'Completaron todas las tasks.'); return; }
+    if (aliveImp === 0) { endGame('Crewmates ganan', 'No quedan impostores.'); return; }
+    if (aliveImp >= aliveCrew) { endGame('Impostor gana', 'La tripulacion fue eliminada.'); return; }
+    if (me && !me.alive) endGame('Moriste', me.role === 'imp' ? 'Te descubrieron...' : 'Un impostor te liquido.');
+  }
+  function endGame(title, msg) {
+    running = false;
+    document.getElementById('endTitle').textContent = title;
+    document.getElementById('endMsg').textContent = msg;
+    document.getElementById('end').classList.remove('hidden');
+  }
+  function updateBot(p, dt) {
+    if (!p.alive) return;
+    p.wait -= dt;
+    if (p.role === 'imp') {
+      const prey = nearestAlive(p, 200);
+      if (prey && dist(p, prey) < 36 && Math.random() < 0.02) {
+        prey.alive = false;
+        bodies.push({ x: prey.x, y: prey.y, color: prey.color, name: prey.name });
+        if (prey.isMe) toast('Te mataron!');
+        updateHud(); checkWin(); return;
+      }
+      if (prey) {
+        const ang = Math.atan2(prey.y - p.y, prey.x - p.x);
+        tryMove(p, Math.cos(ang), Math.sin(ang), dt); return;
+      }
+    } else {
+      if (!p.taskTarget || p.taskTarget.done) {
+        const open = taskSpots.filter(t => !t.done);
+        p.taskTarget = open.length ? open[Math.floor(Math.random() * open.length)] : null;
+      }
+      if (p.taskTarget) {
+        const ang = Math.atan2(p.taskTarget.y - p.y, p.taskTarget.x - p.x);
+        const d = Math.hypot(p.taskTarget.x - p.x, p.taskTarget.y - p.y);
+        if (d < 28) {
+          if (Math.random() < 0.015) { p.taskTarget.done = true; updateHud(); checkWin(); }
+        } else tryMove(p, Math.cos(ang), Math.sin(ang), dt);
+        return;
+      }
+    }
+    if (p.wait <= 0) { p.dir = Math.random() * Math.PI * 2; p.wait = 0.8 + Math.random() * 1.5; }
+    tryMove(p, Math.cos(p.dir), Math.sin(p.dir), dt * 0.7);
+  }
+  function update(dt) {
+    if (!running || meeting || !me) return;
+    killCd = Math.max(0, killCd - dt);
+    let dx = 0, dy = 0;
+    if (keys['w'] || keys['arrowup'] || touch.up) dy -= 1;
+    if (keys['s'] || keys['arrowdown'] || touch.down) dy += 1;
+    if (keys['a'] || keys['arrowleft'] || touch.left) dx -= 1;
+    if (keys['d'] || keys['arrowright'] || touch.right) dx += 1;
+    if (dx || dy) {
+      const len = Math.hypot(dx, dy) || 1;
+      tryMove(me, dx / len, dy / len, dt);
+    }
+    for (const p of players) if (!p.isMe) updateBot(p, dt);
+  }
+  function drawBean(p) {
+    const c = COLORS[p.color % COLORS.length];
+    ctx.save(); ctx.translate(p.x, p.y);
+    ctx.fillStyle = 'rgba(0,0,0,0.25)';
+    ctx.beginPath(); ctx.ellipse(0, 14, 14, 6, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = c;
+    ctx.beginPath(); ctx.ellipse(0, 0, 14, 18, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillRect(-20, -6, 8, 14);
+    ctx.fillStyle = '#9be7ff';
+    ctx.beginPath(); ctx.ellipse(5, -4, 8, 6, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+    ctx.fillText(p.name, 0, -26);
+    if (p.isMe) { ctx.fillStyle = '#ffe66d'; ctx.fillText('v', 0, -36); }
+    ctx.restore();
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#1a2238'; ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = 'rgba(255,255,255,0.03)'; ctx.lineWidth = 1;
+    for (let x = 0; x < W; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    for (let y = 0; y < H; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    ctx.fillStyle = 'rgba(255,255,255,0.12)'; ctx.font = '600 12px system-ui';
+    for (const r of rooms) ctx.fillText(r.name, r.x, r.y);
+    ctx.fillStyle = '#2a3350';
+    for (const w of walls) ctx.fillRect(w[0], w[1], w[2], w[3]);
+    for (const t of taskSpots) {
+      ctx.beginPath(); ctx.arc(t.x, t.y, 10, 0, Math.PI * 2);
+      ctx.fillStyle = t.done ? 'rgba(46,204,113,0.5)' : 'rgba(255,220,80,0.85)'; ctx.fill();
+    }
+    for (const b of bodies) {
+      ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(0.4);
+      ctx.fillStyle = COLORS[b.color % COLORS.length]; ctx.globalAlpha = 0.7;
+      ctx.beginPath(); ctx.ellipse(0, 0, 16, 10, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1; ctx.fillStyle = '#fff'; ctx.font = '10px system-ui'; ctx.textAlign = 'center';
+      ctx.fillText('X', 0, 4); ctx.restore();
+    }
+    const sorted = players.filter(p => p.alive).sort((a, b) => a.y - b.y);
+    for (const p of sorted) drawBean(p);
+    if (me && me.alive) {
+      const t = nearestTask(me);
+      if (t && me.role === 'crew') {
+        ctx.fillStyle = '#fff'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('[E] ' + t.label, me.x, me.y + 36);
+      }
+      if (me.role === 'imp') {
+        const v = nearestAlive(me, 42);
+        if (v && killCd <= 0) {
+          ctx.fillStyle = '#ff8b7e'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('[K] Kill', me.x, me.y + 36);
+        } else if (killCd > 0) {
+          ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('CD ' + killCd.toFixed(1) + 's', me.x, me.y + 36);
+        }
+      }
+      if (nearestBody(me, 55)) {
+        ctx.fillStyle = '#ffd166'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('[R] Report', me.x, me.y + 50);
+      }
+    }
+  }
+  function loop(ts) {
+    const dt = Math.min(0.033, (ts - lastTime) / 1000 || 0.016);
+    lastTime = ts; update(dt); draw(); requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+  window.addEventListener('keydown', e => {
+    keys[e.key.toLowerCase()] = true;
+    if (!running) return;
+    if (e.key.toLowerCase() === 'e') doTask(me);
+    if (e.key.toLowerCase() === 'k' && me && me.role === 'imp') {
+      const v = nearestAlive(me, 42); if (v) kill(me, v);
+    }
+    if (e.key.toLowerCase() === 'r') report();
+  });
+  window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
+  document.querySelectorAll('.dpad button').forEach(btn => {
+    const k = btn.getAttribute('data-k');
+    const on = e => { e.preventDefault(); touch[k] = true; };
+    const off = e => { e.preventDefault(); touch[k] = false; };
+    btn.addEventListener('touchstart', on, { passive: false });
+    btn.addEventListener('touchend', off);
+    btn.addEventListener('mousedown', on);
+    btn.addEventListener('mouseup', off);
+    btn.addEventListener('mouseleave', off);
+  });
+  document.getElementById('btnUse').addEventListener('click', () => doTask(me));
+  document.getElementById('btnKill').addEventListener('click', () => {
+    if (me && me.role === 'imp') { const v = nearestAlive(me, 42); if (v) kill(me, v); }
+  });
+  document.getElementById('playCrew').onclick = () => spawn('crew');
+  document.getElementById('playImp').onclick = () => spawn('imp');
+  document.getElementById('again').onclick = () => {
+    document.getElementById('end').classList.add('hidden');
+    document.getElementById('menu').classList.remove('hidden');
+  };
+})();
+</script>
+</body>
+</html>
