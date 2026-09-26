@@ -574,9 +574,9 @@
       timeToggle.setAttribute("aria-pressed", "true");
       timeToggle.textContent = "◐";
       var hour = new Date().getHours();
-      if (hour >= 3 && hour < 6) document.body.classList.add("time-dawn");
-      else if (hour >= 6 && hour < 13) document.body.classList.add("time-morning");
-      else if (hour >= 13 && hour < 19) document.body.classList.add("time-afternoon");
+      if (hour >= 12 && hour < 18) document.body.classList.add("time-dawn");
+      else if (hour >= 7 && hour < 12) document.body.classList.add("time-morning");
+      else if (hour >= 18 && hour < 19) document.body.classList.add("time-afternoon");
     }
     timeToggle.addEventListener("click", function () {
       timeThemeEnabled = !timeThemeEnabled;
