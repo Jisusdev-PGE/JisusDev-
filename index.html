@@ -1,1 +1,258 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JisusDev — Camino al 1K</title>
+<meta name="description" content="Don't Stop remix camino a 1K views. JisusDev.">
+<meta name="theme-color" content="#000000">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--surface:#1c1c1e;--fill:rgba(255,255,255,.08);--fill-2:rgba(255,255,255,.12);--line:rgba(255,255,255,.1);--label:#f5f5f7;--secondary:#a1a1a6;--tertiary:#6e6e73;--white:#f5f5f7;--ink:#000;--blue:#0a84ff;--radius:20px;--radius-lg:28px;--pill:980px;--font:Inter,-apple-system,system-ui,sans-serif;--ease:cubic-bezier(.25,.1,.25,1);--spring:cubic-bezier(.32,.72,0,1);--bounce:cubic-bezier(.34,1.4,.64,1);--pad:1.25rem;--max:720px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--label);font-family:var(--font);font-size:17px;line-height:1.47;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.modal-open{overflow:hidden}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+.wrap{width:min(var(--max),calc(100% - 2*var(--pad)));margin-inline:auto}
+.boot{position:fixed;inset:0;z-index:400;background:#000;display:grid;place-items:center;transition:opacity .7s var(--ease),visibility .7s}
+.boot.done{opacity:0;visibility:hidden;pointer-events:none}
+.boot span{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--tertiary);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+.reveal{opacity:0;transform:translateY(36px) scale(.98);filter:blur(8px);transition:opacity .9s var(--spring),transform .9s var(--spring),filter .9s var(--ease)}
+.reveal.in{opacity:1;transform:none;filter:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.28s}.d4{transition-delay:.4s}.d5{transition-delay:.52s}
+.nav{position:sticky;top:0;z-index:50;height:52px;display:flex;align-items:center;background:rgba(0,0,0,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:border-color .35s,background .35s}
+.nav.scrolled{border-bottom-color:var(--line);background:rgba(0,0,0,.88)}
+.nav .inner{width:min(var(--max),calc(100% - 2*var(--pad)));margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{font-size:15px;font-weight:600}.logo:hover{opacity:.7}
+.nav-links{display:flex;flex-wrap:wrap;gap:.15rem;justify-content:flex-end}
+.nav-links a{padding:.4rem .7rem;font-size:13px;font-weight:500;color:var(--secondary);border-radius:var(--pill);transition:color .25s,background .25s,transform .3s var(--bounce)}
+.nav-links a:hover{color:var(--label);background:var(--fill);transform:scale(1.04)}
+.hero{padding:3.5rem 0 2rem;text-align:center}
+@media(min-width:768px){.hero{padding:5rem 0 2.5rem}}
+.chip{display:inline-flex;padding:.4rem .9rem;font-size:12px;font-weight:500;color:var(--secondary);background:var(--fill);border-radius:var(--pill);margin-bottom:1.25rem}
+.hero h1{font-size:clamp(2.1rem,7vw,3.5rem);font-weight:700;letter-spacing:-.035em;line-height:1.08;margin-bottom:1rem}
+.hero h1 .soft{color:var(--secondary);font-weight:500}
+.hero-lead{font-size:clamp(15px,2.5vw,18px);color:var(--secondary);max-width:28rem;margin:0 auto 1.5rem;line-height:1.55}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.25rem;font-size:15px;font-weight:500;border-radius:var(--pill);transition:transform .35s var(--spring),box-shadow .3s,background .25s}
+.btn:active{transform:scale(.96)}.btn-fill{background:var(--white);color:var(--ink)}.btn-fill:hover{transform:scale(1.04);box-shadow:0 10px 30px rgba(255,255,255,.12)}
+.btn-ghost{background:var(--fill);color:var(--label)}.btn-ghost:hover{background:var(--fill-2);transform:scale(1.04)}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{transform:scale(1.04);box-shadow:0 10px 28px rgba(10,132,255,.35)}
+.btn-sm{min-height:36px;padding:0 1rem;font-size:13px}.btn-yt{background:#ff0000;color:#fff}.btn-yt:hover{transform:scale(1.04);box-shadow:0 10px 28px rgba(255,0,0,.35)}.btn-red{background:#e74c3c;color:#fff}.btn-red:hover{transform:scale(1.04);box-shadow:0 10px 28px rgba(231,76,60,.4)}
+.section{padding:2.5rem 0 1rem}@media(min-width:768px){.section{padding:3.5rem 0 1.5rem}}
+.section-title{font-size:clamp(22px,4vw,28px);font-weight:700;letter-spacing:-.025em;margin-bottom:1.5rem}
+.live-section{padding:0 0 2rem}
+.live-card{position:relative;overflow:hidden;background:linear-gradient(160deg,#12141c 0%,#0a0b10 55%,#141008 100%);border-radius:var(--radius-lg);border:1px solid rgba(255,214,90,.22);padding:1.75rem 1.35rem 1.6rem;box-shadow:0 20px 60px rgba(255,180,40,.08),0 8px 32px rgba(0,0,0,.45)}
+@media(min-width:640px){.live-card{padding:2.1rem 2rem 1.85rem}}
+.live-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:1.25rem}
+.live-badge{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .8rem;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#ffd65a;background:rgba(255,200,50,.14);border-radius:var(--pill)}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#ff4d4d;box-shadow:0 0 0 0 rgba(255,77,77,.5);animation:livePulse 1.6s ease-out infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,77,77,.55)}70%{box-shadow:0 0 0 8px rgba(255,77,77,0)}100%{box-shadow:0 0 0 0 rgba(255,77,77,0)}}
+.live-updated{font-size:12px;color:var(--tertiary);font-weight:500}
+.live-title{font-size:clamp(1.25rem,3.5vw,1.55rem);font-weight:700;letter-spacing:-.025em;line-height:1.25;margin-bottom:.35rem}
+.live-sub{font-size:14px;color:var(--secondary);margin-bottom:1.35rem;line-height:1.45}
+.live-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-bottom:1.35rem}
+@media(min-width:520px){.live-stats{gap:1rem}}
+.stat{text-align:center;padding:1rem .5rem .9rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:18px;transition:transform .35s var(--spring),border-color .3s}
+.stat:hover{transform:translateY(-3px);border-color:rgba(255,214,90,.28)}
+.stat-val{font-size:clamp(1.35rem,5vw,1.85rem);font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--label);line-height:1.1}
+.stat-val.tick{animation:tickPop .45s var(--bounce)}
+@keyframes tickPop{0%{transform:scale(1)}40%{transform:scale(1.12);color:#ffd65a}100%{transform:scale(1)}}
+.stat-label{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--tertiary);margin-top:.35rem}
+.goal-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.55rem;font-size:13px;color:var(--secondary)}
+.goal-row strong{color:var(--label);font-weight:600}
+.goal-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:1.25rem}
+.goal-fill{height:100%;width:0%;border-radius:inherit;background:linear-gradient(90deg,#ffb020,#ffe066);box-shadow:0 0 18px rgba(255,200,50,.45);transition:width .9s var(--spring)}
+.goal-fill.hit{background:linear-gradient(90deg,#30d158,#7dffb0);box-shadow:0 0 22px rgba(48,209,88,.5)}
+.live-actions{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
+.live-celebrate{display:none;text-align:center;margin-top:1rem;font-size:14px;font-weight:600;color:#7dffb0}
+.live-celebrate.show{display:block;animation:tickPop .6s var(--bounce)}
+.mix-grid{display:grid;gap:1.25rem}
+@media(min-width:640px){.mix-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
+@media(min-width:900px){.mix-grid{grid-template-columns:repeat(3,1fr);gap:1.75rem}:root{--max:980px}}
+.mix-card{background:var(--surface);border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(255,255,255,.06);box-shadow:0 12px 40px rgba(0,0,0,.35);transition:transform .5s var(--spring),box-shadow .5s var(--ease)}
+.mix-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.mix-cover{position:relative;aspect-ratio:1;overflow:hidden;background:#111}
+.mix-cover img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--spring)}
+.mix-card:hover .mix-cover img{transform:scale(1.07)}
+.mix-play{position:absolute;inset:0;display:grid;place-items:center;border:none;background:transparent;cursor:pointer}
+.mix-play::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .4s}
+.mix-card:hover .mix-play::before{background:rgba(0,0,0,.32)}
+.play-dot{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.95);color:#000;display:grid;place-items:center;opacity:0;transform:scale(.75);box-shadow:0 8px 28px rgba(0,0,0,.35);transition:opacity .4s var(--spring),transform .5s var(--bounce)}
+.mix-card:hover .play-dot{opacity:1;transform:scale(1)}.play-dot svg{margin-left:2px}
+@media(hover:none){.play-dot{opacity:1;transform:scale(1)}.mix-play::before{background:rgba(0,0,0,.2)}}
+.mix-body{padding:1.15rem 1.2rem 1.35rem}.mix-body h3{font-size:16px;font-weight:600;letter-spacing:-.015em;line-height:1.3}.mix-body p{font-size:13px;color:var(--secondary);margin-top:.3rem}.mix-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.game-list{display:grid;gap:1rem}
+@media(min-width:640px){.game-list{grid-template-columns:repeat(2,1fr);gap:1.25rem}}
+.game-card{display:flex;align-items:center;gap:1.1rem;padding:1.15rem 1.25rem;background:var(--surface);border-radius:var(--radius);border:1px solid rgba(255,255,255,.06);transition:transform .45s var(--spring),box-shadow .4s,border-color .3s}
+.game-card:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 16px 40px rgba(0,0,0,.35);border-color:rgba(10,132,255,.35)}
+.game-icon{flex-shrink:0;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:24px;background:linear-gradient(145deg,#1e293b,#0f172a);transition:transform .4s var(--bounce)}
+.game-card:hover .game-icon{transform:scale(1.08) rotate(-4deg)}
+.game-card.community .game-icon{background:linear-gradient(145deg,#0a84ff,#0056b3)}
+.game-info{flex:1;min-width:0}.game-info h3{font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1.3}.game-info p{font-size:12px;color:var(--tertiary);margin:.25rem 0 .7rem}
+.among-section{padding:2.5rem 0 1rem}
+.among-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#151a2e 0%,#0b0e1a 50%,#1a0a14 100%);border-radius:var(--radius-lg);border:1px solid rgba(231,76,60,.25);padding:2rem 1.5rem;text-align:center;box-shadow:0 20px 60px rgba(231,76,60,.12),0 8px 32px rgba(0,0,0,.4);transition:transform .5s var(--spring),box-shadow .5s}
+.among-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 28px 70px rgba(231,76,60,.18),0 12px 40px rgba(0,0,0,.45)}
+@media(min-width:640px){.among-card{padding:2.5rem 2.25rem}}
+.among-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .85rem;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#ff8b7e;background:rgba(231,76,60,.18);border-radius:var(--pill);margin-bottom:1.25rem}
+.among-card h2{font-size:clamp(1.6rem,4.5vw,2.1rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:.75rem}.among-card h2 span{color:#e74c3c}
+.among-lead{font-size:15px;color:var(--secondary);max-width:26rem;margin:0 auto 1.5rem;line-height:1.55}
+.among-features{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:1.75rem}
+.among-feat{font-size:12px;font-weight:500;color:var(--secondary);padding:.3rem .7rem;background:rgba(255,255,255,.06);border-radius:var(--pill)}
+.among-cta{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+.among-beans{display:flex;justify-content:center;gap:.35rem;margin-top:1.5rem;opacity:.85}
+.among-bean{width:28px;height:34px;border-radius:50% 50% 45% 45%;position:relative}
+.among-bean::after{content:"";position:absolute;top:6px;left:14px;width:12px;height:9px;border-radius:50%;background:rgba(155,231,255,.9)}
+.about{padding:3rem 0 2rem}.about-card{padding:1.75rem 1.5rem;background:var(--surface);border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,.06)}
+@media(min-width:640px){.about-card{padding:2.25rem 2rem}}
+.about-card h2{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:1rem}.about-card p{font-size:15px;color:var(--secondary);line-height:1.65}.about-card p+p{margin-top:.85rem}
+.about-card .note{margin-top:1.35rem;padding-top:1.15rem;border-top:1px solid var(--line);font-size:13px;color:var(--tertiary)}
+.footer{padding:2rem 0 3rem;text-align:center;font-size:12px;color:var(--tertiary);border-top:1px solid rgba(255,255,255,.06)}
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+@media(min-width:700px){.modal{align-items:center;padding:1.5rem}}.modal.open{opacity:1;pointer-events:auto}
+.scrim{position:absolute;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.sheet{position:relative;z-index:1;width:min(640px,100%);max-height:92dvh;overflow:auto;background:var(--surface);border-radius:24px 24px 0 0;transform:translateY(100%);transition:transform .5s var(--spring);box-shadow:0 -12px 48px rgba(0,0,0,.45)}
+.modal.open .sheet{transform:translateY(0)}
+@media(min-width:700px){.sheet{border-radius:24px;transform:scale(.92) translateY(20px);opacity:0;transition:transform .5s var(--spring),opacity .35s}.modal.open .sheet{transform:scale(1) translateY(0);opacity:1}}
+.handle{display:flex;justify-content:center;padding:.75rem 0 .35rem}.handle i{width:36px;height:5px;border-radius:var(--pill);background:rgba(255,255,255,.2)}
+@media(min-width:700px){.handle{display:none}}
+.sheet-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:.5rem 1.35rem 1rem}.sheet-head h3{font-size:18px;font-weight:600;letter-spacing:-.015em}.sheet-head p{font-size:13px;color:var(--secondary);margin-top:.2rem}
+.close-x{width:30px;height:30px;border-radius:50%;background:var(--fill);display:grid;place-items:center;color:var(--secondary);flex-shrink:0;transition:transform .35s var(--bounce),background .25s}
+.close-x:hover{transform:scale(1.1) rotate(90deg);background:var(--fill-2);color:var(--label)}
+.media{background:#000}.media video{width:100%;display:block;max-height:58dvh;min-height:200px;object-fit:contain}.media video.hide{display:none}
+.audio-panel{display:none;flex-direction:column;align-items:center;gap:1.5rem;padding:2rem 1.5rem 2.25rem;background:#0a0a0a}.audio-panel.on{display:flex}
+.audio-panel img{width:min(240px,65%);aspect-ratio:1;object-fit:cover;border-radius:20px;box-shadow:0 16px 48px rgba(0,0,0,.5)}
+.audio-panel audio{width:min(100%,360px)}
+@media(prefers-reduced-motion:reduce){.boot{display:none}.reveal{opacity:1;transform:none;filter:none;transition:none}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="boot" id="boot"><span>JisusDev</span></div>
+<header class="nav" id="nav">
+<div class="inner">
+<a class="logo" href="#inicio">JisusDev</a>
+<nav class="nav-links" aria-label="Principal">
+<a href="#live">1K</a>
+<a href="#mixes">Mixes</a>
+<a href="#among">Among Us</a>
+<a href="#juegos">Juegos</a>
+<a href="#about">Info</a>
+</nav>
+</div>
+</header>
+<main>
+<section class="hero" id="inicio">
+<div class="wrap">
+<div class="chip reveal">Camino al 1K · 2026</div>
+<h1 class="reveal d1">This Is It<br><span class="soft">in the Mix</span></h1>
+<p class="hero-lead reveal d2">Tu remix de Don't Stop casi llega a 1K views. Remixes, Roblox y juegos HTML.</p>
+<div class="hero-cta reveal d3">
+<a class="btn btn-fill" href="#live">Ver contador</a>
+<a class="btn btn-ghost" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">YouTube</a>
+</div>
+</div>
+</section>
+<section class="live-section" id="live">
+<div class="wrap">
+<div class="live-card reveal">
+<div class="live-top">
+<span class="live-badge"><span class="live-dot" aria-hidden="true"></span> En vivo</span>
+<span class="live-updated" id="live-updated">Actualizando…</span>
+</div>
+<h2 class="live-title">Don't Stop 'Til You Get Enough</h2>
+<p class="live-sub">Tu versión · Camino a las <strong style="color:var(--label)">1.000 views</strong></p>
+<div class="live-stats">
+<div class="stat"><div class="stat-val" id="stat-views">—</div><div class="stat-label">Views</div></div>
+<div class="stat"><div class="stat-val" id="stat-likes">—</div><div class="stat-label">Likes</div></div>
+<div class="stat"><div class="stat-val" id="stat-subs">—</div><div class="stat-label">Subs</div></div>
+</div>
+<div class="goal-row"><span>Meta 1K</span><strong id="goal-left">faltan —</strong></div>
+<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0" id="goal-bar"><div class="goal-fill" id="goal-fill"></div></div>
+<div class="live-actions">
+<a class="btn btn-yt" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">Ver en YouTube</a>
+<a class="btn btn-ghost" href="https://www.youtube.com/@JSDV-x26?sub_confirmation=1" target="_blank" rel="noopener">Suscribirse</a>
+<button type="button" class="btn btn-fill" id="play-feat">Reproducir aquí</button>
+</div>
+<p class="live-celebrate" id="live-celebrate">¡Llegaste a 1K views causa!</p>
+</div>
+</div>
+</section>
+<section class="section" id="mixes">
+<div class="wrap">
+<h2 class="section-title reveal">Mixes</h2>
+<div class="mix-grid" id="mix-grid"></div>
+</div>
+</section>
+<section class="among-section" id="among">
+<div class="wrap">
+<div class="among-card reveal">
+<div class="among-badge">Fan game · HTML5</div>
+<h2>Among Us <span>Mini</span></h2>
+<p class="among-lead">Clon local con bots. Crewmate o Impostor, tasks, kill, report. WASD + móvil.</p>
+<div class="among-features">
+<span class="among-feat">10 tasks</span>
+<span class="among-feat">8 jugadores</span>
+<span class="among-feat">Meetings</span>
+<span class="among-feat">Móvil ok</span>
+</div>
+<div class="among-cta">
+<a class="btn btn-red" href="amongus.html">Jugar ahora</a>
+<a class="btn btn-ghost" href="#juegos">Más juegos</a>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="juegos">
+<div class="wrap">
+<h2 class="section-title reveal">Juegos</h2>
+<div class="game-list" id="game-list"></div>
+</div>
+</section>
+<section class="about" id="about">
+<div class="wrap">
+<div class="about-card reveal">
+<h2>Sobre JisusDev</h2>
+<p>Remixes inspirados en Michael Jackson y juegos en Roblox (Pancho Games Studios).</p>
+<p>Hecho por amor al arte. Mixes fan-made, no oficiales, no monetizados.</p>
+<p class="note">© 2026 JisusDev</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer"><div class="wrap">Fan-made · No oficial</div></footer>
+<div class="modal" id="modal" aria-hidden="true">
+<div class="scrim" data-close></div>
+<div class="sheet" role="dialog" aria-modal="true">
+<div class="handle"><i></i></div>
+<div class="sheet-head"><div><h3 id="m-title"></h3><p id="m-desc"></p></div>
+<button type="button" class="close-x" data-close aria-label="Cerrar"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l10 10M11 1L1 11"/></svg></button></div>
+<div class="media"><video id="m-video" controls playsinline preload="none"></video>
+<div class="audio-panel" id="m-audio"><img id="m-art" src="" alt="" decoding="async"><audio id="m-audio-el" controls preload="none"></audio></div>
+</div></div></div>
+<script>
+var mixes=[{title:"Don't Stop 'Til You Get Enough",description:"Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe",video:"Don't Stop 'til I Get Enough.mp4",youtube:"https://www.youtube.com/watch?v=u54H4FnSOtI"},{title:"Chicago: The Mix",description:"Xscape: This Is It in the Mix · Remix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",youtube:"https://www.youtube.com/watch?v=VTSwj-y_zt0"},{title:"Thriller Night",description:"Xscape: This Is It in the Mix · Demo",cover:"Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe",audio:"Thriller_nightwav.wav",demo:true}];
+var games=[{name:"SURGE",tag:"HTML5 · Endless flyer",icon:"⚡",url:"surge.html",local:true},{name:"Among Us Mini",tag:"HTML5 · Fan game",icon:"🔴",url:"amongus.html",local:true},{name:"Escapa de el tsunami por autos",tag:"Obby · Tsunami",icon:"🚗",url:"https://www.roblox.com/es/games/70603456155056/Escapa-de-el-tsunami-por-autos"},{name:"Escape del tsunami por joyas",tag:"Obby · Tsunami",icon:"💎",url:"https://www.roblox.com/es/games/117666384645004/Escape-del-tsunami-por-joyas"},{name:"Blox War",tag:"Acción · Combate",icon:"⚔️",url:"https://www.roblox.com/es/games/121209803244913/Blox-War"},{name:"Pancho Games Studios",tag:"Comunidad",icon:"🎮",url:"https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios",community:true}];
+function enc(n){return encodeURI(n)}
+function openPlayer(mix){if(!mix||!(mix.video||mix.audio))return;var modal=document.getElementById("modal"),video=document.getElementById("m-video"),audio=document.getElementById("m-audio-el"),panel=document.getElementById("m-audio");document.getElementById("m-title").textContent=mix.title;document.getElementById("m-desc").textContent=mix.description;video.pause();audio.pause();video.removeAttribute("src");audio.removeAttribute("src");video.load();audio.load();if(mix.audio){video.classList.add("hide");panel.classList.add("on");document.getElementById("m-art").src=mix.cover||"";audio.src=enc(mix.audio);modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");audio.play().catch(function(){})}else{video.classList.remove("hide");panel.classList.remove("on");video.poster=mix.cover||"";video.src=enc(mix.video);modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");video.play().catch(function(){})}}
+function closePlayer(){var modal=document.getElementById("modal"),video=document.getElementById("m-video"),audio=document.getElementById("m-audio-el");video.pause();audio.pause();modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open")}
+var grid=document.getElementById("mix-grid");mixes.forEach(function(mix,i){var card=document.createElement("article");card.className="mix-card reveal d"+Math.min(i+1,5);var label=mix.demo?"Escuchar Demo":"Reproducir";var links=(mix.youtube?'<a class="btn btn-ghost btn-sm" href="'+mix.youtube+'" target="_blank" rel="noopener">YouTube</a>':'');card.innerHTML='<div class="mix-cover"><img src="'+mix.cover+'" alt="" loading="lazy" decoding="async"><button type="button" class="mix-play" data-play="'+i+'" aria-label="Play"><span class="play-dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="mix-body"><h3>'+mix.title+'</h3><p>'+mix.description+'</p><div class="mix-actions"><button type="button" class="btn btn-fill btn-sm" data-play="'+i+'">'+label+'</button>'+links+'</div></div>';grid.appendChild(card)});
+var gameList=document.getElementById("game-list");games.forEach(function(g,i){var a=document.createElement("a");a.className="game-card reveal d"+Math.min(i+1,5)+(g.community?" community":"");a.href=g.url;if(!g.local){a.target="_blank";a.rel="noopener"}var btnLabel=g.community?"Unirse":"Jugar";var sub=g.local?g.tag:(g.tag+" · Roblox");a.innerHTML='<div class="game-icon" aria-hidden="true">'+g.icon+'</div><div class="game-info"><h3>'+g.name+'</h3><p>'+sub+'</p><span class="btn btn-blue btn-sm">'+btnLabel+'</span></div>';gameList.appendChild(a)});
+document.getElementById("play-feat").addEventListener("click",function(){openPlayer(mixes[0])});
+document.addEventListener("click",function(e){var p=e.target.closest("[data-play]");if(p){openPlayer(mixes[+p.getAttribute("data-play")]);return}if(e.target.closest("[data-close]"))closePlayer()});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closePlayer()});
+var nav=document.getElementById("nav");window.addEventListener("scroll",function(){nav.classList.toggle("scrolled",window.scrollY>8)},{passive:true});
+function observe(){var els=document.querySelectorAll(".reveal");if(!("IntersectionObserver" in window)){els.forEach(function(el){el.classList.add("in")});return}var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.12,rootMargin:"0px 0px -40px 0px"});els.forEach(function(el){io.observe(el)})}
+/* Live YT stats */
+var YT_VIDEO="u54H4FnSOtI",YT_CHANNEL="UCG8b_w-Q-02m1j4iEaPK6cg",GOAL=1000;
+var lastViews=-1,lastLikes=-1,lastSubs=-1;
+function fmtNum(n){if(n==null||isNaN(n))return"—";return Number(n).toLocaleString("es-PE")}
+function setStat(id,val,prev){var el=document.getElementById(id);if(!el)return;var next=fmtNum(val);if(el.textContent!==next){el.textContent=next;if(prev>=0&&val!==prev){el.classList.remove("tick");void el.offsetWidth;el.classList.add("tick")}}}
+function applyStats(views,likes,subs){if(typeof views==="number"){setStat("stat-views",views,lastViews);lastViews=views;var pct=Math.min(100,(views/GOAL)*100);var fill=document.getElementById("goal-fill"),bar=document.getElementById("goal-bar");if(fill){fill.style.width=pct+"%";fill.classList.toggle("hit",views>=GOAL)}if(bar)bar.setAttribute("aria-valuenow",String(views));var left=document.getElementById("goal-left");if(left)left.textContent=views>=GOAL?"¡Meta alcanzada!":"faltan "+fmtNum(GOAL-views);var celeb=document.getElementById("live-celebrate");if(celeb)celeb.classList.toggle("show",views>=GOAL)}if(typeof likes==="number"){setStat("stat-likes",likes,lastLikes);lastLikes=likes}if(typeof subs==="number"){setStat("stat-subs",subs,lastSubs);lastSubs=subs}var upd=document.getElementById("live-updated");if(upd){var t=new Date();upd.textContent="Actualizado "+t.toLocaleTimeString("es-PE",{hour:"2-digit",minute:"2-digit",second:"2-digit"})}}
+function parseYtHtml(html){var views=null,likes=null,subs=null,m;m=html.match(/"viewCount":"(\d+)"/);if(m)views=+m[1];m=html.match(/"likeCount":"(\d+)"/);if(m)likes=+m[1];m=html.match(/"subscriberCount":"(\d+)"/);if(m)subs=+m[1];if(subs==null){m=html.match(/([\d.,]+)\s*subscribers?/i)||html.match(/([\d.,]+)\s*suscriptores?/i);if(m){var raw=m[1].replace(/[.,]/g,"");if(/^\d+$/.test(raw))subs=+raw}}return{views:views,likes:likes,subs:subs}}
+async function fetchViaProxy(targetUrl){var proxies=[function(u){return"https://api.allorigins.win/raw?url="+encodeURIComponent(u)},function(u){return"https://corsproxy.io/?"+encodeURIComponent(u)}];for(var i=0;i<proxies.length;i++){try{var res=await fetch(proxies[i](targetUrl),{cache:"no-store"});if(!res.ok)continue;var text=await res.text();if(text&&text.length>500)return text}catch(e){}}return null}
+async function refreshLiveStats(){if(lastViews<0)applyStats(979,10,11);var videoHtml=await fetchViaProxy("https://www.youtube.com/watch?v="+YT_VIDEO);var channelHtml=await fetchViaProxy("https://www.youtube.com/channel/"+YT_CHANNEL);var v=videoHtml?parseYtHtml(videoHtml):{};var c=channelHtml?parseYtHtml(channelHtml):{};var views=typeof v.views==="number"?v.views:lastViews;var likes=typeof v.likes==="number"?v.likes:lastLikes;var subs=typeof c.subs==="number"?c.subs:(typeof v.subs==="number"?v.subs:lastSubs);if(views<0)views=979;if(likes<0)likes=10;if(subs<0)subs=11;applyStats(views,likes,subs)}
+refreshLiveStats();setInterval(refreshLiveStats,45000);
+window.addEventListener("load",function(){setTimeout(function(){document.getElementById("boot").classList.add("done");document.querySelectorAll(".hero .reveal").forEach(function(el){el.classList.add("in")});observe()},450)});
+</script>
+</body>
+</html>
