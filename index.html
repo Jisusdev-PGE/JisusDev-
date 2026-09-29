@@ -2,380 +2,77 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JisusDev — Camino al 1K</title>
-<meta name="description" content="Don't Stop remix camino a 1K views. JisusDev.">
-<meta name="theme-color" content="#000000">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>JisusDev — 1K CELEBRATION</title>
+<meta name="description" content="JisusDev — 1K Celebration. Don't Stop 'Til You Get Enough, remixes y juegos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#000;--surface:#1c1c1e;--fill:rgba(255,255,255,.08);--fill-2:rgba(255,255,255,.12);--line:rgba(255,255,255,.1);--label:#f5f5f7;--secondary:#a1a1a6;--tertiary:#6e6e73;--white:#f5f5f7;--ink:#000;--blue:#0a84ff;--radius:20px;--radius-lg:28px;--pill:980px;--font:Inter,-apple-system,system-ui,sans-serif;--ease:cubic-bezier(.25,.1,.25,1);--spring:cubic-bezier(.25,.1,.25,1);--bounce:cubic-bezier(.25,.1,.25,1);--sheet:cubic-bezier(.32,.72,0,1);--pad:1.25rem;--max:720px}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--label);font-family:var(--font);font-size:17px;line-height:1.47;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body.modal-open{overflow:hidden}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
-.wrap{width:min(var(--max),calc(100% - 2*var(--pad)));margin-inline:auto}
-.boot{position:fixed;inset:0;z-index:400;background:#000;display:grid;place-items:center;transition:opacity .7s var(--ease),visibility .7s}
-.boot.done{opacity:0;visibility:hidden;pointer-events:none}
-.boot span{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--tertiary);animation:pulse 1.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
-.reveal{opacity:0;transform:translate3d(0,24px,0);transition:opacity .55s var(--spring),transform .55s var(--spring)}
-.reveal.in{opacity:1;transform:translate3d(0,0,0)}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.28s}.d4{transition-delay:.4s}.d5{transition-delay:.52s}
-.nav{position:sticky;top:0;z-index:50;height:52px;display:flex;align-items:center;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .35s,background .35s}
-.nav.scrolled{border-bottom-color:var(--line);background:rgba(0,0,0,.88)}
-.nav .inner{width:min(var(--max),calc(100% - 2*var(--pad)));margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.logo{font-size:15px;font-weight:600}.logo:hover{opacity:.7}
-.nav-links{display:flex;flex-wrap:wrap;gap:.15rem;justify-content:flex-end}
-.nav-links a{padding:.4rem .7rem;font-size:13px;font-weight:500;color:var(--secondary);border-radius:var(--pill);transition:color .25s,background .25s,transform .3s var(--bounce)}
-.nav-links a:hover{color:var(--label);background:var(--fill);transform:scale(1.04)}
-.hero{padding:3.5rem 0 2rem;text-align:center}
-@media(min-width:768px){.hero{padding:5rem 0 2.5rem}}
-.chip{display:inline-flex;padding:.4rem .9rem;font-size:12px;font-weight:500;color:var(--secondary);background:var(--fill);border-radius:var(--pill);margin-bottom:1.25rem}
-.hero h1{font-size:clamp(2.1rem,7vw,3.5rem);font-weight:700;letter-spacing:-.035em;line-height:1.08;margin-bottom:1rem}
-.hero h1 .soft{color:var(--secondary);font-weight:500}
-.hero-lead{font-size:clamp(15px,2.5vw,18px);color:var(--secondary);max-width:28rem;margin:0 auto 1.5rem;line-height:1.55}
-.hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.25rem;font-size:15px;font-weight:500;border-radius:var(--pill);transition:transform .35s var(--spring),box-shadow .3s,background .25s}
-.btn:active{transform:scale(.96)}.btn-fill{background:var(--white);color:var(--ink)}.btn-fill:hover{transform:scale(1.04);box-shadow:0 10px 30px rgba(255,255,255,.12)}
-.btn-ghost{background:var(--fill);color:var(--label)}.btn-ghost:hover{background:var(--fill-2);transform:scale(1.04)}
-.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{transform:scale(1.04);box-shadow:0 10px 28px rgba(10,132,255,.35)}
-.btn-sm{min-height:36px;padding:0 1rem;font-size:13px}.btn-yt{background:#ff0000;color:#fff}.btn-yt:hover{transform:scale(1.04);box-shadow:0 10px 28px rgba(255,0,0,.35)}.btn-red{background:#e74c3c;color:#fff}.btn-red:hover{transform:scale(1.04);box-shadow:0 10px 28px rgba(231,76,60,.4)}
-.section{padding:2.5rem 0 1rem}@media(min-width:768px){.section{padding:3.5rem 0 1.5rem}}
-.section-title{font-size:clamp(22px,4vw,28px);font-weight:700;letter-spacing:-.025em;margin-bottom:1.5rem}
-.live-section{padding:0 0 2rem}
-.live-card{position:relative;overflow:hidden;background:linear-gradient(160deg,#12141c 0%,#0a0b10 55%,#141008 100%);border-radius:var(--radius-lg);border:1px solid rgba(255,214,90,.22);padding:1.75rem 1.35rem 1.6rem;box-shadow:0 20px 60px rgba(255,180,40,.08),0 8px 32px rgba(0,0,0,.45)}
-@media(min-width:640px){.live-card{padding:2.1rem 2rem 1.85rem}}
-.live-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:1.25rem}
-.live-badge{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .8rem;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#ffd65a;background:rgba(255,200,50,.14);border-radius:var(--pill)}
-.live-dot{width:7px;height:7px;border-radius:50%;background:#ff4d4d;box-shadow:0 0 0 0 rgba(255,77,77,.5);animation:livePulse 1.6s ease-out infinite}
-@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,77,77,.55)}70%{box-shadow:0 0 0 8px rgba(255,77,77,0)}100%{box-shadow:0 0 0 0 rgba(255,77,77,0)}}
-.live-updated{font-size:12px;color:var(--tertiary);font-weight:500}
-.live-title{font-size:clamp(1.25rem,3.5vw,1.55rem);font-weight:700;letter-spacing:-.025em;line-height:1.25;margin-bottom:.35rem}
-.live-sub{font-size:14px;color:var(--secondary);margin-bottom:1.35rem;line-height:1.45}
-.live-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-bottom:1.35rem}
-@media(min-width:520px){.live-stats{gap:1rem}}
-.stat{text-align:center;padding:1rem .5rem .9rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:18px;transition:transform .35s var(--spring),border-color .3s}
-.stat:hover{transform:translateY(-3px);border-color:rgba(255,214,90,.28)}
-.stat-val{font-size:clamp(1.35rem,5vw,1.85rem);font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--label);line-height:1.1}
-.stat-val.tick{animation:tickPop .45s var(--bounce)}
-@keyframes tickPop{0%{transform:scale(1)}40%{transform:scale(1.12);color:#ffd65a}100%{transform:scale(1)}}
-.stat-label{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--tertiary);margin-top:.35rem}
-.goal-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.55rem;font-size:13px;color:var(--secondary)}
-.goal-row strong{color:var(--label);font-weight:600}
-.goal-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:1.25rem}
-.goal-fill{height:100%;width:0%;border-radius:inherit;background:linear-gradient(90deg,#ffb020,#ffe066);box-shadow:0 0 18px rgba(255,200,50,.45);transition:width .9s var(--spring)}
-.goal-fill.hit{background:linear-gradient(90deg,#30d158,#7dffb0);box-shadow:0 0 22px rgba(48,209,88,.5)}
-.live-actions{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
-.live-celebrate{display:none;text-align:center;margin-top:1rem;font-size:14px;font-weight:600;color:#7dffb0}
-.live-celebrate.show{display:block;animation:tickPop .6s var(--bounce)}
-.btn-demo{display:none;background:linear-gradient(135deg,#30d158,#7dffb0);color:#06210f;font-weight:600}
-.btn-demo.show{display:inline-flex;animation:tickPop .55s var(--bounce)}
-.btn-demo:hover{transform:scale(1.04);box-shadow:0 10px 28px rgba(48,209,88,.35)}
-.mix-grid{display:grid;gap:1.25rem}
-@media(min-width:640px){.mix-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
-@media(min-width:900px){.mix-grid{grid-template-columns:repeat(3,1fr);gap:1.75rem}:root{--max:980px}}
-.mix-card{background:var(--surface);border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(255,255,255,.06);box-shadow:0 12px 40px rgba(0,0,0,.35);transition:transform .5s var(--spring),box-shadow .5s var(--ease)}
-.mix-card:hover{transform:translate3d(0,-4px,0)}
-.mix-cover{position:relative;aspect-ratio:1;overflow:hidden;background:#111}
-.mix-cover img{width:100%;height:100%;object-fit:cover}
-.mix-play{position:absolute;inset:0;display:grid;place-items:center;border:none;background:transparent;cursor:pointer}
-.mix-play::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .4s}
-.mix-card:hover .mix-play::before{background:rgba(0,0,0,.32)}
-.play-dot{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.95);color:#000;display:grid;place-items:center;opacity:0;transform:scale(.75);box-shadow:0 8px 28px rgba(0,0,0,.35);transition:opacity .4s var(--spring),transform .5s var(--bounce)}
-.mix-card:hover .play-dot{opacity:1;transform:scale(1)}.play-dot svg{margin-left:2px}
-@media(hover:none){.play-dot{opacity:1;transform:scale(1)}.mix-play::before{background:rgba(0,0,0,.2)}}
-.mix-body{padding:1.15rem 1.2rem 1.35rem}.mix-body h3{font-size:16px;font-weight:600;letter-spacing:-.015em;line-height:1.3}.mix-body p{font-size:13px;color:var(--secondary);margin-top:.3rem}.mix-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
-.game-list{display:grid;gap:1rem}
-@media(min-width:640px){.game-list{grid-template-columns:repeat(2,1fr);gap:1.25rem}}
-.game-card{display:flex;align-items:center;gap:1.1rem;padding:1.15rem 1.25rem;background:var(--surface);border-radius:var(--radius);border:1px solid rgba(255,255,255,.06);transition:transform .45s var(--spring),box-shadow .4s,border-color .3s}
-.game-card:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 16px 40px rgba(0,0,0,.35);border-color:rgba(10,132,255,.35)}
-.game-icon{flex-shrink:0;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:24px;background:linear-gradient(145deg,#1e293b,#0f172a);transition:transform .4s var(--bounce)}
-.game-card:hover .game-icon{transform:scale(1.08) rotate(-4deg)}
-.game-card.community .game-icon{background:linear-gradient(145deg,#0a84ff,#0056b3)}
-.game-info{flex:1;min-width:0}.game-info h3{font-size:15px;font-weight:600;letter-spacing:-.01em;line-height:1.3}.game-info p{font-size:12px;color:var(--tertiary);margin:.25rem 0 .7rem}
-.among-section{padding:2.5rem 0 1rem}
-.among-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#151a2e 0%,#0b0e1a 50%,#1a0a14 100%);border-radius:var(--radius-lg);border:1px solid rgba(231,76,60,.25);padding:2rem 1.5rem;text-align:center;box-shadow:0 20px 60px rgba(231,76,60,.12),0 8px 32px rgba(0,0,0,.4);transition:transform .5s var(--spring),box-shadow .5s}
-.among-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 28px 70px rgba(231,76,60,.18),0 12px 40px rgba(0,0,0,.45)}
-@media(min-width:640px){.among-card{padding:2.5rem 2.25rem}}
-.among-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .85rem;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#ff8b7e;background:rgba(231,76,60,.18);border-radius:var(--pill);margin-bottom:1.25rem}
-.among-card h2{font-size:clamp(1.6rem,4.5vw,2.1rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:.75rem}.among-card h2 span{color:#e74c3c}
-.among-lead{font-size:15px;color:var(--secondary);max-width:26rem;margin:0 auto 1.5rem;line-height:1.55}
-.among-features{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:1.75rem}
-.among-feat{font-size:12px;font-weight:500;color:var(--secondary);padding:.3rem .7rem;background:rgba(255,255,255,.06);border-radius:var(--pill)}
-.among-cta{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
-.among-beans{display:flex;justify-content:center;gap:.35rem;margin-top:1.5rem;opacity:.85}
-.among-bean{width:28px;height:34px;border-radius:50% 50% 45% 45%;position:relative}
-.among-bean::after{content:"";position:absolute;top:6px;left:14px;width:12px;height:9px;border-radius:50%;background:rgba(155,231,255,.9)}
-.about{padding:3rem 0 2rem}.about-card{padding:1.75rem 1.5rem;background:var(--surface);border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,.06)}
-@media(min-width:640px){.about-card{padding:2.25rem 2rem}}
-.about-card h2{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:1rem}.about-card p{font-size:15px;color:var(--secondary);line-height:1.65}.about-card p+p{margin-top:.85rem}
-.about-card .note{margin-top:1.35rem;padding-top:1.15rem;border-top:1px solid var(--line);font-size:13px;color:var(--tertiary)}
-.footer{padding:2rem 0 3rem;text-align:center;font-size:12px;color:var(--tertiary);border-top:1px solid rgba(255,255,255,.06)}
-/* Capsula Apple clasica — encapsulado + liberacion tipo gas */
-.app-scale{min-height:100%;transform:translateZ(0);transition:transform .42s cubic-bezier(.22,1,.36,1),filter .42s ease;transform-origin:center center}
-body.modal-open .app-scale{transform:scale(.93);filter:brightness(.72)}
-.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .32s ease}
-@media(min-width:700px){.modal{align-items:center;padding:1.5rem}}
-.modal.open{opacity:1;pointer-events:auto}
-.scrim{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 70%,rgba(40,50,80,.35),rgba(0,0,0,.62));opacity:0;transition:opacity .35s ease}
-.modal.open .scrim{opacity:1}
-.sheet{position:relative;z-index:1;width:min(640px,100%);max-height:94dvh;overflow:auto;-webkit-overflow-scrolling:touch;background:linear-gradient(180deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,.04) 18%,rgba(0,0,0,.12) 100%),#2a2a2e;border-radius:26px 26px 10px 10px;border:1px solid rgba(255,255,255,.18);box-shadow:0 0 0 1px rgba(0,0,0,.45),0 18px 50px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(0,0,0,.25);transform:translate3d(0,108%,0) scale(.92);opacity:0;transition:transform .52s cubic-bezier(.17,.89,.32,1.15),opacity .28s ease-out;touch-action:none;contain:layout style}
-.modal.open .sheet{transform:translate3d(0,0,0) scale(1);opacity:1}
-.sheet.dragging{transition:none !important}
-.sheet::before{content:"";position:absolute;left:10%;right:10%;top:0;height:42%;border-radius:26px 26px 50% 50%;background:linear-gradient(180deg,rgba(255,255,255,.16),transparent 70%);pointer-events:none;z-index:2}
-@media(min-width:700px){.sheet{border-radius:22px;transform:scale(.78) translate3d(0,30px,0);opacity:0;transition:transform .55s cubic-bezier(.17,.89,.32,1.12),opacity .3s ease-out;touch-action:auto}.modal.open .sheet{transform:scale(1) translate3d(0,0,0);opacity:1}body.modal-open .app-scale{transform:scale(.95);filter:brightness(.75)}.sheet::before{border-radius:22px 22px 50% 50%}}
-.handle{display:flex;justify-content:center;align-items:center;padding:12px 0 6px;cursor:grab;touch-action:none;position:relative;z-index:3}
-.handle:active{cursor:grabbing}
-.handle i{width:40px;height:5px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,.2));box-shadow:inset 0 1px 1px rgba(0,0,0,.25)}
-@media(min-width:700px){.handle{display:none}}
-.sheet-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:.35rem 1.35rem 1rem;position:relative;z-index:3}
-.sheet-head h3{font-size:18px;font-weight:600;letter-spacing:-.015em}
-.sheet-head p{font-size:13px;color:var(--secondary);margin-top:.2rem}
-.close-x{width:30px;height:30px;border-radius:50%;background:linear-gradient(180deg,#5a5a5e,#3a3a3e);border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 1px 2px rgba(0,0,0,.35);display:grid;place-items:center;color:#ddd;flex-shrink:0}
-.close-x:hover{filter:brightness(1.15);color:#fff}
-.media{background:#0a0a0a;position:relative;z-index:1}
-.media video{width:100%;display:block;max-height:58dvh;min-height:200px;object-fit:contain}
-.media video.hide{display:none}
-.audio-panel{display:none;flex-direction:column;align-items:center;gap:1.35rem;padding:1.75rem 1.5rem 2rem;background:transparent;position:relative;z-index:1}
-.audio-panel.on{display:flex}
-.audio-panel img{width:min(220px,62%);aspect-ratio:1;object-fit:cover;border-radius:16px;box-shadow:0 12px 28px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.12)}
-.audio-panel audio{width:min(100%,360px)}
-html.low-power body.modal-open .app-scale{transform:none !important;filter:none !important}
-html.low-power .scrim{background:rgba(0,0,0,.65)}
-html.low-power .sheet{transition:transform .35s ease,opacity .25s ease}
-html.low-power .reveal{transition-duration:.25s}
-@media(prefers-reduced-motion:reduce){.boot{display:none}.reveal{opacity:1;transform:none;transition:none}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-
-/* ===== 1K SPECIAL EDITION ===== */
-:root{--gold:#ffd60a;--gold2:#ff9f0a}
-body{background:#050505}
-body::before{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 0%,rgba(255,214,10,.14),transparent 27%),radial-gradient(circle at 0% 55%,rgba(255,159,10,.07),transparent 25%),radial-gradient(circle at 100% 75%,rgba(255,214,10,.06),transparent 25%);animation:goldAura 10s ease-in-out infinite alternate}
-@keyframes goldAura{from{transform:scale(1);opacity:.7}to{transform:scale(1.08);opacity:1}}
-.celebrate{position:relative;padding:4rem 0 2.5rem;text-align:center;overflow:hidden}
-.celebrate:before{content:"1K";position:absolute;left:50%;top:-15px;transform:translateX(-50%);font-size:min(52vw,430px);font-weight:800;line-height:1;color:rgba(255,214,10,.035);letter-spacing:-.1em;pointer-events:none}
-.celebrate-badge{position:relative;display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .9rem;border:1px solid rgba(255,214,10,.3);background:rgba(255,214,10,.08);border-radius:999px;color:#ffe66d;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.celebrate-badge i{width:6px;height:6px;border-radius:50%;background:#ffd60a;box-shadow:0 0 14px #ffd60a;animation:badgePulse 1.3s infinite}
-@keyframes badgePulse{50%{transform:scale(1.8);opacity:.45}}
-.celebrate h1{position:relative;margin:1.35rem 0 .8rem;font-size:clamp(4.5rem,18vw,10rem);font-weight:800;line-height:.78;letter-spacing:-.09em;background:linear-gradient(180deg,#fff,#ffe66d 45%,#ffad00);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 70px rgba(255,190,0,.14)}
-.celebrate h1 span{display:block;margin-top:1.2rem;font-size:clamp(1rem,3vw,1.5rem);font-weight:600;letter-spacing:.12em;color:#c7c7cc;-webkit-text-fill-color:#c7c7cc}
-.celebrate p{position:relative;max-width:34rem;margin:0 auto 1.6rem;color:#a1a1a6;font-size:clamp(15px,2.5vw,18px)}
-.celebrate p strong{color:#fff}
-.celebrate-actions{position:relative;display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap}
-.btn-gold{background:linear-gradient(135deg,#fff2a8,#ffd60a 55%,#ff9f0a);color:#181200;box-shadow:0 12px 42px rgba(255,190,0,.2)}
-.btn-gold:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 18px 55px rgba(255,190,0,.32)}
-.milestone{position:relative;overflow:hidden;margin:0 auto 1.5rem;padding:1px;border-radius:30px;background:linear-gradient(110deg,rgba(255,214,10,.55),rgba(255,255,255,.08),rgba(255,159,10,.5));box-shadow:0 25px 90px rgba(255,180,0,.1)}
-.milestone-inner{position:relative;display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap;padding:1.35rem 1.5rem;border-radius:29px;background:linear-gradient(135deg,rgba(255,214,10,.1),#0d0d0d 45%,rgba(255,159,10,.07))}
-.milestone-inner:after{content:"✦   ✧   ✦   ✧   ✦";position:absolute;bottom:4px;left:0;right:0;color:rgba(255,214,10,.18);font-size:11px;letter-spacing:.6rem}
-.milestone-number{font-size:clamp(2.8rem,9vw,4.8rem);font-weight:800;line-height:1;letter-spacing:-.07em;background:linear-gradient(180deg,#fff,#ffd60a);-webkit-background-clip:text;background-clip:text;color:transparent}
-.milestone-copy{text-align:left}.milestone-copy b{display:block;color:#fff;font-size:15px}.milestone-copy span{color:#85858c;font-size:12px}
-.special-note{text-align:center;color:#77777e;font-size:12px;margin:.8rem 0 0}
-.live-card{border-color:rgba(255,214,10,.35);background:linear-gradient(155deg,#17150b,#090909 58%,#120f08);box-shadow:0 24px 85px rgba(255,180,0,.12),0 8px 32px rgba(0,0,0,.5)}
-.live-badge{color:#ffe36b;background:rgba(255,214,10,.13)}
-.goal-fill{background:linear-gradient(90deg,#ff9f0a,#ffd60a,#fff0a6)}
-.goal-fill.hit{background:linear-gradient(90deg,#ffb300,#fff0a6);box-shadow:0 0 30px rgba(255,214,10,.7)}
-.stat:hover{border-color:rgba(255,214,10,.4);box-shadow:0 8px 30px rgba(255,190,0,.08)}
-.live-celebrate{color:#ffe36b}
-.btn-demo{background:linear-gradient(135deg,#fff2a8,#ffd60a,#ffb000);color:#171000}
-@media(max-width:600px){.celebrate{padding-top:3rem}.milestone-copy{text-align:center}}
+:root{--bg:#050505;--card:#111113;--text:#f5f5f7;--muted:#a1a1a6;--gold:#ffd60a;--orange:#ff9f0a;--line:rgba(255,255,255,.1);--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}.wrap{width:min(1000px,calc(100% - 32px));margin:auto}
+body:before{content:"";position:fixed;inset:-40%;z-index:-2;background:radial-gradient(circle at 50% 15%,rgba(255,214,10,.13),transparent 23%),radial-gradient(circle at 10% 65%,rgba(255,159,10,.08),transparent 20%),radial-gradient(circle at 90% 80%,rgba(255,214,10,.06),transparent 22%);animation:aura 12s ease-in-out infinite alternate}
+@keyframes aura{to{transform:scale(1.1) rotate(2deg);opacity:.8}}
+.boot{position:fixed;inset:0;z-index:100;background:#050505;display:grid;place-items:center;transition:.7s}.boot.hide{opacity:0;visibility:hidden}.boot b{font-size:13px;letter-spacing:.22em;color:#777;text-transform:uppercase}
+.nav{position:sticky;top:0;z-index:50;height:56px;background:rgba(5,5,5,.72);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:.3s}.nav.on{border-color:var(--line);background:rgba(5,5,5,.9)}
+.nav-in{height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}.logo{font-weight:700;font-size:15px}.links{display:flex;gap:4px;overflow:auto}.links a{font-size:12px;color:var(--muted);padding:7px 10px;border-radius:99px;white-space:nowrap}.links a:hover{background:rgba(255,255,255,.08);color:#fff}
+.hero{min-height:calc(100svh - 56px);display:grid;place-items:center;text-align:center;padding:70px 0 55px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:min(75vw,650px);height:min(75vw,650px);border-radius:50%;background:radial-gradient(circle,rgba(255,214,10,.1),transparent 67%);filter:blur(5px);pointer-events:none}
+.badge{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,214,10,.32);background:rgba(255,214,10,.07);padding:8px 13px;border-radius:99px;color:#ffe76b;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px var(--gold);animation:blink 1.2s infinite}@keyframes blink{50%{opacity:.3;transform:scale(1.7)}}
+.hero h1{position:relative;z-index:1;font-size:clamp(92px,20vw,210px);line-height:.78;letter-spacing:-.11em;margin:30px 0 22px;font-weight:800;background:linear-gradient(#fff 5%,#fff1a3 40%,#ffd60a 68%,#ff9f0a);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 90px rgba(255,190,0,.16)}.hero h1 small{display:block;font-size:clamp(13px,2.5vw,20px);letter-spacing:.18em;color:#c7c7cc;-webkit-text-fill-color:#c7c7cc;margin:28px 0 0}
+.lead{position:relative;z-index:1;color:var(--muted);max-width:590px;margin:0 auto 26px}.lead strong{color:#fff}.actions{position:relative;z-index:1;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 17px;border-radius:99px;font-size:14px;font-weight:600;transition:transform .35s var(--ease),box-shadow .35s,background .25s}.btn:hover{transform:translateY(-2px) scale(1.03)}.gold{color:#181200;background:linear-gradient(135deg,#fff5b8,#ffd60a 55%,#ff9f0a);box-shadow:0 10px 35px rgba(255,190,0,.18)}.dark{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
+.section{padding:55px 0}.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#777;margin-bottom:8px}.section h2{font-size:clamp(27px,5vw,42px);letter-spacing:-.045em;margin:0 0 24px}
+.milestone{position:relative;border-radius:30px;padding:1px;background:linear-gradient(110deg,rgba(255,214,10,.65),rgba(255,255,255,.1),rgba(255,159,10,.6));box-shadow:0 30px 100px rgba(255,180,0,.1)}.milestone-in{position:relative;overflow:hidden;border-radius:29px;padding:35px 28px;background:radial-gradient(circle at 15% 50%,rgba(255,214,10,.12),transparent 35%),#0c0c0d}.milestone-in:before{content:"1K";position:absolute;right:-20px;top:-70px;font-size:230px;font-weight:800;letter-spacing:-.12em;color:rgba(255,214,10,.035);pointer-events:none}.milestone-grid{position:relative;display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap}.number{font-size:clamp(60px,12vw,105px);font-weight:800;letter-spacing:-.09em;line-height:.9;background:linear-gradient(#fff,#ffd60a);-webkit-background-clip:text;background-clip:text;color:transparent}.milestone-copy b{display:block;font-size:18px}.milestone-copy span{display:block;color:#85858c;font-size:13px;margin-top:5px}.thanks{color:#777;font-size:12px;text-align:center;margin:16px 0 0}
+.live{margin-top:18px;padding:25px;border-radius:28px;background:linear-gradient(145deg,#17140a,#090909 60%,#120e06);border:1px solid rgba(255,214,10,.3);box-shadow:0 20px 70px rgba(255,180,0,.08)}.live-top{display:flex;justify-content:space-between;gap:12px;margin-bottom:15px}.live-tag{font-size:11px;font-weight:700;color:#ffe36b;background:rgba(255,214,10,.12);padding:6px 10px;border-radius:99px}.live-time{font-size:11px;color:#666}.live h3{margin:0;font-size:21px}.sub{color:#929298;font-size:13px;margin:4px 0 20px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:15px 6px}.val{font-size:clamp(22px,5vw,31px);font-weight:700;font-variant-numeric:tabular-nums}.label{font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.08em;margin-top:3px}.goal{display:flex;justify-content:space-between;color:#777;font-size:12px;margin:18px 0 6px}.goal b{color:#fff}.bar{height:9px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,#ff9f0a,#ffd60a,#fff1a3);border-radius:inherit;box-shadow:0 0 24px rgba(255,214,10,.55);transition:width 1s var(--ease)}.hit{color:#ffe36b}.live-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:24px;transition:.4s var(--ease)}.card:hover{transform:translateY(-6px);border-color:rgba(255,214,10,.25);box-shadow:0 20px 55px rgba(0,0,0,.35)}.cover{aspect-ratio:1;background:#111;position:relative}.cover img{width:100%;height:100%;object-fit:cover}.play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.2);opacity:0;transition:.3s}.card:hover .play{opacity:1}.play i{display:grid;place-items:center;width:55px;height:55px;border-radius:50%;background:#fff;color:#000;font-style:normal}.body{padding:16px}.body h3{font-size:15px;margin:0}.body p{font-size:12px;color:#777;margin:5px 0 13px}
+.games{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.game{display:flex;align-items:center;gap:13px;padding:16px;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:20px;transition:.35s}.game:hover{transform:translateY(-3px);border-color:rgba(10,132,255,.3)}.icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:#171d2b;font-size:22px}.game h3{font-size:14px;margin:0}.game p{font-size:11px;color:#666;margin:3px 0 8px}
+.about{padding-bottom:80px}.about-card{padding:25px;border:1px solid rgba(255,255,255,.07);border-radius:25px;background:var(--card);color:#999;font-size:14px}.about-card b{color:#fff}.footer{text-align:center;color:#555;border-top:1px solid rgba(255,255,255,.07);padding:25px;font-size:11px}
+.reveal{opacity:0;transform:translateY(20px);transition:.7s var(--ease)}.reveal.in{opacity:1;transform:none}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.wrap{width:min(100% - 22px,1000px)}.links a{padding:7px}.hero{padding:50px 0 35px}.hero h1{font-size:clamp(82px,24vw,135px)}.milestone-in{padding:28px 20px}.milestone-grid{justify-content:center;text-align:center}.number{font-size:72px}.live{padding:18px}.grid,.games{grid-template-columns:1fr}.section{padding:40px 0}.stats{gap:6px}.stat{padding:13px 3px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<div class="boot" id="boot"><span>JisusDev</span></div>
-<div class="app-scale" id="app-scale">
-<header class="nav" id="nav">
-<div class="inner">
-<a class="logo" href="#inicio">JisusDev</a>
-<nav class="nav-links" aria-label="Principal">
-<a href="#live">1K</a>
-<a href="#mixes">Mixes</a>
-<a href="#among">Among Us</a>
-<a href="#juegos">Juegos</a>
-<a href="#about">Info</a>
-</nav>
-</div>
-</header>
+<div class="boot" id="boot"><b>JisusDev · 1K</b></div>
+<header class="nav" id="nav"><div class="wrap nav-in"><a class="logo" href="#inicio">JisusDev</a><nav class="links"><a href="#live">1K</a><a href="#mixes">Mixes</a><a href="#juegos">Juegos</a><a href="#about">Info</a></nav></div></header>
 <main>
-<section class="celebrate" id="inicio">
-<div class="wrap">
-<div class="celebrate-badge reveal"><i></i> JisusDev · 1K SPECIAL EDITION</div>
-<h1 class="reveal d1">1K<span>DON'T STOP 'TIL YOU GET ENOUGH</span></h1>
-<p class="reveal d2"><strong>1.000 views.</strong> El primer gran milestone de esta era de JisusDev.</p>
-<div class="celebrate-actions reveal d3">
-<a class="btn btn-gold" href="#live">✦ VER EL 1K</a>
-<a class="btn btn-ghost" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">Revivir en YouTube</a>
-</div>
-</div>
-</section>
-<section class="live-section" id="live">
-<div class="wrap">
-<div class="milestone reveal">
-<div class="milestone-inner">
-<div class="milestone-number">1,000</div>
-<div class="milestone-copy"><b>VIEWS ALCANZADAS ✦</b><span>Don't Stop 'Til You Get Enough · This Is It in the Mix</span></div>
-</div>
-</div>
-<p class="special-note reveal">Meta desbloqueada. Gracias por ser parte del momento. Ahora viene lo siguiente. 🔥</p>
-<div class="wrap">
-<div class="live-card reveal">
-<div class="live-top">
-<span class="live-badge"><span class="live-dot" aria-hidden="true"></span> En vivo</span>
-<span class="live-updated" id="live-updated">Actualizando…</span>
-</div>
-<h2 class="live-title">Don't Stop 'Til You Get Enough</h2>
-<p class="live-sub">La meta ya fue alcanzada · <strong style="color:var(--label)">1.000 views desbloqueadas</strong></p>
-<div class="live-stats">
-<div class="stat"><div class="stat-val" id="stat-views">—</div><div class="stat-label">Views</div></div>
-<div class="stat"><div class="stat-val" id="stat-likes">—</div><div class="stat-label">Likes</div></div>
-<div class="stat"><div class="stat-val" id="stat-subs">—</div><div class="stat-label">Subs</div></div>
-</div>
-<div class="goal-row"><span>Meta 1K</span><strong id="goal-left">faltan —</strong></div>
-<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0" id="goal-bar"><div class="goal-fill" id="goal-fill"></div></div>
-<div class="live-actions">
-<a class="btn btn-yt" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">Ver en YouTube</a>
-<a class="btn btn-ghost" href="https://www.youtube.com/@JSDV-x26?sub_confirmation=1" target="_blank" rel="noopener">Suscribirse</a>
-<button type="button" class="btn btn-fill" id="play-feat">Reproducir aquí</button>
-<button type="button" class="btn btn-demo" id="demo-btn" hidden>Escuchar Demo</button>
-</div>
-<p class="live-celebrate" id="live-celebrate">¡1K ALCANZADO! Demo desbloqueada ✦🔥</p>
-</div>
-</div>
-</section>
-<section class="section" id="mixes">
-<div class="wrap">
-<h2 class="section-title reveal">Mixes</h2>
-<div class="mix-grid" id="mix-grid"></div>
-</div>
-</section>
-<section class="among-section" id="among">
-<div class="wrap">
-<div class="among-card reveal">
-<div class="among-badge">Fan game · HTML5</div>
-<h2>Among Us <span>Mini</span></h2>
-<p class="among-lead">Clon local con bots. Crewmate o Impostor, tasks, kill, report. WASD + móvil.</p>
-<div class="among-features">
-<span class="among-feat">10 tasks</span>
-<span class="among-feat">8 jugadores</span>
-<span class="among-feat">Meetings</span>
-<span class="among-feat">Móvil ok</span>
-</div>
-<div class="among-cta">
-<a class="btn btn-red" href="amongus.html">Jugar ahora</a>
-<a class="btn btn-ghost" href="#juegos">Más juegos</a>
-</div>
-</div>
-</div>
-</section>
-<section class="section" id="juegos">
-<div class="wrap">
-<h2 class="section-title reveal">Juegos</h2>
-<div class="game-list" id="game-list"></div>
-</div>
-</section>
-<section class="about" id="about">
-<div class="wrap">
-<div class="about-card reveal">
-<h2>Sobre JisusDev</h2>
-<p>Remixes inspirados en Michael Jackson y juegos en Roblox (Pancho Games Studios).</p>
-<p>Hecho por amor al arte. Mixes fan-made, no oficiales, no monetizados.</p>
-<p class="note">© 2026 JisusDev</p>
-</div>
-</div>
-</section>
-</main>
-<footer class="footer"><div class="wrap">Fan-made · No oficial</div></footer>
-</div>
-<div class="modal" id="modal" aria-hidden="true">
-<div class="scrim" data-close></div>
-<div class="sheet" role="dialog" aria-modal="true">
-<div class="handle"><i></i></div>
-<div class="sheet-head"><div><h3 id="m-title"></h3><p id="m-desc"></p></div>
-<button type="button" class="close-x" data-close aria-label="Cerrar"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l10 10M11 1L1 11"/></svg></button></div>
-<div class="media"><video id="m-video" controls playsinline preload="none"></video>
-<div class="audio-panel" id="m-audio"><img id="m-art" src="" alt="" decoding="async"><audio id="m-audio-el" controls preload="none"></audio></div>
-</div></div></div>
+<section class="hero" id="inicio"><div class="wrap">
+<div class="badge reveal"><i class="dot"></i> 1K SPECIAL EDITION</div>
+<h1 class="reveal">1K<small>DON'T STOP 'TIL YOU GET ENOUGH</small></h1>
+<p class="lead reveal">El milestone ya ocurrió. <strong>1.000 personas llegaron al remix.</strong> Esta página queda como la cápsula de ese momento.</p>
+<div class="actions reveal"><a class="btn gold" href="#live">✦ VER EL MOMENTO</a><a class="btn dark" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">Revivir en YouTube</a></div>
+</div></section>
+<section class="section" id="live"><div class="wrap">
+<div class="eyebrow reveal">MILESTONE · 2026</div><h2 class="reveal">El 1K.</h2>
+<div class="milestone reveal"><div class="milestone-in"><div class="milestone-grid"><div class="number">1,000</div><div class="milestone-copy"><b>VIEWS ALCANZADAS ✦</b><span>Don't Stop 'Til You Get Enough · This Is It in the Mix</span></div></div></div></div>
+<p class="thanks reveal">Meta desbloqueada. Gracias por estar en esta etapa. Ahora empieza la siguiente. 🔥</p>
+<div class="live reveal"><div class="live-top"><span class="live-tag">● CONTADOR</span><span class="live-time" id="updated">Actualizando…</span></div><h3>Don't Stop 'Til You Get Enough</h3><p class="sub">Datos del video y del canal</p><div class="stats"><div class="stat"><div class="val" id="views">—</div><div class="label">Views</div></div><div class="stat"><div class="val" id="likes">—</div><div class="label">Likes</div></div><div class="stat"><div class="val" id="subs">—</div><div class="label">Subs</div></div></div><div class="goal"><span>Meta 1K</span><b id="goal">Meta alcanzada ✦</b></div><div class="bar"><div class="fill" id="fill"></div></div><div class="live-actions"><a class="btn gold" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">YouTube</a><a class="btn dark" href="https://www.youtube.com/@JSDV-x26?sub_confirmation=1" target="_blank" rel="noopener">Suscribirse</a></div></div>
+</div></section>
+<section class="section" id="mixes"><div class="wrap"><div class="eyebrow reveal">AUDIO ARCHIVE</div><h2 class="reveal">Mixes</h2><div class="grid" id="mixgrid"></div></div></section>
+<section class="section" id="juegos"><div class="wrap"><div class="eyebrow reveal">PANCHO GAMES STUDIOS</div><h2 class="reveal">Juegos</h2><div class="games" id="games"></div></div></section>
+<section class="about"><div class="wrap"><div class="about-card reveal" id="about"><b>JisusDev</b><br>Remixes fan-made inspirados en Michael Jackson, proyectos HTML5 y juegos de Roblox. Hecho por amor al arte. ✦<br><br>© 2026 JisusDev · No oficial</div></div></section>
+</main><footer class="footer">1K SPECIAL EDITION · JisusDev</footer>
 <script>
-var mixes=[{title:"Don't Stop 'Til You Get Enough",description:"Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe",video:"Don't Stop 'til I Get Enough.mp4",youtube:"https://www.youtube.com/watch?v=u54H4FnSOtI"},{title:"Chicago: The Mix",description:"Xscape: This Is It in the Mix · Remix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",youtube:"https://www.youtube.com/watch?v=VTSwj-y_zt0"},{title:"Thriller Night",description:"Xscape: This Is It in the Mix · Demo",cover:"Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe",audio:"Thriller_nightwav.wav",demo:true}];
-var games=[{name:"SURGE",tag:"HTML5 · Endless flyer",icon:"⚡",url:"surge.html",local:true},{name:"Among Us Mini",tag:"HTML5 · Fan game",icon:"🔴",url:"amongus.html",local:true},{name:"Escapa de el tsunami por autos",tag:"Obby · Tsunami",icon:"🚗",url:"https://www.roblox.com/es/games/70603456155056/Escapa-de-el-tsunami-por-autos"},{name:"Escape del tsunami por joyas",tag:"Obby · Tsunami",icon:"💎",url:"https://www.roblox.com/es/games/117666384645004/Escape-del-tsunami-por-joyas"},{name:"Blox War",tag:"Acción · Combate",icon:"⚔️",url:"https://www.roblox.com/es/games/121209803244913/Blox-War"},{name:"Pancho Games Studios",tag:"Comunidad",icon:"🎮",url:"https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios",community:true}];
-function enc(n){return encodeURI(n)}
-function sheetPrep(modal){var s=modal.querySelector(".sheet");if(!s)return;s.classList.add("will-anim");clearTimeout(sheetPrep._t);sheetPrep._t=setTimeout(function(){s.classList.remove("will-anim")},450)}
-function openPlayer(mix){if(!mix||!(mix.video||mix.audio))return;var modal=document.getElementById("modal"),video=document.getElementById("m-video"),audio=document.getElementById("m-audio-el"),panel=document.getElementById("m-audio");document.getElementById("m-title").textContent=mix.title;document.getElementById("m-desc").textContent=mix.description;video.pause();audio.pause();video.removeAttribute("src");audio.removeAttribute("src");video.load();audio.load();if(mix.audio){video.classList.add("hide");panel.classList.add("on");document.getElementById("m-art").src=mix.cover||"";audio.src=enc(mix.audio);sheetPrep(modal);modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");audio.play().catch(function(){})}else{video.classList.remove("hide");panel.classList.remove("on");video.poster=mix.cover||"";video.src=enc(mix.video);sheetPrep(modal);modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");video.play().catch(function(){})}}
-function closePlayer(){var modal=document.getElementById("modal"),video=document.getElementById("m-video"),audio=document.getElementById("m-audio-el");video.pause();audio.pause();modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open")}
-(function(){
-  try{
-    var cores=navigator.hardwareConcurrency||2;
-    var mem=navigator.deviceMemory||4;
-    var save=navigator.connection&&navigator.connection.saveData;
-    if(cores<=4||mem<=4||save||matchMedia("(prefers-reduced-motion: reduce)").matches){
-      document.documentElement.classList.add("low-power");
-    }
-  }catch(e){}
-  var sheet=document.querySelector(".sheet");
-  var modal=document.getElementById("modal");
-  if(!sheet||!modal)return;
-  var startY=0,curY=0,dragging=false,startT=0,raf=0;
-  function isMobile(){return window.innerWidth<700}
-  function onStart(e){
-    if(!isMobile()||!modal.classList.contains("open"))return;
-    var t=e.touches?e.touches[0]:e;
-    var target=e.target;
-    if(target.closest("video,audio,button,a,input"))return;
-    if(!target.closest(".handle")&&!target.closest(".sheet-head"))return;
-    dragging=true;startY=t.clientY;curY=0;startT=performance.now();
-    sheet.classList.add("dragging");
-  }
-  function applyY(){
-    raf=0;
-    sheet.style.transform="translate3d(0,"+curY+"px,0) scale(1)";
-  }
-  function onMove(e){
-    if(!dragging)return;
-    var t=e.touches?e.touches[0]:e;
-    curY=Math.max(0,t.clientY-startY);
-    if(!raf)raf=requestAnimationFrame(applyY);
-    if(e.cancelable)e.preventDefault();
-  }
-  function onEnd(){
-    if(!dragging)return;
-    dragging=false;sheet.classList.remove("dragging");
-    if(raf){cancelAnimationFrame(raf);raf=0}
-    var dt=Math.max(16,performance.now()-startT);
-    var vel=curY/dt;
-    if(curY>110||vel>0.5){
-      sheet.style.transform="";
-      closePlayer();
-    }else{
-      sheet.style.transform="";
-    }
-    curY=0;
-  }
-  sheet.addEventListener("touchstart",onStart,{passive:true});
-  sheet.addEventListener("touchmove",onMove,{passive:false});
-  sheet.addEventListener("touchend",onEnd,{passive:true});
-  sheet.addEventListener("touchcancel",onEnd,{passive:true});
-})();
-var grid=document.getElementById("mix-grid");mixes.forEach(function(mix,i){var card=document.createElement("article");card.className="mix-card reveal d"+Math.min(i+1,5);var label=mix.demo?"Escuchar Demo":"Reproducir";var links=(mix.youtube?'<a class="btn btn-ghost btn-sm" href="'+mix.youtube+'" target="_blank" rel="noopener">YouTube</a>':'');card.innerHTML='<div class="mix-cover"><img src="'+mix.cover+'" alt="" loading="lazy" decoding="async"><button type="button" class="mix-play" data-play="'+i+'" aria-label="Play"><span class="play-dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></button></div><div class="mix-body"><h3>'+mix.title+'</h3><p>'+mix.description+'</p><div class="mix-actions"><button type="button" class="btn btn-fill btn-sm" data-play="'+i+'">'+label+'</button>'+links+'</div></div>';grid.appendChild(card)});
-var gameList=document.getElementById("game-list");games.forEach(function(g,i){var a=document.createElement("a");a.className="game-card reveal d"+Math.min(i+1,5)+(g.community?" community":"");a.href=g.url;if(!g.local){a.target="_blank";a.rel="noopener"}var btnLabel=g.community?"Unirse":"Jugar";var sub=g.local?g.tag:(g.tag+" · Roblox");a.innerHTML='<div class="game-icon" aria-hidden="true">'+g.icon+'</div><div class="game-info"><h3>'+g.name+'</h3><p>'+sub+'</p><span class="btn btn-blue btn-sm">'+btnLabel+'</span></div>';gameList.appendChild(a)});
-document.getElementById("play-feat").addEventListener("click",function(){openPlayer(mixes[0])});
-document.addEventListener("click",function(e){var p=e.target.closest("[data-play]");if(p){openPlayer(mixes[+p.getAttribute("data-play")]);return}if(e.target.closest("[data-close]"))closePlayer()});
-document.addEventListener("keydown",function(e){if(e.key==="Escape")closePlayer()});
-var nav=document.getElementById("nav");window.addEventListener("scroll",function(){nav.classList.toggle("scrolled",window.scrollY>8)},{passive:true});
-function observe(){var els=document.querySelectorAll(".reveal");if(!("IntersectionObserver" in window)){els.forEach(function(el){el.classList.add("in")});return}var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.12,rootMargin:"0px 0px -40px 0px"});els.forEach(function(el){io.observe(el)})}
-var YT_VIDEO="u54H4FnSOtI",YT_CHANNEL="UCG8b_w-Q-02m1j4iEaPK6cg",GOAL=1000;
-var lastViews=-1,lastLikes=-1,lastSubs=-1;
-function fmtNum(n){if(n==null||isNaN(n))return"—";return Number(n).toLocaleString("es-PE")}
-function setStat(id,val,prev){var el=document.getElementById(id);if(!el)return;var next=fmtNum(val);if(el.textContent!==next){el.textContent=next;if(prev>=0&&val!==prev){el.classList.remove("tick");void el.offsetWidth;el.classList.add("tick")}}}
-function applyStats(views,likes,subs){if(typeof views==="number"){setStat("stat-views",views,lastViews);lastViews=views;var pct=Math.min(100,(views/GOAL)*100);var fill=document.getElementById("goal-fill"),bar=document.getElementById("goal-bar");if(fill){fill.style.width=pct+"%";fill.classList.toggle("hit",views>=GOAL)}if(bar)bar.setAttribute("aria-valuenow",String(views));var left=document.getElementById("goal-left");if(left)left.textContent=views>=GOAL?"¡Meta alcanzada!":"faltan "+fmtNum(GOAL-views);var celeb=document.getElementById("live-celebrate");if(celeb)celeb.classList.toggle("show",views>=GOAL);if(views>=GOAL)unlockDemo(true)}if(typeof likes==="number"){setStat("stat-likes",likes,lastLikes);lastLikes=likes}if(typeof subs==="number"){setStat("stat-subs",subs,lastSubs);lastSubs=subs}var upd=document.getElementById("live-updated");if(upd){var t=new Date();upd.textContent="Actualizado "+t.toLocaleTimeString("es-PE",{hour:"2-digit",minute:"2-digit",second:"2-digit"})}}
-function parseYtHtml(html){var views=null,likes=null,subs=null,m;m=html.match(/"viewCount":"(\d+)"/);if(m)views=+m[1];m=html.match(/"likeCount":"(\d+)"/);if(m)likes=+m[1];m=html.match(/"subscriberCount":"(\d+)"/);if(m)subs=+m[1];if(subs==null){m=html.match(/([\d.,]+)\s*subscribers?/i)||html.match(/([\d.,]+)\s*suscriptores?/i);if(m){var raw=m[1].replace(/[.,]/g,"");if(/^\d+$/.test(raw))subs=+raw}}return{views:views,likes:likes,subs:subs}}
-async function fetchViaProxy(targetUrl){var proxies=[function(u){return"https://api.allorigins.win/raw?url="+encodeURIComponent(u)},function(u){return"https://corsproxy.io/?"+encodeURIComponent(u)}];for(var i=0;i<proxies.length;i++){try{var res=await fetch(proxies[i](targetUrl),{cache:"no-store"});if(!res.ok)continue;var text=await res.text();if(text&&text.length>500)return text}catch(e){}}return null}
-async function refreshLiveStats(){if(lastViews<0)applyStats(979,10,11);var videoHtml=await fetchViaProxy("https://www.youtube.com/watch?v="+YT_VIDEO);var channelHtml=await fetchViaProxy("https://www.youtube.com/channel/"+YT_CHANNEL);var v=videoHtml?parseYtHtml(videoHtml):{};var c=channelHtml?parseYtHtml(channelHtml):{};var views=typeof v.views==="number"?v.views:lastViews;var likes=typeof v.likes==="number"?v.likes:lastLikes;var subs=typeof c.subs==="number"?c.subs:(typeof v.subs==="number"?v.subs:lastSubs);if(views<0)views=979;if(likes<0)likes=10;if(subs<0)subs=11;applyStats(views,likes,subs)}
-var DEMO_FILE="Don't Stop demo.wav";
-var DEMO_COVER="Gemini_Generated_Image_fiajdofiajdofiaj.jpe";
-var GOAL_UNLOCKED=localStorage.getItem("jisus_1k_unlocked")==="1";
-function unlockDemo(force){var btn=document.getElementById("demo-btn");var celeb=document.getElementById("live-celebrate");if(!btn)return;if(force||GOAL_UNLOCKED){GOAL_UNLOCKED=true;try{localStorage.setItem("jisus_1k_unlocked","1")}catch(e){}btn.hidden=false;btn.classList.add("show");if(celeb)celeb.classList.add("show")}}
-if(GOAL_UNLOCKED)unlockDemo(true);
-var demoBtn=document.getElementById("demo-btn");
-if(demoBtn){demoBtn.addEventListener("click",function(){openPlayer({title:"Don't Stop — Demo 1K",description:"Demo desbloqueada al llegar a 1.000 views",cover:DEMO_COVER,audio:DEMO_FILE})})}
-refreshLiveStats();setInterval(refreshLiveStats,60000);
-window.addEventListener("load",function(){setTimeout(function(){document.getElementById("boot").classList.add("done");document.querySelectorAll(".hero .reveal").forEach(function(el){el.classList.add("in")});observe()},450)});
-</script>
-</body>
-</html>
+const mixes=[
+{title:"Don't Stop 'Til You Get Enough",desc:"Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe",video:"Don't Stop 'til I Get Enough.mp4",yt:"https://www.youtube.com/watch?v=u54H4FnSOtI"},
+{title:"Chicago: The Mix",desc:"Xscape: This Is It in the Mix · Remix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",yt:"https://www.youtube.com/watch?v=VTSwj-y_zt0"},
+{title:"Thriller Night",desc:"Xscape: This Is It in the Mix · Demo",cover:"Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe",audio:"Thriller_nightwav.wav"}];
+const games=[
+["SURGE","HTML5 · Endless flyer","⚡","surge.html"],["Among Us Mini","HTML5 · Fan game","🔴","amongus.html"],
+["Escapa de el tsunami por autos","Obby · Tsunami","🚗","https://www.roblox.com/es/games/70603456155056/Escapa-de-el-tsunami-por-autos"],
+["Escape del tsunami por joyas","Obby · Tsunami","💎","https://www.roblox.com/es/games/117666384645004/Escape-del-tsunami-por-joyas"],
+["Blox War","Acción · Combate","⚔️","https://www.roblox.com/es/games/121209803244913/Blox-War"],
+["Pancho Games Studios","Comunidad","🎮","https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios"]];
+const $=s=>document.querySelector(s), fmt=n=>Number(n).toLocaleString("es-PE");
+mixes.forEach((m,i)=>{$("#mixgrid").insertAdjacentHTML("beforeend",'<article class="card reveal"><div class="cover"><img src="'+m.cover+'" loading="lazy" alt=""><button class="play" data-mix="'+i+'"><i>▶</i></button></div><div class="body"><h3>'+m.title+'</h3><p>'+m.desc+'</p><button class="btn dark" data-mix="'+i+'">Reproducir</button></div></article>')});
+games.forEach(g=>{$("#games").insertAdjacentHTML("beforeend",'<a class="game reveal" href="'+g[3]+'" '+(g[3].startsWith("http")?'target="_blank" rel="noopener"':'')+'><div class="icon">'+g[2]+'</div><div><h3>'+g[0]+'</h3><p>'+g[1]+'</p></div></a>')});
+function reveal(){document.querySelectorAll(".reveal").forEach((e,i)=>setTimeout(()=>e.classList.add("in"),Math.min(i*45,500)))}
+window.addEventListener("load",()=>{setTimeout(()=>$("#boot").classList.add("hide"),400);reveal()});
+window.addEventListener("scroll",()=>$("#nav").classList.toggle("on",scrollY>8),{passive:true});
+const videoId="u54H4FnSOtI",channel="UCG8b_w-Q-02m1j4iEaPK6cg";
+async function proxy(u){for(const p of ["https://api.allorigins.win/raw?url=","https://corsproxy.io/?"])try{const r=await fetch(p+encodeURIComponent(u),{cache:"no-store"});if(r.ok){const t=await r.text();if(t.length>500)return t}}catch(e){}return""}
+function parse(t){let x=t.match(/"viewCount":"(\d+)"/),l=t.match(/"likeCount":"(\d+)"/),s=t.match(/"subscriberCount":"(\d+)"/);return{x:x?+x[1]:null,l:l?+l[1]:null,s:s?+s[1]:null}}
+async function stats(){let v=await proxy("https://www.youtube.com/watch?v="+videoId),c=await proxy("https://www.youtube.com/channel/"+channel),a=parse(v),b=parse(c);let views=a.x??1000,likes=a.l??10,subs=b.s??11;$("#views").textContent=fmt(views);$("#likes").textContent=fmt(likes);$("#subs").textContent=fmt(subs);$("#fill").style.width=Math.min(100,views/10)+"%";$("#updated").textContent="Actualizado "+new Date().toLocaleTimeString("es-PE");$("#goal").textContent=views>=1000?"Meta alcanzada ✦":"Faltan "+fmt(1000-views)}
+stats();setInterval(stats,60000);
+document.addEventListener("click",e=>{let b=e.target.closest("[data-mix]");if(!b)return;let m=mixes[+b.dataset.mix];if(m.yt&&b.tagName==="A")return;let modal=document.createElement("dialog");modal.style.cssText="border:0;border-radius:25px;padding:0;background:#111;color:white;max-width:700px;width:92%;box-shadow:0 30px 100px #000";modal.innerHTML='<button style="position:absolute;right:12px;top:10px;z-index:2;background:#fff;color:#000;border-radius:50%;width:32px;height:32px" id="x">×</button><div style="padding:22px"><b>'+m.title+'</b><p style="color:#888;font-size:13px">'+m.desc+'</p></div>'+(m.video?'<video controls autoplay playsinline style="width:100%;display:block;background:#000" src="'+encodeURI(m.video)+'"></video>':'<audio controls autoplay style="width:calc(100% - 32px);margin:0 16px 20px" src="'+encodeURI(m.audio)+'"></audio>');document.body.appendChild(modal);modal.showModal();$("#x").onclick=()=>{modal.close();modal.remove()};modal.addEventListener("close",()=>modal.remove(),{once:true})});
+</script></body></html>
