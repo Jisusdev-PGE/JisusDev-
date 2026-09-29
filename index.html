@@ -144,6 +144,38 @@ html.low-power .scrim{background:rgba(0,0,0,.65)}
 html.low-power .sheet{transition:transform .35s ease,opacity .25s ease}
 html.low-power .reveal{transition-duration:.25s}
 @media(prefers-reduced-motion:reduce){.boot{display:none}.reveal{opacity:1;transform:none;transition:none}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ===== 1K SPECIAL EDITION ===== */
+:root{--gold:#ffd60a;--gold2:#ff9f0a}
+body{background:#050505}
+body::before{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 0%,rgba(255,214,10,.14),transparent 27%),radial-gradient(circle at 0% 55%,rgba(255,159,10,.07),transparent 25%),radial-gradient(circle at 100% 75%,rgba(255,214,10,.06),transparent 25%);animation:goldAura 10s ease-in-out infinite alternate}
+@keyframes goldAura{from{transform:scale(1);opacity:.7}to{transform:scale(1.08);opacity:1}}
+.celebrate{position:relative;padding:4rem 0 2.5rem;text-align:center;overflow:hidden}
+.celebrate:before{content:"1K";position:absolute;left:50%;top:-15px;transform:translateX(-50%);font-size:min(52vw,430px);font-weight:800;line-height:1;color:rgba(255,214,10,.035);letter-spacing:-.1em;pointer-events:none}
+.celebrate-badge{position:relative;display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .9rem;border:1px solid rgba(255,214,10,.3);background:rgba(255,214,10,.08);border-radius:999px;color:#ffe66d;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.celebrate-badge i{width:6px;height:6px;border-radius:50%;background:#ffd60a;box-shadow:0 0 14px #ffd60a;animation:badgePulse 1.3s infinite}
+@keyframes badgePulse{50%{transform:scale(1.8);opacity:.45}}
+.celebrate h1{position:relative;margin:1.35rem 0 .8rem;font-size:clamp(4.5rem,18vw,10rem);font-weight:800;line-height:.78;letter-spacing:-.09em;background:linear-gradient(180deg,#fff,#ffe66d 45%,#ffad00);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 70px rgba(255,190,0,.14)}
+.celebrate h1 span{display:block;margin-top:1.2rem;font-size:clamp(1rem,3vw,1.5rem);font-weight:600;letter-spacing:.12em;color:#c7c7cc;-webkit-text-fill-color:#c7c7cc}
+.celebrate p{position:relative;max-width:34rem;margin:0 auto 1.6rem;color:#a1a1a6;font-size:clamp(15px,2.5vw,18px)}
+.celebrate p strong{color:#fff}
+.celebrate-actions{position:relative;display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap}
+.btn-gold{background:linear-gradient(135deg,#fff2a8,#ffd60a 55%,#ff9f0a);color:#181200;box-shadow:0 12px 42px rgba(255,190,0,.2)}
+.btn-gold:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 18px 55px rgba(255,190,0,.32)}
+.milestone{position:relative;overflow:hidden;margin:0 auto 1.5rem;padding:1px;border-radius:30px;background:linear-gradient(110deg,rgba(255,214,10,.55),rgba(255,255,255,.08),rgba(255,159,10,.5));box-shadow:0 25px 90px rgba(255,180,0,.1)}
+.milestone-inner{position:relative;display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap;padding:1.35rem 1.5rem;border-radius:29px;background:linear-gradient(135deg,rgba(255,214,10,.1),#0d0d0d 45%,rgba(255,159,10,.07))}
+.milestone-inner:after{content:"✦   ✧   ✦   ✧   ✦";position:absolute;bottom:4px;left:0;right:0;color:rgba(255,214,10,.18);font-size:11px;letter-spacing:.6rem}
+.milestone-number{font-size:clamp(2.8rem,9vw,4.8rem);font-weight:800;line-height:1;letter-spacing:-.07em;background:linear-gradient(180deg,#fff,#ffd60a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.milestone-copy{text-align:left}.milestone-copy b{display:block;color:#fff;font-size:15px}.milestone-copy span{color:#85858c;font-size:12px}
+.special-note{text-align:center;color:#77777e;font-size:12px;margin:.8rem 0 0}
+.live-card{border-color:rgba(255,214,10,.35);background:linear-gradient(155deg,#17150b,#090909 58%,#120f08);box-shadow:0 24px 85px rgba(255,180,0,.12),0 8px 32px rgba(0,0,0,.5)}
+.live-badge{color:#ffe36b;background:rgba(255,214,10,.13)}
+.goal-fill{background:linear-gradient(90deg,#ff9f0a,#ffd60a,#fff0a6)}
+.goal-fill.hit{background:linear-gradient(90deg,#ffb300,#fff0a6);box-shadow:0 0 30px rgba(255,214,10,.7)}
+.stat:hover{border-color:rgba(255,214,10,.4);box-shadow:0 8px 30px rgba(255,190,0,.08)}
+.live-celebrate{color:#ffe36b}
+.btn-demo{background:linear-gradient(135deg,#fff2a8,#ffd60a,#ffb000);color:#171000}
+@media(max-width:600px){.celebrate{padding-top:3rem}.milestone-copy{text-align:center}}
 </style>
 </head>
 <body>
@@ -162,18 +194,26 @@ html.low-power .reveal{transition-duration:.25s}
 </div>
 </header>
 <main>
-<section class="hero" id="inicio">
+<section class="celebrate" id="inicio">
 <div class="wrap">
-<div class="chip reveal">Camino al 1K · 2026</div>
-<h1 class="reveal d1">This Is It<br><span class="soft">in the Mix</span></h1>
-<p class="hero-lead reveal d2">Tu remix de Don't Stop casi llega a 1K views. Remixes, Roblox y juegos HTML.</p>
-<div class="hero-cta reveal d3">
-<a class="btn btn-fill" href="#live">Ver contador</a>
-<a class="btn btn-ghost" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">YouTube</a>
+<div class="celebrate-badge reveal"><i></i> JisusDev · 1K SPECIAL EDITION</div>
+<h1 class="reveal d1">1K<span>DON'T STOP 'TIL YOU GET ENOUGH</span></h1>
+<p class="reveal d2"><strong>1.000 views.</strong> El primer gran milestone de esta era de JisusDev.</p>
+<div class="celebrate-actions reveal d3">
+<a class="btn btn-gold" href="#live">✦ VER EL 1K</a>
+<a class="btn btn-ghost" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">Revivir en YouTube</a>
 </div>
 </div>
 </section>
 <section class="live-section" id="live">
+<div class="wrap">
+<div class="milestone reveal">
+<div class="milestone-inner">
+<div class="milestone-number">1,000</div>
+<div class="milestone-copy"><b>VIEWS ALCANZADAS ✦</b><span>Don't Stop 'Til You Get Enough · This Is It in the Mix</span></div>
+</div>
+</div>
+<p class="special-note reveal">Meta desbloqueada. Gracias por ser parte del momento. Ahora viene lo siguiente. 🔥</p>
 <div class="wrap">
 <div class="live-card reveal">
 <div class="live-top">
@@ -181,7 +221,7 @@ html.low-power .reveal{transition-duration:.25s}
 <span class="live-updated" id="live-updated">Actualizando…</span>
 </div>
 <h2 class="live-title">Don't Stop 'Til You Get Enough</h2>
-<p class="live-sub">Tu versión · Camino a las <strong style="color:var(--label)">1.000 views</strong></p>
+<p class="live-sub">La meta ya fue alcanzada · <strong style="color:var(--label)">1.000 views desbloqueadas</strong></p>
 <div class="live-stats">
 <div class="stat"><div class="stat-val" id="stat-views">—</div><div class="stat-label">Views</div></div>
 <div class="stat"><div class="stat-val" id="stat-likes">—</div><div class="stat-label">Likes</div></div>
@@ -195,7 +235,7 @@ html.low-power .reveal{transition-duration:.25s}
 <button type="button" class="btn btn-fill" id="play-feat">Reproducir aquí</button>
 <button type="button" class="btn btn-demo" id="demo-btn" hidden>Escuchar Demo</button>
 </div>
-<p class="live-celebrate" id="live-celebrate">¡Llegaste a 1K views causa! Demo desbloqueada 🔥</p>
+<p class="live-celebrate" id="live-celebrate">¡1K ALCANZADO! Demo desbloqueada ✦🔥</p>
 </div>
 </div>
 </section>
