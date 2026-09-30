@@ -30,6 +30,12 @@ body:before{content:"";position:fixed;inset:-40%;z-index:-2;background:radial-gr
 .reveal{opacity:0;transform:translateY(20px);transition:.7s var(--ease)}.reveal.in{opacity:1;transform:none}
 @media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.wrap{width:min(100% - 22px,1000px)}.links a{padding:7px}.hero{padding:50px 0 35px}.hero h1{font-size:clamp(82px,24vw,135px)}.milestone-in{padding:28px 20px}.milestone-grid{justify-content:center;text-align:center}.number{font-size:72px}.live{padding:18px}.grid,.games{grid-template-columns:1fr}.section{padding:40px 0}.stats{gap:6px}.stat{padding:13px 3px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+
+/* DSTIGE: golden aura */
+#mixgrid .dstige-aura{position:relative;isolation:isolate;border:1px solid rgba(255,207,92,.62);box-shadow:0 0 18px rgba(255,190,55,.22),0 0 48px rgba(255,176,35,.14);animation:dstigeGlow 3s ease-in-out infinite alternate}
+#mixgrid .dstige-aura:before{content:"";position:absolute;inset:-2px;border-radius:inherit;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(255,202,74,.34),transparent 65%);filter:blur(13px);opacity:.8}
+@keyframes dstigeGlow{from{box-shadow:0 0 14px rgba(255,190,55,.18),0 0 32px rgba(255,176,35,.10)}to{box-shadow:0 0 25px rgba(255,205,80,.38),0 0 62px rgba(255,176,35,.23)}}
+@media(prefers-reduced-motion:reduce){#mixgrid .dstige-aura{animation:none}}
 </style>
 </head>
 <body>
@@ -64,7 +70,7 @@ const games=[
 ["Blox War","Acción · Combate","⚔️","https://www.roblox.com/es/games/121209803244913/Blox-War"],
 ["Pancho Games Studios","Comunidad","🎮","https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios"]];
 const $=s=>document.querySelector(s), fmt=n=>Number(n).toLocaleString("es-PE");
-mixes.forEach((m,i)=>{$("#mixgrid").insertAdjacentHTML("beforeend",'<article class="card reveal"><div class="cover"><img src="'+m.cover+'" loading="lazy" alt=""><button class="play" data-mix="'+i+'"><i>▶</i></button></div><div class="body"><h3>'+m.title+'</h3><p>'+m.desc+'</p><div style="display:flex;gap:7px;flex-wrap:wrap"><button class="btn dark" data-mix="'+i+'">Reproducir</button>'+(m.yt?'<a class="btn dark" href="'+m.yt+'" target="_blank" rel="noopener">YouTube</a>':'')+(m.bandlab?'<a class="btn dark" href="'+m.bandlab+'" target="_blank" rel="noopener">BandLab</a>':'')+'</div></div></article>')});
+mixes.forEach((m,i)=>{$("#mixgrid").insertAdjacentHTML("beforeend",'<article class="card reveal'+(i===0?' dstige-aura':'')+'"><div class="cover"><img src="'+m.cover+'" loading="lazy" alt=""><button class="play" data-mix="'+i+'"><i>▶</i></button></div><div class="body"><h3>'+m.title+'</h3><p>'+m.desc+'</p><div style="display:flex;gap:7px;flex-wrap:wrap"><button class="btn dark" data-mix="'+i+'">Reproducir</button>'+(m.yt?'<a class="btn dark" href="'+m.yt+'" target="_blank" rel="noopener">YouTube</a>':'')+(m.bandlab?'<a class="btn dark" href="'+m.bandlab+'" target="_blank" rel="noopener">BandLab</a>':'')+'</div></div></article>')});
 games.forEach(g=>{$("#games").insertAdjacentHTML("beforeend",'<a class="game reveal" href="'+g[3]+'" '+(g[3].startsWith("http")?'target="_blank" rel="noopener"':'')+'><div class="icon">'+g[2]+'</div><div><h3>'+g[0]+'</h3><p>'+g[1]+'</p></div></a>')});
 function reveal(){document.querySelectorAll(".reveal").forEach((e,i)=>setTimeout(()=>e.classList.add("in"),Math.min(i*45,500)))}
 window.addEventListener("load",()=>{setTimeout(()=>$("#boot").classList.add("hide"),2600);reveal()});setTimeout(()=>{const b=$("#boot");if(b)b.classList.add("hide")},3600);
