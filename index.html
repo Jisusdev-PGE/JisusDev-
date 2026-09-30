@@ -32,10 +32,10 @@ body:before{content:"";position:fixed;inset:-40%;z-index:-2;background:radial-gr
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 
 /* DSTIGE: golden aura */
-#mixgrid .dstige-aura{position:relative;isolation:isolate;border:1px solid rgba(255,207,92,.62);box-shadow:0 0 18px rgba(255,190,55,.22),0 0 48px rgba(255,176,35,.14);animation:dstigeGlow 3s ease-in-out infinite alternate}
-#mixgrid .dstige-aura:before{content:"";position:absolute;inset:-2px;border-radius:inherit;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(255,202,74,.34),transparent 65%);filter:blur(13px);opacity:.8}
+#mixgrid .dstige-aura,#mixgrid article:first-child{position:relative;isolation:isolate;overflow:visible!important;border:1px solid rgba(255,207,92,.85)!important;box-shadow:0 0 18px 3px rgba(255,190,55,.35),0 0 48px 8px rgba(255,176,35,.2)!important;animation:dstigeGlow 3s ease-in-out infinite alternate}
+#mixgrid .dstige-aura:before,#mixgrid article:first-child:before{content:"";position:absolute;inset:-2px;border-radius:inherit;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(255,202,74,.34),transparent 65%);filter:blur(13px);opacity:.8}
 @keyframes dstigeGlow{from{box-shadow:0 0 14px rgba(255,190,55,.18),0 0 32px rgba(255,176,35,.10)}to{box-shadow:0 0 25px rgba(255,205,80,.38),0 0 62px rgba(255,176,35,.23)}}
-@media(prefers-reduced-motion:reduce){#mixgrid .dstige-aura{animation:none}}
+@media(prefers-reduced-motion:reduce){#mixgrid .dstige-aura,#mixgrid article:first-child{animation:none}}
 </style>
 </head>
 <body>
