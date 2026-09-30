@@ -54,8 +54,8 @@ body:before{content:"";position:fixed;inset:-40%;z-index:-2;background:radial-gr
 </main><footer class="footer">1K SPECIAL EDITION · JisusDev</footer>
 <script>
 const mixes=[
-{title:"Don't Stop 'Til You Get Enough",desc:"Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe",video:"Don't Stop 'til I Get Enough.mp4",yt:"https://www.youtube.com/watch?v=u54H4FnSOtI"},
-{title:"Chicago: The Mix",desc:"Xscape: This Is It in the Mix · Remix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",yt:"https://www.youtube.com/watch?v=VTSwj-y_zt0"},
+{title:"Don't Stop 'Til You Get Enough",desc:"Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe",video:"Don't Stop 'til I Get Enough.mp4",yt:"https://www.youtube.com/watch?v=u54H4FnSOtI",bandlab:"https://www.bandlab.com/post/11c277cf85f34aeca59384d719fc85ef"},
+{title:"Chicago: The Mix",desc:"Xscape: This Is It in the Mix · Remix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",yt:"https://www.youtube.com/watch?v=VTSwj-y_zt0",bandlab:"https://www.bandlab.com/post/b5ca7c5be83f4e95bb1b2c56e3d1028f"},
 {title:"Thriller Night",desc:"Xscape: This Is It in the Mix · Demo",cover:"Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe",audio:"Thriller_nightwav.wav"}];
 const games=[
 ["SURGE","HTML5 · Endless flyer","⚡","surge.html"],["Among Us Mini","HTML5 · Fan game","🔴","amongus.html"],
@@ -64,7 +64,7 @@ const games=[
 ["Blox War","Acción · Combate","⚔️","https://www.roblox.com/es/games/121209803244913/Blox-War"],
 ["Pancho Games Studios","Comunidad","🎮","https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios"]];
 const $=s=>document.querySelector(s), fmt=n=>Number(n).toLocaleString("es-PE");
-mixes.forEach((m,i)=>{$("#mixgrid").insertAdjacentHTML("beforeend",'<article class="card reveal"><div class="cover"><img src="'+m.cover+'" loading="lazy" alt=""><button class="play" data-mix="'+i+'"><i>▶</i></button></div><div class="body"><h3>'+m.title+'</h3><p>'+m.desc+'</p><button class="btn dark" data-mix="'+i+'">Reproducir</button></div></article>')});
+mixes.forEach((m,i)=>{$("#mixgrid").insertAdjacentHTML("beforeend",'<article class="card reveal"><div class="cover"><img src="'+m.cover+'" loading="lazy" alt=""><button class="play" data-mix="'+i+'"><i>▶</i></button></div><div class="body"><h3>'+m.title+'</h3><p>'+m.desc+'</p><div style="display:flex;gap:7px;flex-wrap:wrap"><button class="btn dark" data-mix="'+i+'">Reproducir</button>'+'(m.yt?'<a class="btn dark" href="'+m.yt+'" target="_blank" rel="noopener">YouTube</a>':'')+' '+(m.bandlab?'<a class="btn dark" href="'+m.bandlab+'" target="_blank" rel="noopener">BandLab</a>':'')+'</div></div></article>')});
 games.forEach(g=>{$("#games").insertAdjacentHTML("beforeend",'<a class="game reveal" href="'+g[3]+'" '+(g[3].startsWith("http")?'target="_blank" rel="noopener"':'')+'><div class="icon">'+g[2]+'</div><div><h3>'+g[0]+'</h3><p>'+g[1]+'</p></div></a>')});
 function reveal(){document.querySelectorAll(".reveal").forEach((e,i)=>setTimeout(()=>e.classList.add("in"),Math.min(i*45,500)))}
 window.addEventListener("load",()=>{setTimeout(()=>$("#boot").classList.add("hide"),400);reveal()});
