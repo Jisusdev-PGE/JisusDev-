@@ -3,245 +3,383 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#050505">
-<title>JisusDev — 1K CELEBRATION</title>
-<meta name="description" content="JisusDev — 1K Celebration. Don't Stop 'Til You Get Enough, remixes y juegos.">
+<meta name="theme-color" content="#0a0a0b">
+<title>JisusDev</title>
+<meta name="description" content="JisusDev — remixes, Roblox y juegos HTML5.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#050505;--card:#111113;--text:#f5f5f7;--muted:#a1a1a6;--gold:#ffd60a;--orange:#ff9f0a;--line:rgba(255,255,255,.1);--ease:cubic-bezier(.22,1,.36,1)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{text-decoration:none;color:inherit}button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}.wrap{width:min(1000px,calc(100% - 32px));margin:auto}
-body:before{content:"";position:fixed;inset:-40%;z-index:-2;background:radial-gradient(circle at 50% 15%,rgba(255,214,10,.13),transparent 23%),radial-gradient(circle at 10% 65%,rgba(255,159,10,.08),transparent 20%),radial-gradient(circle at 90% 80%,rgba(255,214,10,.06),transparent 22%);animation:aura 12s ease-in-out infinite alternate}
-@keyframes aura{to{transform:scale(1.1) rotate(2deg);opacity:.8}}
-.boot{position:fixed;inset:0;z-index:100;background:#050505;display:grid;place-items:center;overflow:hidden;transition:1s cubic-bezier(.22,1,.36,1)}.boot:before{content:"";position:absolute;width:35vw;height:35vw;min-width:260px;min-height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,214,10,.22),transparent 68%);filter:blur(10px);animation:bootAura 2.2s ease-in-out infinite alternate}.boot:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.14) 50%,transparent 65%);transform:translateX(-100%);animation:bootSweep 1.5s .35s ease-out forwards}.boot.hide{opacity:0;visibility:hidden;transform:scale(1.04)}.boot:not(.hide){animation:bootAutoHide .8s 2.8s forwards;pointer-events:none}@keyframes bootAutoHide{to{opacity:0;visibility:hidden;transform:scale(1.04)}}.boot-core{position:relative;z-index:1;text-align:center;animation:bootIn 1s cubic-bezier(.22,1,.36,1) both}.boot-logo{font-size:clamp(55px,12vw,105px);font-weight:800;letter-spacing:-.09em;background:linear-gradient(#fff,#fff1a3 35%,#ffd60a 70%,#ff9f0a);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 70px rgba(255,214,10,.25);animation:bootPulse 1.8s .25s ease-in-out both}.boot-sub{margin-top:12px;font-size:10px;letter-spacing:.3em;color:#888;text-transform:uppercase;animation:bootText 1s .55s ease both}@keyframes bootIn{from{opacity:0;transform:translateY(25px) scale(.82);filter:blur(12px)}to{opacity:1;transform:none;filter:none}}@keyframes bootPulse{0%{transform:scale(.85)}55%{transform:scale(1.04)}100%{transform:scale(1)}}@keyframes bootText{from{opacity:0;letter-spacing:.55em}to{opacity:1;letter-spacing:.3em}}@keyframes bootAura{to{transform:scale(1.3);opacity:.7}}@keyframes bootSweep{to{transform:translateX(100%)}}
-.nav{position:sticky;top:0;z-index:50;height:56px;background:rgba(5,5,5,.72);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:.3s}.nav.on{border-color:var(--line);background:rgba(5,5,5,.9)}
-.nav-in{height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}.logo{font-weight:700;font-size:15px}.links{display:flex;gap:4px;overflow:auto}.links a{font-size:12px;color:var(--muted);padding:7px 10px;border-radius:99px;white-space:nowrap}.links a:hover{background:rgba(255,255,255,.08);color:#fff}
-.hero{min-height:calc(100svh - 56px);display:grid;place-items:center;text-align:center;padding:70px 0 55px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:min(75vw,650px);height:min(75vw,650px);border-radius:50%;background:radial-gradient(circle,rgba(255,214,10,.1),transparent 67%);filter:blur(5px);pointer-events:none}
-.badge{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,214,10,.32);background:rgba(255,214,10,.07);padding:8px 13px;border-radius:99px;color:#ffe76b;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px var(--gold);animation:blink 1.2s infinite}@keyframes blink{50%{opacity:.3;transform:scale(1.7)}}
-.hero h1{position:relative;z-index:1;font-size:clamp(92px,20vw,210px);line-height:.78;letter-spacing:-.11em;margin:30px 0 22px;font-weight:800;background:linear-gradient(#fff 5%,#fff1a3 40%,#ffd60a 68%,#ff9f0a);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 90px rgba(255,190,0,.16)}.hero h1 small{display:block;font-size:clamp(13px,2.5vw,20px);letter-spacing:.18em;color:#c7c7cc;-webkit-text-fill-color:#c7c7cc;margin:28px 0 0}
-.lead{position:relative;z-index:1;color:var(--muted);max-width:590px;margin:0 auto 26px}.lead strong{color:#fff}.actions{position:relative;z-index:1;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 17px;border-radius:99px;font-size:14px;font-weight:600;transition:transform .35s var(--ease),box-shadow .35s,background .25s}.btn:hover{transform:translateY(-2px) scale(1.03)}.gold{color:#181200;background:linear-gradient(135deg,#fff5b8,#ffd60a 55%,#ff9f0a);box-shadow:0 10px 35px rgba(255,190,0,.18)}.dark{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
-.section{padding:55px 0}.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#777;margin-bottom:8px}.section h2{font-size:clamp(27px,5vw,42px);letter-spacing:-.045em;margin:0 0 24px}
-.milestone{position:relative;border-radius:30px;padding:1px;background:linear-gradient(110deg,rgba(255,214,10,.65),rgba(255,255,255,.1),rgba(255,159,10,.6));box-shadow:0 30px 100px rgba(255,180,0,.1)}.milestone-in{position:relative;overflow:hidden;border-radius:29px;padding:35px 28px;background:radial-gradient(circle at 15% 50%,rgba(255,214,10,.12),transparent 35%),#0c0c0d}.milestone-in:before{content:"1K";position:absolute;right:-20px;top:-70px;font-size:230px;font-weight:800;letter-spacing:-.12em;color:rgba(255,214,10,.035);pointer-events:none}.milestone-grid{position:relative;display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap}.number{font-size:clamp(60px,12vw,105px);font-weight:800;letter-spacing:-.09em;line-height:.9;background:linear-gradient(#fff,#ffd60a);-webkit-background-clip:text;background-clip:text;color:transparent}.milestone-copy b{display:block;font-size:18px}.milestone-copy span{display:block;color:#85858c;font-size:13px;margin-top:5px}.thanks{color:#777;font-size:12px;text-align:center;margin:16px 0 0}
-.live{margin-top:18px;padding:25px;border-radius:28px;background:linear-gradient(145deg,#17140a,#090909 60%,#120e06);border:1px solid rgba(255,214,10,.3);box-shadow:0 20px 70px rgba(255,180,0,.08)}.live-top{display:flex;justify-content:space-between;gap:12px;margin-bottom:15px}.live-tag{font-size:11px;font-weight:700;color:#ffe36b;background:rgba(255,214,10,.12);padding:6px 10px;border-radius:99px}.live-time{font-size:11px;color:#666}.live h3{margin:0;font-size:21px}.sub{color:#929298;font-size:13px;margin:4px 0 20px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:15px 6px}.val{font-size:clamp(22px,5vw,31px);font-weight:700;font-variant-numeric:tabular-nums}.label{font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.08em;margin-top:3px}.goal{display:flex;justify-content:space-between;color:#777;font-size:12px;margin:18px 0 6px}.goal b{color:#fff}.bar{height:9px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,#ff9f0a,#ffd60a,#fff1a3);border-radius:inherit;box-shadow:0 0 24px rgba(255,214,10,.55);transition:width 1s var(--ease)}.hit{color:#ffe36b}.live-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:24px;transition:.4s var(--ease)}.card:hover{transform:translateY(-6px);border-color:rgba(255,214,10,.25);box-shadow:0 20px 55px rgba(0,0,0,.35)}.cover{aspect-ratio:1;background:#111;position:relative}.cover img{width:100%;height:100%;object-fit:cover}.play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.2);opacity:0;transition:.3s}.card:hover .play{opacity:1}.play i{display:grid;place-items:center;width:55px;height:55px;border-radius:50%;background:#fff;color:#000;font-style:normal}.body{padding:16px}.body h3{font-size:15px;margin:0}.body p{font-size:12px;color:#777;margin:5px 0 13px}
-.games{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.game{display:flex;align-items:center;gap:13px;padding:16px;background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:20px;transition:.35s}.game:hover{transform:translateY(-3px);border-color:rgba(10,132,255,.3)}.icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:#171d2b;font-size:22px}.game h3{font-size:14px;margin:0}.game p{font-size:11px;color:#666;margin:3px 0 8px}
-.about{padding-bottom:80px}.about-card{padding:25px;border:1px solid rgba(255,255,255,.07);border-radius:25px;background:var(--card);color:#999;font-size:14px}.about-card b{color:#fff}.footer{text-align:center;color:#555;border-top:1px solid rgba(255,255,255,.07);padding:25px;font-size:11px}
-.reveal{opacity:0;transform:translateY(20px);transition:.7s var(--ease)}.reveal.in{opacity:1;transform:none}
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.wrap{width:min(100% - 22px,1000px)}.links a{padding:7px}.hero{padding:50px 0 35px}.hero h1{font-size:clamp(82px,24vw,135px)}.milestone-in{padding:28px 20px}.milestone-grid{justify-content:center;text-align:center}.number{font-size:72px}.live{padding:18px}.grid,.games{grid-template-columns:1fr}.section{padding:40px 0}.stats{gap:6px}.stat{padding:13px 3px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+:root{
+  --bg:#0a0a0b;--surface:#141416;--elevated:#1c1c1f;
+  --text:#f4f4f5;--muted:#a1a1aa;--faint:#71717a;
+  --gold:#f5c542;--gold-dim:rgba(245,197,66,.15);
+  --line:rgba(255,255,255,.08);--radius:22px;
+  --ease:cubic-bezier(.22,1,.36,1);--font:Inter,-apple-system,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:16px/1.5 var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(960px,calc(100% - 2rem));margin-inline:auto}
 
-/* DSTIGE: golden aura */
-#mixgrid .dstige-aura,#mixgrid article:first-child{position:relative;isolation:isolate;overflow:visible!important;border:1px solid rgba(255,207,92,.85)!important;box-shadow:0 0 18px 3px rgba(255,190,55,.35),0 0 48px 8px rgba(255,176,35,.2)!important;animation:dstigeGlow 3s ease-in-out infinite alternate}
-#mixgrid .dstige-aura:before,#mixgrid article:first-child:before{content:"";position:absolute;inset:-2px;border-radius:inherit;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(255,202,74,.34),transparent 65%);filter:blur(13px);opacity:.8}
-@keyframes dstigeGlow{from{box-shadow:0 0 14px rgba(255,190,55,.18),0 0 32px rgba(255,176,35,.10)}to{box-shadow:0 0 25px rgba(255,205,80,.38),0 0 62px rgba(255,176,35,.23)}}
-@media(prefers-reduced-motion:reduce){#mixgrid .dstige-aura,#mixgrid article:first-child{animation:none}}
+.glow{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% -10%,rgba(245,197,66,.12),transparent 55%),
+    radial-gradient(ellipse 40% 30% at 90% 60%,rgba(245,197,66,.05),transparent 50%)}
 
-.val.tick{animation:tickPop .4s cubic-bezier(.34,1.4,.64,1)}
-@keyframes tickPop{0%{transform:scale(1)}40%{transform:scale(1.12);color:#ffd60a}100%{transform:scale(1)}}
-.live-time.live-ok{color:#7dffb0}.live-time.live-err{color:#ff8b7e}
+.nav{position:sticky;top:0;z-index:40;height:56px;
+  background:rgba(10,10,11,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav-in{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{font-weight:700;font-size:15px;letter-spacing:-.02em}
+.logo span{color:var(--gold)}
+.links{display:flex;gap:.15rem;overflow-x:auto}
+.links a{font-size:13px;font-weight:500;color:var(--muted);padding:.45rem .75rem;border-radius:999px;white-space:nowrap;transition:.2s}
+.links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
 
-/* DSTIGE 1K PREMIERE */
-.premiere{margin-top:18px;padding:25px;border-radius:28px;background:radial-gradient(circle at 20% 20%,rgba(255,214,10,.16),transparent 42%),linear-gradient(145deg,#17140a,#090909 65%,#120e06);border:1px solid rgba(255,214,10,.42);box-shadow:0 20px 80px rgba(255,180,0,.12);position:relative;overflow:hidden}
-.premiere:before{content:"1K";position:absolute;right:-15px;top:-70px;font-size:210px;font-weight:800;letter-spacing:-.12em;color:rgba(255,214,10,.035);pointer-events:none}
-.premiere-head{position:relative;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
-.premiere-tag{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ffe36b;background:rgba(255,214,10,.12);padding:7px 11px;border-radius:99px}
-.premiere h3{position:relative;margin:16px 0 3px;font-size:24px}
-.premiere-sub{position:relative;color:#929298;font-size:13px;margin:0 0 20px}
-.countdown{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.countbox{text-align:center;padding:14px 6px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:18px}
-.countnum{font-size:clamp(25px,6vw,38px);font-weight:800;font-variant-numeric:tabular-nums;color:#fff}
-.countlabel{font-size:9px;color:#666;text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
-.premiere-note{position:relative;text-align:center;color:#777;font-size:12px;margin:15px 0 0}
-.premiere-note strong{color:#ffe36b}
-.premiere.yt-ready{border-color:rgba(125,255,176,.45)}
-@media(max-width:600px){.countdown{gap:5px}.countbox{padding:12px 3px}.countnum{font-size:25px}}
+.hero{position:relative;z-index:1;padding:4.5rem 0 3rem;text-align:center}
+@media(min-width:700px){.hero{padding:6rem 0 4rem}}
+.chip{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem .9rem;font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--gold-dim);
+  border:1px solid rgba(245,197,66,.28);border-radius:999px;margin-bottom:1.5rem}
+.chip i{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:pulse 1.6s ease infinite}
+@keyframes pulse{50%{opacity:.35;transform:scale(1.4)}}
+.hero h1{font-size:clamp(2.4rem,8vw,4.2rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:1rem}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:var(--muted);max-width:28rem;margin:0 auto 1.75rem;font-size:clamp(15px,2.2vw,17px);line-height:1.55}
+.cta{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.2rem;
+  font-size:14px;font-weight:600;border-radius:999px;transition:transform .3s var(--ease),box-shadow .3s,background .2s}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:linear-gradient(135deg,#ffe9a0,#f5c542 50%,#e8a817);color:#1a1400;
+  box-shadow:0 8px 28px rgba(245,197,66,.22)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(245,197,66,.32)}
+.btn-ghost{background:rgba(255,255,255,.07);color:var(--text);border:1px solid var(--line)}
+.btn-ghost:hover{background:rgba(255,255,255,.11);transform:translateY(-2px)}
+.btn-sm{min-height:36px;padding:0 .95rem;font-size:13px}
 
+.section{position:relative;z-index:1;padding:2.5rem 0}
+@media(min-width:700px){.section{padding:3.25rem 0}}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:.5rem}
+.section h2{font-size:clamp(1.5rem,4vw,2rem);font-weight:700;letter-spacing:-.03em;margin-bottom:1.35rem}
+
+.progress-card{
+  border-radius:var(--radius);padding:1.75rem 1.4rem 1.6rem;
+  background:linear-gradient(160deg,#1a170e 0%,var(--surface) 45%,#12110e 100%);
+  border:1px solid rgba(245,197,66,.28);
+  box-shadow:0 20px 60px rgba(0,0,0,.35),0 0 40px rgba(245,197,66,.06);
+}
+@media(min-width:600px){.progress-card{padding:2rem 1.85rem 1.85rem}}
+.progress-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.35rem}
+.progress-top h3{font-size:1.15rem;font-weight:700;letter-spacing:-.02em}
+.progress-top p{font-size:13px;color:var(--muted);margin-top:.25rem}
+.pct-big{font-size:clamp(2.5rem,8vw,3.5rem);font-weight:800;letter-spacing:-.04em;line-height:1;
+  background:linear-gradient(180deg,#fff 20%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.pct-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);text-align:right;margin-top:.2rem}
+.bar-track{height:14px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden;position:relative}
+.bar-fill{height:100%;width:0%;border-radius:inherit;
+  background:linear-gradient(90deg,#e8a817,var(--gold),#ffe9a0);
+  box-shadow:0 0 20px rgba(245,197,66,.45);
+  transition:width 1.2s var(--ease);position:relative}
+.bar-fill::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+  animation:shimmer 2.2s ease-in-out infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.bar-meta{display:flex;justify-content:space-between;gap:.75rem;margin-top:.65rem;font-size:12px;color:var(--faint)}
+.bar-meta strong{color:var(--text);font-weight:600}
+.progress-actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.35rem;justify-content:center}
+
+.mix-grid{display:grid;gap:1.1rem}
+@media(min-width:600px){.mix-grid{grid-template-columns:repeat(2,1fr);gap:1.25rem}}
+@media(min-width:900px){.mix-grid{grid-template-columns:repeat(3,1fr)}}
+.mix{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  transition:transform .4s var(--ease),border-color .3s,box-shadow .4s}
+.mix:hover{transform:translateY(-5px);border-color:rgba(245,197,66,.3);box-shadow:0 18px 48px rgba(0,0,0,.4)}
+.mix.featured{border-color:rgba(245,197,66,.5);box-shadow:0 0 0 1px rgba(245,197,66,.15),0 12px 40px rgba(245,197,66,.1)}
+.mix-cover{position:relative;aspect-ratio:1;background:#111}
+.mix-cover img{width:100%;height:100%;object-fit:cover}
+.mix-play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.25);opacity:0;transition:.3s}
+.mix:hover .mix-play{opacity:1}
+.mix-play span{width:52px;height:52px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);font-size:16px;padding-left:2px}
+@media(hover:none){.mix-play{opacity:1;background:rgba(0,0,0,.15)}}
+.mix-body{padding:1.05rem 1.1rem 1.2rem}
+.mix-body h3{font-size:15px;font-weight:600;letter-spacing:-.015em;line-height:1.3}
+.mix-body p{font-size:12px;color:var(--faint);margin:.3rem 0 .85rem}
+.mix-acts{display:flex;flex-wrap:wrap;gap:.45rem}
+
+.game-list{display:grid;gap:.85rem}
+@media(min-width:640px){.game-list{grid-template-columns:repeat(2,1fr);gap:1rem}}
+.game{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;background:var(--surface);
+  border:1px solid var(--line);border-radius:18px;transition:transform .35s var(--ease),border-color .25s}
+.game:hover{transform:translateY(-3px);border-color:rgba(245,197,66,.35)}
+.game-ico{flex-shrink:0;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+  font-size:22px;background:linear-gradient(145deg,#1e1e24,#121218)}
+.game h3{font-size:14px;font-weight:600}
+.game p{font-size:11px;color:var(--faint);margin-top:.15rem}
+
+.about-card{padding:1.5rem 1.35rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);color:var(--muted);font-size:14px;line-height:1.6}
+.about-card strong{color:var(--text)}
+.footer{position:relative;z-index:1;text-align:center;padding:2rem 0 2.5rem;font-size:12px;color:var(--faint);border-top:1px solid var(--line);margin-top:1rem}
+
+.modal{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .28s ease}
+@media(min-width:700px){.modal{align-items:center;padding:1.25rem}}
+.modal.open{opacity:1;pointer-events:auto}
+.scrim{position:absolute;inset:0;background:rgba(0,0,0,.6)}
+.sheet{position:relative;z-index:1;width:min(640px,100%);max-height:92dvh;overflow:auto;
+  background:var(--elevated);border-radius:22px 22px 0 0;
+  transform:translate3d(0,100%,0);transition:transform .4s var(--ease);
+  box-shadow:0 -12px 40px rgba(0,0,0,.5)}
+.modal.open .sheet{transform:translate3d(0,0,0)}
+@media(min-width:700px){
+  .sheet{border-radius:20px;transform:translate3d(0,16px,0) scale(.97);opacity:0;
+    transition:transform .4s var(--ease),opacity .28s ease}
+  .modal.open .sheet{transform:none;opacity:1}
+}
+.sheet-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:1.15rem 1.25rem .85rem}
+.sheet-head h3{font-size:17px;font-weight:600}
+.sheet-head p{font-size:13px;color:var(--muted);margin-top:.2rem}
+.close{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;flex-shrink:0;font-size:16px;color:var(--muted)}
+.close:hover{background:rgba(255,255,255,.14);color:var(--text)}
+.media video{width:100%;display:block;max-height:55dvh;background:#000}
+.media video.hide{display:none}
+.audio-box{display:none;flex-direction:column;align-items:center;gap:1.25rem;padding:1.5rem}
+.audio-box.on{display:flex}
+.audio-box img{width:min(200px,55%);aspect-ratio:1;object-fit:cover;border-radius:16px;box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.audio-box audio{width:min(100%,340px)}
+
+.reveal{opacity:0;transform:translate3d(0,18px,0);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .bar-fill::after{display:none}
+}
 </style>
 </head>
 <body>
-<div class="boot" id="boot"><div class="boot-core"><div class="boot-logo">JisusDev</div><div class="boot-sub">1K SPECIAL EDITION · 2026</div></div></div>
-<header class="nav" id="nav"><div class="wrap nav-in"><a class="logo" href="#inicio">JisusDev</a><nav class="links"><a href="#live">1K</a><a href="#mixes">Mixes</a><a href="#juegos">Juegos</a><a href="#about">Info</a></nav></div></header>
+<div class="glow" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#inicio">Jisus<span>Dev</span></a>
+    <nav class="links" aria-label="Principal">
+      <a href="#progreso">Progreso</a>
+      <a href="#mixes">Mixes</a>
+      <a href="#juegos">Juegos</a>
+      <a href="#about">Info</a>
+    </nav>
+  </div>
+</header>
+
 <main>
-<section class="hero" id="inicio"><div class="wrap">
-<div class="badge reveal"><i class="dot"></i> 1K SPECIAL EDITION</div>
-<h1 class="reveal">1K<small>DON'T STOP 'TIL YOU GET ENOUGH</small></h1>
-<p class="lead reveal">El milestone ya ocurrió. <strong>1.000 personas llegaron al remix.</strong> Esta página queda como la cápsula de ese momento.</p>
-<div class="actions reveal"><a class="btn gold" href="#live">✦ VER EL MOMENTO</a><a class="btn dark" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">Revivir en YouTube</a></div>
-</div></section>
-<section class="section" id="live"><div class="wrap">
-<div class="eyebrow reveal">MILESTONE · 2026</div><h2 class="reveal">El 1K.</h2>
-<div class="milestone reveal"><div class="milestone-in"><div class="milestone-grid"><div class="number">1,000</div><div class="milestone-copy"><b>VIEWS ALCANZADAS ✦</b><span>Don't Stop 'Til You Get Enough · This Is It in the Mix</span></div></div></div></div>
-<p class="thanks reveal">Meta desbloqueada. Gracias por estar en esta etapa. Ahora empieza la siguiente. 🔥</p>
-<div class="premiere reveal" id="dstige-premiere">
-  <div class="premiere-head">
-    <span class="premiere-tag" id="premiereTag">● ESTRENO EN JISUSDEV-</span>
-    <span class="live-time" id="premiereStatus">Programado</span>
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="chip reveal"><i></i> Camino al siguiente nivel</div>
+    <h1 class="reveal d1">This Is It<br><em>in the Mix</em></h1>
+    <p class="reveal d2">Remixes fan-made, juegos en Roblox y proyectos HTML. Hecho por amor al arte.</p>
+    <div class="cta reveal d3">
+      <a class="btn btn-gold" href="#progreso">Ver progreso</a>
+      <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">YouTube</a>
+    </div>
   </div>
-  <h3>DSTIGE 1K VERSION</h3>
-  <p class="premiere-sub">World Premiere · primero en JisusDev-</p>
-  <div class="countdown" id="webCountdown">
-    <div class="countbox"><div class="countnum" id="cdD">00</div><div class="countlabel">Días</div></div>
-    <div class="countbox"><div class="countnum" id="cdH">00</div><div class="countlabel">Horas</div></div>
-    <div class="countbox"><div class="countnum" id="cdM">00</div><div class="countlabel">Min</div></div>
-    <div class="countbox"><div class="countnum" id="cdS">00</div><div class="countlabel">Seg</div></div>
+</section>
+
+<section class="section" id="progreso">
+  <div class="wrap">
+    <div class="eyebrow reveal">META</div>
+    <h2 class="reveal">Progreso</h2>
+    <div class="progress-card reveal">
+      <div class="progress-top">
+        <div>
+          <h3>Don't Stop 'Til You Get Enough</h3>
+          <p>Hacia la siguiente meta · This Is It in the Mix</p>
+        </div>
+        <div>
+          <div class="pct-big" id="pct-num">0%</div>
+          <div class="pct-label">completado</div>
+        </div>
+      </div>
+      <div class="bar-track" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso">
+        <div class="bar-fill" id="bar-fill"></div>
+      </div>
+      <div class="bar-meta">
+        <span>Inicio</span>
+        <strong id="bar-status">50% del camino</strong>
+        <span>Meta</span>
+      </div>
+      <div class="progress-actions">
+        <a class="btn btn-gold btn-sm" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">Ver en YouTube</a>
+        <a class="btn btn-ghost btn-sm" href="https://www.youtube.com/@JSDV-x26?sub_confirmation=1" target="_blank" rel="noopener">Suscribirse</a>
+        <button type="button" class="btn btn-ghost btn-sm" id="play-feat">Reproducir aquí</button>
+      </div>
+    </div>
   </div>
-  <p class="premiere-note" id="premiereNote">La web se estrena <strong>30 horas antes que YouTube</strong>.</p>
-  <div class="live-actions">
-    <a class="btn dark" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">YouTube</a>
+</section>
+
+<section class="section" id="mixes">
+  <div class="wrap">
+    <div class="eyebrow reveal">AUDIO</div>
+    <h2 class="reveal">Mixes</h2>
+    <div class="mix-grid" id="mix-grid"></div>
+  </div>
+</section>
+
+<section class="section" id="juegos">
+  <div class="wrap">
+    <div class="eyebrow reveal">PANCHO GAMES STUDIOS</div>
+    <h2 class="reveal">Juegos</h2>
+    <div class="game-list" id="game-list"></div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="about-card reveal">
+      <strong>JisusDev</strong><br>
+      Remixes inspirados en Michael Jackson, juegos HTML5 y experiencias en Roblox (Pancho Games Studios). Fan-made, no oficial, no monetizado.
+      <br><br>© 2026 JisusDev
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer"><div class="wrap">Fan-made · No oficial</div></footer>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <div class="sheet" role="dialog" aria-modal="true">
+    <div class="sheet-head">
+      <div><h3 id="m-title"></h3><p id="m-desc"></p></div>
+      <button type="button" class="close" data-close aria-label="Cerrar">×</button>
+    </div>
+    <div class="media">
+      <video id="m-video" controls playsinline preload="none"></video>
+      <div class="audio-box" id="m-audio">
+        <img id="m-art" src="" alt="" decoding="async">
+        <audio id="m-audio-el" controls preload="none"></audio>
+      </div>
+    </div>
   </div>
 </div>
-<div class="live reveal"><div class="live-top"><span class="live-tag">● CONTADOR</span><span class="live-time" id="updated">Actualizando…</span></div><h3>Don't Stop 'Til You Get Enough</h3><p class="sub">Datos del video y del canal</p><div class="stats"><div class="stat"><div class="val" id="views">—</div><div class="label">Views</div></div><div class="stat"><div class="val" id="likes">—</div><div class="label">Likes</div></div><div class="stat"><div class="val" id="subs">—</div><div class="label">Subs</div></div></div><div class="goal"><span>Meta 1K</span><b id="goal">Meta alcanzada ✦</b></div><div class="bar"><div class="fill" id="fill"></div></div><div class="live-actions"><a class="btn gold" href="https://www.youtube.com/watch?v=u54H4FnSOtI" target="_blank" rel="noopener">YouTube</a><a class="btn dark" href="https://www.youtube.com/@JSDV-x26?sub_confirmation=1" target="_blank" rel="noopener">Suscribirse</a></div></div>
-</div></section>
-<section class="section" id="mixes"><div class="wrap"><div class="eyebrow reveal">AUDIO ARCHIVE</div><h2 class="reveal">Mixes</h2><div class="grid" id="mixgrid"></div></div></section>
-<section class="section" id="juegos"><div class="wrap"><div class="eyebrow reveal">PANCHO GAMES STUDIOS</div><h2 class="reveal">Juegos</h2><div class="games" id="games"></div></div></section>
-<section class="about"><div class="wrap"><div class="about-card reveal" id="about"><b>JisusDev</b><br>Remixes fan-made inspirados en Michael Jackson, proyectos HTML5 y juegos de Roblox. Hecho por amor al arte. ✦<br><br>© 2026 JisusDev · No oficial</div></div></section>
-</main><footer class="footer">1K SPECIAL EDITION · JisusDev</footer>
+
 <script>
-const mixes=[
-{title:"Don't Stop 'Til You Get Enough",desc:"Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe",video:"Don't Stop 'til I Get Enough.mp4",yt:"https://www.youtube.com/watch?v=u54H4FnSOtI",bandlab:"https://www.bandlab.com/post/11c277cf85f34aeca59384d719fc85ef"},
-{title:"Chicago: The Mix",desc:"Xscape: This Is It in the Mix · Remix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",yt:"https://www.youtube.com/watch?v=VTSwj-y_zt0",bandlab:"https://www.bandlab.com/post/b5ca7c5be83f4e95bb1b2c56e3d1028f"},
-{title:"Thriller Night",desc:"Xscape: This Is It in the Mix · Demo",cover:"Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe",audio:"Thriller_nightwav.wav"}];
-const games=[
-["SURGE","HTML5 · Endless flyer","⚡","surge.html"],["Among Us Mini","HTML5 · Fan game","🔴","amongus.html"],
-["Escapa de el tsunami por autos","Obby · Tsunami","🚗","https://www.roblox.com/es/games/70603456155056/Escapa-de-el-tsunami-por-autos"],
-["Escape del tsunami por joyas","Obby · Tsunami","💎","https://www.roblox.com/es/games/117666384645004/Escape-del-tsunami-por-joyas"],
-["Blox War","Acción · Combate","⚔️","https://www.roblox.com/es/games/121209803244913/Blox-War"],
-["Pancho Games Studios","Comunidad","🎮","https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios"]];
-const $=s=>document.querySelector(s), fmt=n=>Number(n).toLocaleString("es-PE");
-mixes.forEach((m,i)=>{$("#mixgrid").insertAdjacentHTML("beforeend",'<article class="card reveal'+(i===0?' dstige-aura':'')+'"><div class="cover"><img src="'+m.cover+'" loading="lazy" alt=""><button class="play" data-mix="'+i+'"><i>▶</i></button></div><div class="body"><h3>'+m.title+'</h3><p>'+m.desc+'</p><div style="display:flex;gap:7px;flex-wrap:wrap"><button class="btn dark" data-mix="'+i+'">Reproducir</button>'+(m.yt?'<a class="btn dark" href="'+m.yt+'" target="_blank" rel="noopener">YouTube</a>':'')+(m.bandlab?'<a class="btn dark" href="'+m.bandlab+'" target="_blank" rel="noopener">BandLab</a>':'')+'</div></div></article>')});
-games.forEach(g=>{$("#games").insertAdjacentHTML("beforeend",'<a class="game reveal" href="'+g[3]+'" '+(g[3].startsWith("http")?'target="_blank" rel="noopener"':'')+'><div class="icon">'+g[2]+'</div><div><h3>'+g[0]+'</h3><p>'+g[1]+'</p></div></a>')});
-function reveal(){document.querySelectorAll(".reveal").forEach((e,i)=>setTimeout(()=>e.classList.add("in"),Math.min(i*45,500)))}
-window.addEventListener("load",()=>{setTimeout(()=>$("#boot").classList.add("hide"),2600);reveal()});setTimeout(()=>{const b=$("#boot");if(b)b.classList.add("hide")},3600);
-window.addEventListener("scroll",()=>$("#nav").classList.toggle("on",scrollY>8),{passive:true});
-const videoId="u54H4FnSOtI",channel="UCG8b_w-Q-02m1j4iEaPK6cg",GOAL=1000;
-const CACHE_KEY="jisus_yt_live";
-let last={views:null,likes:null,subs:null};
-try{const c=JSON.parse(localStorage.getItem(CACHE_KEY)||"{}");if(c.views)last=c}catch(e){}
-function setVal(id,n){
-  const el=$(id);if(!el||n==null||isNaN(n))return;
-  const next=fmt(n);
-  if(el.textContent!==next){
-    el.textContent=next;
-    el.classList.remove("tick");void el.offsetWidth;el.classList.add("tick");
-  }
-}
-function paint(views,likes,subs,ok){
-  if(typeof views==="number"){setVal("#views",views);last.views=views}
-  if(typeof likes==="number"){setVal("#likes",likes);last.likes=likes}
-  if(typeof subs==="number"){setVal("#subs",subs);last.subs=subs}
-  const v=last.views??GOAL;
-  const fill=$("#fill");if(fill)fill.style.width=Math.min(100,v/10)+"%";
-  const goal=$("#goal");if(goal)goal.textContent=v>=GOAL?"Meta alcanzada ✦":"Faltan "+fmt(GOAL-v);
-  const upd=$("#updated");
-  if(upd){
-    const t=new Date().toLocaleTimeString("es-PE",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
-    upd.textContent=(ok?"● En vivo · ":"○ ")+"Actualizado "+t;
-    upd.className="live-time "+(ok?"live-ok":"live-err");
-  }
-  try{localStorage.setItem(CACHE_KEY,JSON.stringify(last))}catch(e){}
-}
-paint(last.views??GOAL,last.likes??10,last.subs??11,false);
+const PCT = 50;
 
-async function proxy(u){
-  const proxies=[
-    u=>"https://api.allorigins.win/raw?url="+encodeURIComponent(u),
-    u=>"https://corsproxy.io/?"+encodeURIComponent(u),
-    u=>"https://api.codetabs.com/v1/proxy?quest="+encodeURIComponent(u)
-  ];
-  for(const p of proxies){
-    try{
-      const r=await fetch(p(u),{cache:"no-store",signal:AbortSignal.timeout(12000)});
-      if(!r.ok)continue;
-      const t=await r.text();
-      if(t&&t.length>400)return t;
-    }catch(e){}
-  }
-  return"";
-}
-function parseVideo(t){
-  let views=null,likes=null;
-  let m=t.match(/"viewCount":"(\d+)"/);if(m)views=+m[1];
-  if(views==null){m=t.match(/"viewCount":\s*\{"simpleText":"([\d.,]+)/);if(m)views=+m[1].replace(/[.,]/g,"")}
-  if(views==null){m=t.match(/([\d.,]+)\s*views/i);if(m)views=+m[1].replace(/[.,]/g,"")}
-  m=t.match(/"likeCount":"(\d+)"/);if(m)likes=+m[1];
-  if(likes==null){m=t.match(/"label":"([\d.,KkMm]+)\s*likes?"/);if(m){
-    let s=m[1].replace(/,/g,"");
-    if(/k/i.test(s))likes=Math.round(parseFloat(s)*1000);
-    else if(/m/i.test(s))likes=Math.round(parseFloat(s)*1e6);
-    else likes=+s.replace(/[^\d]/g,"")||null;
-  }}
-  return{views,likes};
-}
-function parseChannel(t){
-  let subs=null;
-  let m=t.match(/"subscriberCount":"(\d+)"/);if(m)subs=+m[1];
-  if(subs==null){m=t.match(/"subscriberCountText":\{"accessibility":\{"accessibilityData":\{"label":"([\d.,]+)/);if(m)subs=+m[1].replace(/[.,]/g,"")}
-  if(subs==null){m=t.match(/([\d.,]+)\s*subscribers?/i)||t.match(/([\d.,]+)\s*suscriptores?/i);if(m)subs=+m[1].replace(/[.,]/g,"")}
-  return subs;
-}
-let fetching=false;
-async function stats(){
-  if(fetching)return;
-  fetching=true;
-  try{
-    const [vHtml,cHtml]=await Promise.all([
-      proxy("https://www.youtube.com/watch?v="+videoId),
-      proxy("https://www.youtube.com/channel/"+channel)
-    ]);
-    const a=vHtml?parseVideo(vHtml):{};
-    const subs=cHtml?parseChannel(cHtml):null;
-    const ok=a.views!=null||a.likes!=null||subs!=null;
-    paint(
-      a.views??last.views??GOAL,
-      a.likes??last.likes??10,
-      subs??last.subs??11,
-      ok
-    );
-  }catch(e){
-    paint(last.views??GOAL,last.likes??10,last.subs??11,false);
-  }
-  fetching=false;
-}
-stats();
-setInterval(stats,10000);
-document.addEventListener("visibilitychange",()=>{if(!document.hidden)stats()});
+const mixes = [
+  {title:"Don't Stop 'Til You Get Enough", desc:"Xscape: This Is It in the Mix", cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe", video:"Don't Stop 'til I Get Enough.mp4", yt:"https://www.youtube.com/watch?v=u54H4FnSOtI", featured:true},
+  {title:"Chicago: The Mix", desc:"Xscape: This Is It in the Mix · Remix", cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe", video:"Chicago The mix.mp4", yt:"https://www.youtube.com/watch?v=VTSwj-y_zt0"},
+  {title:"Thriller Night", desc:"Xscape: This Is It in the Mix · Demo", cover:"Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe", audio:"Thriller_nightwav.wav"}
+];
 
+const games = [
+  {name:"SURGE", tag:"HTML5 · Endless flyer", icon:"⚡", url:"surge.html", local:true},
+  {name:"Among Us Mini", tag:"HTML5 · Fan game", icon:"🔴", url:"amongus.html", local:true},
+  {name:"Escapa de el tsunami por autos", tag:"Obby · Tsunami · Roblox", icon:"🚗", url:"https://www.roblox.com/es/games/70603456155056/Escapa-de-el-tsunami-por-autos"},
+  {name:"Escape del tsunami por joyas", tag:"Obby · Tsunami · Roblox", icon:"💎", url:"https://www.roblox.com/es/games/117666384645004/Escape-del-tsunami-por-joyas"},
+  {name:"Blox War", tag:"Acción · Combate · Roblox", icon:"⚔️", url:"https://www.roblox.com/es/games/121209803244913/Blox-War"},
+  {name:"Pancho Games Studios", tag:"Comunidad", icon:"🎮", url:"https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios"}
+];
 
-/* DSTIGE 1K premiere schedule: Lima/Peru time (UTC-5) */
-const WEB_PREMIERE=new Date("2026-10-03T13:29:00-05:00");
-const YT_PREMIERE=new Date("2026-10-04T23:29:00-05:00");
-function pad(n){return String(Math.max(0,n)).padStart(2,"0")}
-function updatePremiere(){
-  const now=new Date(), tag=$("#premiereTag"), status=$("#premiereStatus"), note=$("#premiereNote"), box=$("#webCountdown");
-  let target,label;
-  if(now<WEB_PREMIERE){
-    target=WEB_PREMIERE; label="● ESTRENO EN JISUSDEV-";
-    tag.className="premiere-tag"; status.textContent="Programado";
-    note.innerHTML='La web se estrena <strong>30 horas antes que YouTube</strong>.';
-  }else if(now<YT_PREMIERE){
-    target=YT_PREMIERE; label="● YA DISPONIBLE EN JISUSDEV-";
-    tag.className="premiere-tag"; status.textContent="EXCLUSIVO WEB";
-    note.innerHTML='DSTIGE 1K VERSION ya está disponible aquí. <strong>YouTube llega en:</strong>';
-  }else{
-    target=null; label="● DISPONIBLE";
-    tag.className="premiere-tag"; status.textContent="WEB + YOUTUBE";
-    note.innerHTML='<strong>DSTIGE 1K VERSION</strong> ya está disponible en ambas plataformas.';
-  }
-  tag.textContent=label;
-  if(!target){
-    ["cdD","cdH","cdM","cdS"].forEach(id=>{const el=$(id);if(el)el.textContent="00"});
-    if(box)box.style.opacity=".55";
-    const p=$("#dstige-premiere");if(p)p.classList.add("yt-ready");
-    return;
-  }
-  const diff=Math.max(0,target-now);
-  const total=Math.floor(diff/1000);
-  const d=Math.floor(total/86400), h=Math.floor(total%86400/3600), m=Math.floor(total%3600/60), s=total%60;
-  $("#cdD").textContent=pad(d);$("#cdH").textContent=pad(h);$("#cdM").textContent=pad(m);$("#cdS").textContent=pad(s);
-  if(box)box.style.opacity="1";
+function enc(n){ return encodeURI(n) }
+
+function initBar(){
+  const fill = document.getElementById("bar-fill");
+  const num = document.getElementById("pct-num");
+  requestAnimationFrame(() => {
+    fill.style.width = PCT + "%";
+    num.textContent = PCT + "%";
+  });
 }
-updatePremiere();setInterval(updatePremiere,1000);
 
-document.addEventListener("click",e=>{let b=e.target.closest("[data-mix]");if(!b)return;let m=mixes[+b.dataset.mix];if(m.yt&&b.tagName==="A")return;let modal=document.createElement("dialog");modal.style.cssText="border:0;border-radius:25px;padding:0;background:#111;color:white;max-width:700px;width:92%;box-shadow:0 30px 100px #000";modal.innerHTML='<button style="position:absolute;right:12px;top:10px;z-index:2;background:#fff;color:#000;border-radius:50%;width:32px;height:32px" id="x">×</button><div style="padding:22px"><b>'+m.title+'</b><p style="color:#888;font-size:13px">'+m.desc+'</p></div>'+(m.video?'<video controls autoplay playsinline style="width:100%;display:block;background:#000" src="'+encodeURI(m.video)+'"></video>':'<audio controls autoplay style="width:calc(100% - 32px);margin:0 16px 20px" src="'+encodeURI(m.audio)+'"></audio>');document.body.appendChild(modal);modal.showModal();$("#x").onclick=()=>{modal.close();modal.remove()};modal.addEventListener("close",()=>modal.remove(),{once:true})});
-</script></body></html>
+const grid = document.getElementById("mix-grid");
+mixes.forEach((m, i) => {
+  const art = document.createElement("article");
+  art.className = "mix reveal" + (m.featured ? " featured" : "");
+  art.innerHTML =
+    '<div class="mix-cover"><img src="'+m.cover+'" alt="" loading="lazy" decoding="async">'+
+    '<button type="button" class="mix-play" data-play="'+i+'" aria-label="Play"><span>▶</span></button></div>'+
+    '<div class="mix-body"><h3>'+m.title+'</h3><p>'+m.desc+'</p><div class="mix-acts">'+
+    '<button type="button" class="btn btn-gold btn-sm" data-play="'+i+'">Reproducir</button>'+
+    (m.yt ? '<a class="btn btn-ghost btn-sm" href="'+m.yt+'" target="_blank" rel="noopener">YouTube</a>' : '')+
+    '</div></div>';
+  grid.appendChild(art);
+});
+
+const glist = document.getElementById("game-list");
+games.forEach(g => {
+  const a = document.createElement("a");
+  a.className = "game reveal";
+  a.href = g.url;
+  if (!g.local) { a.target = "_blank"; a.rel = "noopener"; }
+  a.innerHTML = '<div class="game-ico" aria-hidden="true">'+g.icon+'</div><div><h3>'+g.name+'</h3><p>'+g.tag+'</p></div>';
+  glist.appendChild(a);
+});
+
+function openPlayer(mix){
+  if (!mix || !(mix.video || mix.audio)) return;
+  const modal = document.getElementById("modal");
+  const video = document.getElementById("m-video");
+  const audio = document.getElementById("m-audio-el");
+  const panel = document.getElementById("m-audio");
+  document.getElementById("m-title").textContent = mix.title;
+  document.getElementById("m-desc").textContent = mix.desc;
+  video.pause(); audio.pause();
+  video.removeAttribute("src"); audio.removeAttribute("src");
+  video.load(); audio.load();
+  if (mix.audio) {
+    video.classList.add("hide"); panel.classList.add("on");
+    document.getElementById("m-art").src = mix.cover || "";
+    audio.src = enc(mix.audio);
+    modal.classList.add("open"); modal.setAttribute("aria-hidden","false");
+    audio.play().catch(()=>{});
+  } else {
+    video.classList.remove("hide"); panel.classList.remove("on");
+    video.poster = mix.cover || "";
+    video.src = enc(mix.video);
+    modal.classList.add("open"); modal.setAttribute("aria-hidden","false");
+    video.play().catch(()=>{});
+  }
+}
+function closePlayer(){
+  const modal = document.getElementById("modal");
+  document.getElementById("m-video").pause();
+  document.getElementById("m-audio-el").pause();
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden","true");
+}
+
+document.getElementById("play-feat").addEventListener("click", () => openPlayer(mixes[0]));
+document.addEventListener("click", e => {
+  const p = e.target.closest("[data-play]");
+  if (p) { openPlayer(mixes[+p.getAttribute("data-play")]); return; }
+  if (e.target.closest("[data-close]")) closePlayer();
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") closePlayer(); });
+
+const nav = document.getElementById("nav");
+window.addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 8), {passive:true});
+
+function observe(){
+  const els = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) { els.forEach(el => el.classList.add("in")); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, {threshold:.12, rootMargin:"0px 0px -30px 0px"});
+  els.forEach(el => io.observe(el));
+}
+
+window.addEventListener("load", () => {
+  initBar();
+  document.querySelectorAll(".hero .reveal").forEach(el => el.classList.add("in"));
+  observe();
+});
+</script>
+</body>
+</html>
