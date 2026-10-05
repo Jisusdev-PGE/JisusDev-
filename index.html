@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0b">
-<title>JisusDev</title>
+<title>JisusDev — 1K Version</title>
 <meta name="description" content="JisusDev — remixes, Roblox y juegos HTML5.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -156,14 +156,50 @@ img{display:block;max-width:100%}
 .reveal.in{opacity:1;transform:none}
 .d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}
 
+/* boot 1K */
+.boot{position:fixed;inset:0;z-index:200;background:#0a0a0b;display:grid;place-items:center;
+  transition:opacity .7s var(--ease),visibility .7s,transform .7s var(--ease)}
+.boot.hide{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.04)}
+.boot-core{text-align:center;position:relative;z-index:1}
+.boot-logo{font-size:clamp(2.8rem,10vw,4.5rem);font-weight:800;letter-spacing:-.06em;
+  background:linear-gradient(180deg,#fff 10%,#ffe9a0 45%,var(--gold) 75%,#e8a817);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:bootIn .9s var(--ease) both}
+.boot-sub{margin-top:.75rem;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);
+  animation:bootIn .9s .15s var(--ease) both}
+.boot-ring{position:absolute;width:min(55vw,280px);height:min(55vw,280px);border-radius:50%;
+  background:radial-gradient(circle,rgba(245,197,66,.2),transparent 68%);filter:blur(8px);
+  animation:bootRing 1.8s ease-in-out infinite alternate}
+@keyframes bootIn{from{opacity:0;transform:translateY(20px) scale(.9)}to{opacity:1;transform:none}}
+@keyframes bootRing{to{transform:scale(1.25);opacity:.55}}
+
+/* modal exit hold */
+.sheet.exiting{animation:sheetExitHold 1.6s var(--ease) forwards;pointer-events:none}
+@keyframes sheetExitHold{
+  0%{transform:translate3d(0,0,0) scale(1);opacity:1;filter:none}
+  35%{transform:translate3d(0,0,0) scale(.97);opacity:1;filter:brightness(1.15)}
+  100%{transform:translate3d(0,110%,0) scale(.94);opacity:0;filter:brightness(.7)}
+}
+@media(min-width:700px){
+  .sheet.exiting{animation:sheetExitHoldDesk 1.6s var(--ease) forwards}
+}
+@keyframes sheetExitHoldDesk{
+  0%{transform:scale(1);opacity:1;filter:none}
+  40%{transform:scale(.96);opacity:1;filter:brightness(1.12)}
+  100%{transform:scale(.9) translateY(12px);opacity:0;filter:brightness(.6)}
+}
+.modal.exiting .scrim{transition:opacity 1.6s ease;opacity:0}
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
   .bar-fill::after{display:none}
+  .boot{display:none}
 }
 </style>
 </head>
 <body>
+<div class="boot" id="boot"><div class="boot-ring" aria-hidden="true"></div><div class="boot-core"><div class="boot-logo">JisusDev</div><div class="boot-sub">1K VERSION</div></div></div>
 <div class="glow" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
@@ -181,7 +217,7 @@ img{display:block;max-width:100%}
 <main>
 <section class="hero" id="inicio">
   <div class="wrap">
-    <div class="chip reveal"><i></i> Camino al siguiente nivel</div>
+    <div class="chip reveal"><i></i> 1K VERSION</div>
     <h1 class="reveal d1">This Is It<br><em>in the Mix</em></h1>
     <p class="reveal d2">Remixes fan-made, juegos en Roblox y proyectos HTML. Hecho por amor al arte.</p>
     <div class="cta reveal d3">
@@ -199,7 +235,7 @@ img{display:block;max-width:100%}
       <div class="progress-top">
         <div>
           <h3>Don't Stop 'Til You Get Enough</h3>
-          <p>Hacia la siguiente meta · This Is It in the Mix</p>
+          <p>1K Version · This Is It in the Mix</p>
         </div>
         <div>
           <div class="pct-big" id="pct-num">0%</div>
@@ -244,13 +280,13 @@ img{display:block;max-width:100%}
     <div class="about-card reveal">
       <strong>JisusDev</strong><br>
       Remixes inspirados en Michael Jackson, juegos HTML5 y experiencias en Roblox (Pancho Games Studios). Fan-made, no oficial, no monetizado.
-      <br><br>© 2026 JisusDev
+      <br><br>© 2026 JisusDev · 1K Version
     </div>
   </div>
 </section>
 </main>
 
-<footer class="footer"><div class="wrap">Fan-made · No oficial</div></footer>
+<footer class="footer"><div class="wrap">1K Version · Fan-made · No oficial</div></footer>
 
 <div class="modal" id="modal" aria-hidden="true">
   <div class="scrim" data-close></div>
@@ -273,7 +309,7 @@ img{display:block;max-width:100%}
 const PCT = 50;
 
 const mixes = [
-  {title:"Don't Stop 'Til You Get Enough", desc:"Xscape: This Is It in the Mix", cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe", video:"Don't Stop 'til I Get Enough.mp4", yt:"https://www.youtube.com/watch?v=u54H4FnSOtI", featured:true},
+  {title:"Don't Stop 'Til You Get Enough", desc:"Xscape: This Is It in the Mix · 1K Version", cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe", video:"Don't Stop 'til I Get Enough.mp4", yt:"https://www.youtube.com/watch?v=u54H4FnSOtI", featured:true},
   {title:"Chicago: The Mix", desc:"Xscape: This Is It in the Mix · Remix", cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe", video:"Chicago The mix.mp4", yt:"https://www.youtube.com/watch?v=VTSwj-y_zt0"},
   {title:"Thriller Night", desc:"Xscape: This Is It in the Mix · Demo", cover:"Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe", audio:"Thriller_nightwav.wav"}
 ];
@@ -347,12 +383,24 @@ function openPlayer(mix){
     video.play().catch(()=>{});
   }
 }
+let closing=false;
 function closePlayer(){
-  const modal = document.getElementById("modal");
-  document.getElementById("m-video").pause();
-  document.getElementById("m-audio-el").pause();
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden","true");
+  if(closing)return;
+  const modal=document.getElementById("modal");
+  if(!modal.classList.contains("open"))return;
+  closing=true;
+  const sheet=modal.querySelector(".sheet");
+  const video=document.getElementById("m-video");
+  const audio=document.getElementById("m-audio-el");
+  video.pause();audio.pause();
+  modal.classList.add("exiting");
+  if(sheet)sheet.classList.add("exiting");
+  setTimeout(function(){
+    modal.classList.remove("open","exiting");
+    if(sheet)sheet.classList.remove("exiting");
+    modal.setAttribute("aria-hidden","true");
+    closing=false;
+  },1600);
 }
 
 document.getElementById("play-feat").addEventListener("click", () => openPlayer(mixes[0]));
@@ -377,9 +425,17 @@ function observe(){
 
 window.addEventListener("load", () => {
   initBar();
-  document.querySelectorAll(".hero .reveal").forEach(el => el.classList.add("in"));
-  observe();
+  setTimeout(() => {
+    const b=document.getElementById("boot");
+    if(b)b.classList.add("hide");
+    document.querySelectorAll(".hero .reveal").forEach(el => el.classList.add("in"));
+    observe();
+  }, 1800);
 });
+setTimeout(() => {
+  const b=document.getElementById("boot");
+  if(b && !b.classList.contains("hide")) b.classList.add("hide");
+}, 3200);
 </script>
 </body>
 </html>
