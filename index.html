@@ -217,6 +217,7 @@ img{display:block;max-width:100%}
         <p class="sub">2K Remix · Xscape: This Is It in the Mix · Michael Jackson & JisusDev</p>
         <div class="feat-acts">
           <button type="button" class="btn btn-gold" data-play="0">Reproducir</button>
+          <a class="btn btn-ghost btn-sm" href="AUD-20261014-WA0001.mp3" download>Descargar</a>
           <a class="btn btn-ghost btn-sm" href="#mixes">Más mixes</a>
         </div>
       </div>
@@ -284,10 +285,13 @@ const grid=document.getElementById("mix-grid");
 mixes.forEach((m,i)=>{
   const art=document.createElement("article");
   art.className="mix reveal"+(m.featured?" gold-aura":"");
+  const file = m.audio || m.video || '';
+  const dl = file ? '<a class="btn btn-ghost btn-sm" href="'+enc(file)+'" download>Descargar</a>' : '';
   art.innerHTML='<div class="mix-cover"><img src="'+m.cover+'" alt="" loading="lazy" decoding="async">'+
     '<button type="button" class="mix-play" data-play="'+i+'" aria-label="Play"><span>▶</span></button></div>'+
     '<div class="mix-body"><h3>'+m.title+'</h3><p>'+m.desc+'</p><div class="mix-acts">'+
     '<button type="button" class="btn btn-gold btn-sm" data-play="'+i+'">Reproducir</button>'+
+    dl+
     (m.yt?'<a class="btn btn-ghost btn-sm" href="'+m.yt+'" target="_blank" rel="noopener">YouTube</a>':'')+
     '</div></div>';
   grid.appendChild(art);
