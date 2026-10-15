@@ -36,7 +36,8 @@ img{display:block;max-width:100%}
 .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(120,40,140,.22),transparent 70%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(232,197,106,.06),transparent 50%),linear-gradient(180deg,#1a0a2e 0%,var(--bg) 55%,var(--bg) 100%),url("1792015668755.jpg") center/cover no-repeat;background-blend-mode:normal,normal,normal,overlay;opacity:.55;transform:scale(1.08);transition:opacity .45s ease,transform .6s var(--ease),filter .4s ease}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,transparent 35%,rgba(12,6,24,.4) 100%)}
 .hero-inner{position:relative;z-index:1;max-width:42rem;transition:opacity .35s ease,transform .45s var(--ease)}
-.hero-mark{font-family:var(--display);font-size:clamp(4.5rem,18vw,9rem);font-weight:700;line-height:.85;letter-spacing:-.04em;margin-bottom:1.25rem;background:linear-gradient(180deg,#fff 20%,#e8d4f0 70%,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;animation:up 1s .2s var(--ease) forwards}
+.hero-mark{font-family:var(--display),Georgia,serif;font-size:clamp(4.5rem,18vw,9rem);font-weight:700;line-height:.9;letter-spacing:.02em;margin-bottom:1.25rem;color:#fff;opacity:0;animation:up 1s .2s var(--ease) forwards;text-shadow:0 0 60px rgba(240,184,200,.25)}
+.hero-mark span{color:var(--accent2)}
 .hero-kicker{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;opacity:0;animation:up .9s .4s var(--ease) forwards}
 .hero-sub{font-size:clamp(14px,2vw,16px);color:var(--muted);margin-bottom:2.25rem;opacity:0;animation:up .9s .55s var(--ease) forwards}
 .hero-cta{opacity:0;animation:up .9s .7s var(--ease) forwards}
@@ -138,7 +139,7 @@ img{display:block;max-width:100%}
 <section class="hero" id="top">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="hero-mark">JD</div>
+    <div class="hero-mark">J<span>D</span></div>
     <div class="hero-kicker">2K Remix · Out now</div>
     <p class="hero-sub">Don't Stop 'Til You Get Enough — This Is It in the Mix</p>
     <div class="hero-cta">
