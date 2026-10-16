@@ -74,9 +74,6 @@ img{display:block;max-width:100%}
 .about-block{max-width:38rem;color:var(--muted);line-height:1.75}
 .about-block strong{color:#fff}
 .footer{border-top:1px solid var(--line);padding:2rem 0;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#737373;text-align:center}
-.reveal{opacity:0;transform:translateY(36px);animation:up .9s var(--ease) forwards}
-.reveal.d1{animation-delay:.08s}.reveal.d2{animation-delay:.16s}
-@keyframes up{to{opacity:1;transform:none}}
 .modal{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none}
 .modal.open{opacity:1;pointer-events:auto}
 @media(min-width:720px){.modal{align-items:center;padding:1.5rem}}
@@ -97,36 +94,40 @@ img{display:block;max-width:100%}
 <body>
 <header class="nav" id="nav"><a class="logo" href="#top">Jisus<span>Dev</span></a><nav class="nav-links"><a href="#music">Music</a><a href="#games">Games</a><a href="#about">About</a></nav></header>
 <section class="hero" id="top"><div class="hero-bg"></div><div class="hero-inner"><div class="hero-mark">J<span>D</span></div><div class="hero-kicker">2K Remix · Out now</div><p class="hero-sub">Don't Stop 'Til You Get Enough — This Is It in the Mix</p><button class="btn btn-accent" data-play="0" type="button">Play 2K</button></div><div class="scroll-hint">Scroll</div></section>
-<section class="panel" id="music"><div class="panel-inner"><div class="sec-label reveal">Music</div><h2 class="sec-title reveal d1">Featured drop</h2><div class="feature reveal d2"><div class="feature-art"><img src="1792015668755.jpg" alt="2K Remix cover"><span class="feature-badge">2K</span></div><div><h3>Don't Stop 'Til You Get Enough</h3><p>2K Remix · Xscape: This Is It in the Mix · Michael Jackson & JisusDev</p><div class="feature-acts"><button class="btn btn-accent" data-play="0" type="button">Play</button><a class="btn btn-ghost btn-sm" href="AUD-20261014-WA0001.mp3" download>Download</a></div></div></div><div class="sec-label reveal">Catalog</div><h2 class="sec-title reveal d1">Mixes</h2><div class="mix-grid" id="mix-grid"></div></div></section>
-<section class="panel" id="games"><div class="panel-inner"><div class="sec-label reveal">Pancho Games Studios</div><h2 class="sec-title reveal d1">Games</h2><p class="sec-lead reveal d2">HTML5 + Roblox. Obbys, acción y experimentos.</p><div class="game-list" id="game-list"></div></div></section>
-<section class="panel" id="about"><div class="panel-inner"><div class="sec-label reveal">About</div><h2 class="sec-title reveal d1">JisusDev</h2><div class="about-block reveal d2"><strong>Remixes</strong> inspirados en Michael Jackson, juegos HTML5 y experiencias en Roblox. Fan-made, no oficial, no monetizado. Por amor al arte.<br><br>© 2026 JisusDev</div></div></section>
+<section class="panel" id="music"><div class="panel-inner"><div class="sec-label">Music</div><h2 class="sec-title">Featured drop</h2><div class="feature"><div class="feature-art"><img src="1792015668755.jpg" alt="2K Remix cover"><span class="feature-badge">2K</span></div><div><h3>Don't Stop 'Til You Get Enough</h3><p>2K Remix · Xscape: This Is It in the Mix · Michael Jackson & JisusDev</p><div class="feature-acts"><button class="btn btn-accent" data-play="0" type="button">Play</button><a class="btn btn-ghost btn-sm" href="AUD-20261014-WA0001.mp3" download>Download</a><a class="btn btn-ghost btn-sm" href="https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_11c277cf85f34aeca59384d719fc85ef" target="_blank" rel="noopener">BandLab</a></div></div></div><div class="sec-label">Catalog</div><h2 class="sec-title">Mixes</h2><div class="mix-grid" id="mix-grid"></div></div></section>
+<section class="panel" id="games"><div class="panel-inner"><div class="sec-label">Pancho Games Studios</div><h2 class="sec-title">Games</h2><p class="sec-lead">HTML5 + Roblox. Obbys, acción y experimentos.</p><div class="game-list" id="game-list"></div></div></section>
+<section class="panel" id="about"><div class="panel-inner"><div class="sec-label">About</div><h2 class="sec-title">JisusDev</h2><div class="about-block"><strong>Remixes</strong> inspirados en Michael Jackson, juegos HTML5 y experiencias en Roblox. Fan-made, no oficial, no monetizado. Por amor al arte.<br><br>© 2026 JisusDev</div></div></section>
 <footer class="footer">Fan-made · Not affiliated</footer>
 <div class="modal" id="modal" aria-hidden="true"><div class="scrim" data-close></div><div class="sheet" role="dialog"><div class="sheet-head"><div><h3 id="m-title"></h3><p id="m-desc"></p></div><button class="close" data-close type="button">×</button></div><div class="media"><video id="m-video" controls playsinline preload="none"></video><div class="audio-box" id="m-audio"><img id="m-art" alt=""><audio id="m-audio-el" controls preload="none"></audio></div></div></div></div>
 <script>
 const mixes=[
- {title:"Don't Stop 'Til You Get Enough",desc:"2K Remix · This Is It in the Mix",cover:"1792015668755.jpg",audio:"AUD-20261014-WA0001.mp3"},
- {title:"Don't Stop 'Til You Get Enough",desc:"Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe",video:"Don't Stop 'til I Get Enough.mp4",yt:"https://www.youtube.com/watch?v=u54H4FnSOtI"},
- {title:"Chicago: The Mix",desc:"Xscape: This Is It in the Mix · Remix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",yt:"https://www.youtube.com/watch?v=VTSwj-y_zt0"},
+ {title:"Don't Stop 'Til You Get Enough",desc:"2K Remix · This Is It in the Mix",cover:"1792015668755.jpg",audio:"AUD-20261014-WA0001.mp3",bandlab:"https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_11c277cf85f34aeca59384d719fc85ef"},
+ {title:"Don't Stop 'Til You Get Enough",desc:"Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe",video:"Don't Stop 'til I Get Enough.mp4",yt:"https://www.youtube.com/watch?v=u54H4FnSOtI",bandlab:"https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_11c277cf85f34aeca59384d719fc85ef"},
+ {title:"Chicago: The Mix",desc:"Xscape: This Is It in the Mix · Remix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",yt:"https://www.youtube.com/watch?v=VTSwj-y_zt0",bandlab:"https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_b5ca7c5be83f4e95bb1b2c56e3d1028f"},
+ {title:"Próximamente",soon:true},
+ {title:"Próximamente",soon:true},
  {title:"Próximamente",soon:true}
 ];
 const games=[
- {name:"SURGE",tag:"HTML5 · Endless flyer",icon:"\u26a1",url:"surge.html",local:true},
- {name:"Among Us Mini",tag:"HTML5 · Fan game",icon:"\ud83d\udd34",url:"amongus.html",local:true},
- {name:"Escapa de el tsunami por autos",tag:"Obby · Tsunami · Roblox",icon:"\ud83d\ude97",url:"https://www.roblox.com/es/games/70603456155056/Escapa-de-el-tsunami-por-autos"},
- {name:"Escape del tsunami por joyas",tag:"Obby · Tsunami · Roblox",icon:"\ud83d\udc8e",url:"https://www.roblox.com/es/games/117666384645004/Escape-del-tsunami-por-joyas"},
- {name:"Blox War",tag:"Acci\u00f3n · Combate · Roblox",icon:"\u2694\ufe0f",url:"https://www.roblox.com/es/games/121209803244913/Blox-War"},
- {name:"Pancho Games Studios",tag:"Comunidad",icon:"\ud83c\udfae",url:"https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios"}
+ {name:"SURGE",tag:"HTML5 · Endless flyer",icon:"⚡",url:"surge.html",local:true},
+ {name:"Among Us Mini",tag:"HTML5 · Fan game",icon:"🔴",url:"amongus.html",local:true},
+ {name:"Escapa de el tsunami por autos",tag:"Obby · Tsunami · Roblox",icon:"🚗",url:"https://www.roblox.com/es/games/70603456155056/Escapa-de-el-tsunami-por-autos"},
+ {name:"Escape del tsunami por joyas",tag:"Obby · Tsunami · Roblox",icon:"💎",url:"https://www.roblox.com/es/games/117666384645004/Escape-del-tsunami-por-joyas"},
+ {name:"Blox War",tag:"Acción · Combate · Roblox",icon:"⚔️",url:"https://www.roblox.com/es/games/121209803244913/Blox-War"},
+ {name:"Pancho Games Studios",tag:"Comunidad",icon:"🎮",url:"https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios"}
 ];
 function enc(n){return encodeURI(n)}
 const grid=document.getElementById("mix-grid");
 mixes.forEach((m,i)=>{
  const art=document.createElement("article");
  art.className=m.soon?"mix soon":"mix";
- if(m.soon){art.innerHTML='<div class="mix-cover"><span class="q">?</span></div><div class="mix-body"><h3>'+m.title+'</h3></div>';}
- else{
+ if(m.soon){
+  art.innerHTML='<div class="mix-cover"><span class="q">?</span></div><div class="mix-body"><h3>'+m.title+'</h3></div>';
+ }else{
   const file=m.audio||m.video||"";
   const dl=file?'<a class="btn btn-ghost btn-sm" href="'+enc(file)+'" download>Download</a>':'';
-  art.innerHTML='<div class="mix-cover"><img src="'+m.cover+'" alt="" loading="lazy"><button type="button" class="mix-play" data-play="'+i+'"><span>\u25b6</span></button></div><div class="mix-body"><h3>'+m.title+'</h3><p>'+m.desc+'</p><div class="mix-acts"><button type="button" class="btn btn-gold btn-sm" data-play="'+i+'">Play</button>'+dl+(m.yt?'<a class="btn btn-ghost btn-sm" href="'+m.yt+'" target="_blank" rel="noopener">YouTube</a>':'')+'</div></div>';
+  const bl=m.bandlab?'<a class="btn btn-ghost btn-sm" href="'+m.bandlab+'" target="_blank" rel="noopener">BandLab</a>':'';
+  art.innerHTML='<div class="mix-cover"><img src="'+m.cover+'" alt="" loading="lazy"><button type="button" class="mix-play" data-play="'+i+'"><span>▶</span></button></div><div class="mix-body"><h3>'+m.title+'</h3><p>'+m.desc+'</p><div class="mix-acts"><button type="button" class="btn btn-gold btn-sm" data-play="'+i+'">Play</button>'+dl+bl+(m.yt?'<a class="btn btn-ghost btn-sm" href="'+m.yt+'" target="_blank" rel="noopener">YouTube</a>':'')+'</div></div>';
  }
  grid.appendChild(art);
 });
@@ -137,8 +138,8 @@ function openPlayer(mix){
  document.getElementById("m-title").textContent=mix.title;
  document.getElementById("m-desc").textContent=mix.desc||"";
  video.pause();audio.pause();video.removeAttribute("src");audio.removeAttribute("src");
- if(mix.audio){video.classList.add("hide");panel.classList.add("on");document.getElementById("m-art").src=mix.cover||"";audio.src=enc(mix.audio);audio.play().catch(()=>{});}
- else{video.classList.remove("hide");panel.classList.remove("on");video.poster=mix.cover||"";video.src=enc(mix.video);video.play().catch(()=>{});}
+ if(mix.audio){video.classList.add("hide");panel.classList.add("on");document.getElementById("m-art").src=mix.cover||"";audio.src=enc(mix.audio);audio.play().catch(function(){});}
+ else{video.classList.remove("hide");panel.classList.remove("on");video.poster=mix.cover||"";video.src=enc(mix.video);video.play().catch(function(){});}
  modal.classList.add("open");modal.setAttribute("aria-hidden","false");
 }
 function closePlayer(){
@@ -147,10 +148,10 @@ function closePlayer(){
  document.getElementById("m-audio-el").pause();
  modal.classList.remove("open");modal.setAttribute("aria-hidden","true");
 }
-document.addEventListener("click",e=>{const p=e.target.closest("[data-play]");if(p){openPlayer(mixes[+p.getAttribute("data-play")]);return}if(e.target.closest("[data-close]"))closePlayer()});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closePlayer()});
-const nav=document.getElementById("nav");
-window.addEventListener("scroll",()=>nav.classList.toggle("solid",scrollY>30),{passive:true});
+document.addEventListener("click",function(e){var p=e.target.closest("[data-play]");if(p){openPlayer(mixes[+p.getAttribute("data-play")]);return}if(e.target.closest("[data-close]"))closePlayer()});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closePlayer()});
+var nav=document.getElementById("nav");
+window.addEventListener("scroll",function(){nav.classList.toggle("solid",window.scrollY>30)},{passive:true});
 </script>
 </body>
 </html>
