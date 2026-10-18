@@ -1,12 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
+    <radialGradient id="space" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#2a1a5e"/>
+      <stop offset="45%" stop-color="#0d1230"/>
+      <stop offset="100%" stop-color="#05060f"/>
+    </radialGradient>
+    <radialGradient id="nebula" cx="75%" cy="70%" r="50%">
+      <stop offset="0%" stop-color="#5b3dff" stop-opacity=".55"/>
+      <stop offset="55%" stop-color="#1a0a40" stop-opacity=".2"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#ffe9a0"/>
       <stop offset="50%" stop-color="#f5c542"/>
       <stop offset="100%" stop-color="#e8a817"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="#0a0a0b"/>
+  <rect width="64" height="64" rx="16" fill="url(#space)"/>
+  <rect width="64" height="64" rx="16" fill="url(#nebula)"/>
+  <circle cx="14" cy="18" r="1.1" fill="#fff" opacity=".9"/>
+  <circle cx="48" cy="12" r=".8" fill="#f6dd9a" opacity=".85"/>
+  <circle cx="52" cy="28" r=".6" fill="#fff" opacity=".7"/>
+  <circle cx="22" cy="42" r=".7" fill="#fff" opacity=".75"/>
+  <circle cx="40" cy="50" r=".5" fill="#c9b6ff" opacity=".8"/>
+  <circle cx="10" cy="50" r=".45" fill="#fff" opacity=".6"/>
+  <circle cx="56" cy="44" r=".55" fill="#ffe9a0" opacity=".7"/>
   <text x="32" y="46" text-anchor="middle" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="34" font-weight="800" letter-spacing="-1.5">
     <tspan fill="#ffffff">J</tspan><tspan fill="url(#g)">D</tspan>
   </text>
