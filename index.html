@@ -29,10 +29,11 @@ img{display:block;max-width:100%}
   body{overflow:hidden}
   .htrack{
     display:flex;flex-direction:row;flex-wrap:nowrap;
-    height:100dvh;width:max-content;
+    height:100dvh;width:100vw;max-width:100vw;
     overflow-x:auto;overflow-y:hidden;
     scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
     scrollbar-width:thin;scrollbar-color:rgba(232,197,106,.35) transparent;
   }
   .htrack > .hero,
@@ -204,28 +205,38 @@ function updateNav(){
   else{nav.classList.toggle("solid",window.scrollY>30)}
 }
 window.addEventListener("scroll",updateNav,{passive:true});
-if(track){
-  track.addEventListener("scroll",updateNav,{passive:true});
-  track.addEventListener("wheel",function(e){
-    if(!isH())return;
-    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
-      e.preventDefault();
-      track.scrollLeft+=e.deltaY;
-    }
-  },{passive:false});
+if(track){track.addEventListener("scroll",updateNav,{passive:true})}
+function onWheel(e){
+  if(!isH()||!track)return;
+  var dx=e.deltaX, dy=e.deltaY;
+  if(e.deltaMode===1){dx*=16;dy*=16}
+  if(e.deltaMode===2){dx*=window.innerWidth;dy*=window.innerHeight}
+  if(Math.abs(dy)>=Math.abs(dx) && dy!==0){
+    e.preventDefault();
+    track.scrollLeft+=dy;
+  }else if(dx!==0){
+    e.preventDefault();
+    track.scrollLeft+=dx;
+  }
 }
-document.querySelectorAll('.nav-links a').forEach(function(a){
+window.addEventListener("wheel",onWheel,{passive:false});
+window.addEventListener("keydown",function(e){
+  if(!isH()||!track)return;
+  var page=window.innerWidth;
+  if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();track.scrollBy({left:page,behavior:"smooth"})}
+  if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();track.scrollBy({left:-page,behavior:"smooth"})}
+  if(e.key==="Home"){e.preventDefault();track.scrollTo({left:0,behavior:"smooth"})}
+  if(e.key==="End"){e.preventDefault();track.scrollTo({left:track.scrollWidth,behavior:"smooth"})}
+});
+document.querySelectorAll(".nav-links a").forEach(function(a){
   a.addEventListener("click",function(e){
     var id=this.getAttribute("href");
     if(!id||id.charAt(0)!=="#")return;
     var el=document.querySelector(id);
     if(!el)return;
     e.preventDefault();
-    if(isH()&&track){
-      track.scrollTo({left:el.offsetLeft,behavior:"smooth"});
-    }else{
-      el.scrollIntoView({behavior:"smooth"});
-    }
+    if(isH()&&track){track.scrollTo({left:el.offsetLeft,behavior:"smooth"})}
+    else{el.scrollIntoView({behavior:"smooth"})}
   });
 });
 var logo=document.querySelector(".logo");
