@@ -66,8 +66,9 @@ img{display:block;max-width:100%}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,#05060a 0%,#05060a 100%),url("Gemini_Generated_Image_q23v3fq23v3fq23v.jpe") center/cover no-repeat;background-blend-mode:multiply;opacity:.35;transform:scale(1.06)}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#05060a 0%,transparent 42%,rgba(5,6,10,.65) 100%)}
 .hero-inner{position:relative;z-index:1;max-width:42rem}
-.hero-mark{font-family:var(--display),Georgia,serif;font-size:clamp(4.5rem,18vw,9rem);font-weight:700;line-height:.9;letter-spacing:.02em;margin-bottom:1.25rem;color:#fff;text-shadow:0 0 28px rgba(232,197,106,.55),0 0 80px rgba(90,130,255,.35)}
-.hero-mark span{color:#e8c56a;text-shadow:0 0 24px rgba(232,197,106,.45)}
+.hero-mark{margin-bottom:1.5rem;width:min(92vw,520px);margin-inline:auto}
+.hero-mark svg{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(0 0 18px rgba(232,197,106,.45)) drop-shadow(0 2px 0 rgba(0,0,0,.55))}
+.hero-mark text{font-family:var(--display),Georgia,"Times New Roman",serif;font-weight:700;font-size:42px;letter-spacing:.28em;fill:url(#goldGrad);text-transform:uppercase}
 .hero-kicker{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
 .hero-sub{font-size:clamp(14px,2vw,16px);color:var(--muted);margin-bottom:2.25rem}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.75rem;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;border:0;cursor:pointer}
@@ -140,7 +141,22 @@ img{display:block;max-width:100%}
 <body>
 <header class="nav" id="nav"><a class="logo" href="#top">Jisus<span>Dev</span></a><nav class="nav-links"><a href="#music">Music</a><a href="#games">Games</a><a href="#about">About</a></nav></header>
 <div class="htrack" id="htrack">
-<section class="hero" id="top"><div class="hero-bg"></div><div class="hero-inner"><div class="hero-mark">J<span>D</span></div><div class="hero-kicker">1K · Chicago: The Mix</div><p class="hero-sub">Xscape: This Is It in the Mix</p><button class="btn btn-accent" data-play="2" type="button">Play Chicago</button></div><div class="scroll-hint">Scroll</div></section>
+<section class="hero" id="top"><div class="hero-bg"></div><div class="hero-inner"><div class="hero-mark" aria-label="Jisus Dev">
+<svg viewBox="0 0 520 140" xmlns="http://www.w3.org/2000/svg" role="img">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff6d0"/>
+      <stop offset="35%" stop-color="#f6dd9a"/>
+      <stop offset="70%" stop-color="#c9a227"/>
+      <stop offset="100%" stop-color="#8a6a10"/>
+    </linearGradient>
+    <path id="arcPath" d="M 40 105 Q 260 10 480 105" fill="none"/>
+  </defs>
+  <text text-anchor="middle">
+    <textPath href="#arcPath" startOffset="50%">J I S U S &nbsp; D E V</textPath>
+  </text>
+</svg>
+</div><div class="hero-kicker">1K · Chicago: The Mix</div><p class="hero-sub">Xscape: This Is It in the Mix</p><button class="btn btn-accent" data-play="2" type="button">Play Chicago</button></div><div class="scroll-hint">Scroll</div></section>
 <section class="panel" id="music"><div class="panel-inner"><div class="sec-label">Music</div><h2 class="sec-title">Featured drop</h2><div class="feature"><div class="feature-art"><img src="Gemini_Generated_Image_q23v3fq23v3fq23v.jpe" alt="Chicago: The Mix"><span class="feature-badge">1K</span></div><div><h3>Chicago: The Mix</h3><p>1K · Xscape: This Is It in the Mix</p><div class="feature-acts"><button class="btn btn-accent" data-play="2" type="button">Play</button><a class="btn btn-ghost btn-sm" href="Chicago%20The%20mix.mp4" download>Download</a><a class="btn btn-ghost btn-sm" href="https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_b5ca7c5be83f4e95bb1b2c56e3d1028f" target="_blank" rel="noopener">BandLab</a><a class="btn btn-ghost btn-sm" href="https://www.youtube.com/watch?v=VTSwj-y_zt0" target="_blank" rel="noopener">YouTube</a></div></div></div><div class="sec-label">Catalog</div><h2 class="sec-title">Mixes</h2><div class="mix-grid" id="mix-grid"></div></div></section>
 <section class="panel" id="games"><div class="panel-inner"><div class="sec-label">Pancho Games Studios</div><h2 class="sec-title">Games</h2><p class="sec-lead">HTML5 + Roblox. Obbys, acción y experimentos.</p><div class="game-list" id="game-list"></div></div></section>
 <section class="panel" id="about"><div class="panel-inner"><div class="sec-label">About</div><h2 class="sec-title">JisusDev</h2><div class="about-block"><strong>Remixes</strong> inspirados en Michael Jackson, juegos HTML5 y experiencias en Roblox. Fan-made, no oficial, no monetizado. Por amor al arte.<br><br>© 2026 JisusDev</div></div></section>
