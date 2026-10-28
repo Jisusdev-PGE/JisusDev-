@@ -57,8 +57,8 @@ img{display:block;max-width:100%}
 }
 .nav{position:fixed;inset:0 0 auto;z-index:60;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,4vw,2.75rem);transition:background .35s}
 .nav.solid{background:rgba(5,6,10,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.logo{font-weight:700;font-size:13px;letter-spacing:.28em;text-transform:uppercase}
-.logo span{color:var(--accent2)}
+.logo{font-family:var(--display),Georgia,serif;font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:transparent;background:linear-gradient(180deg,#fff6d0 0%,#f6dd9a 35%,#c9a227 70%,#8a6a10 100%);-webkit-background-clip:text;background-clip:text;text-shadow:0 0 12px rgba(232,197,106,.25)}
+.logo span{color:inherit;background:inherit;-webkit-background-clip:text;background-clip:text}
 .nav-links{display:flex;gap:.15rem}
 .nav-links a{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:.55rem .8rem}
 .nav-links a:hover{color:#fff}
@@ -68,7 +68,7 @@ img{display:block;max-width:100%}
 .hero-inner{position:relative;z-index:1;max-width:42rem}
 .hero-mark{margin-bottom:1.5rem;width:min(92vw,520px);margin-inline:auto}
 .hero-mark svg{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(0 0 18px rgba(232,197,106,.45)) drop-shadow(0 2px 0 rgba(0,0,0,.55))}
-.hero-mark text{font-family:var(--display),Georgia,"Times New Roman",serif;font-weight:700;font-size:42px;letter-spacing:.28em;fill:url(#goldGrad);text-transform:uppercase}
+.hero-mark text{font-family:var(--display),Georgia,"Times New Roman",serif;font-weight:700;font-size:48px;letter-spacing:.08em;fill:url(#goldGrad);text-transform:uppercase}
 .hero-kicker{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
 .hero-sub{font-size:clamp(14px,2vw,16px);color:var(--muted);margin-bottom:2.25rem}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.75rem;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;border:0;cursor:pointer}
@@ -139,7 +139,7 @@ img{display:block;max-width:100%}
 </style>
 </head>
 <body>
-<header class="nav" id="nav"><a class="logo" href="#top">Jisus<span>Dev</span></a><nav class="nav-links"><a href="#music">Music</a><a href="#games">Games</a><a href="#about">About</a></nav></header>
+<header class="nav" id="nav"><a class="logo" href="#top">Jisus Dev</a><nav class="nav-links"><a href="#music">Music</a><a href="#games">Games</a><a href="#about">About</a></nav></header>
 <div class="htrack" id="htrack">
 <section class="hero" id="top"><div class="hero-bg"></div><div class="hero-inner"><div class="hero-mark" aria-label="Jisus Dev">
 <svg viewBox="0 0 520 140" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -150,10 +150,10 @@ img{display:block;max-width:100%}
       <stop offset="70%" stop-color="#c9a227"/>
       <stop offset="100%" stop-color="#8a6a10"/>
     </linearGradient>
-    <path id="arcPath" d="M 40 105 Q 260 10 480 105" fill="none"/>
+    <path id="arcPath" d="M 30 100 Q 260 18 490 100" fill="none"/>
   </defs>
   <text text-anchor="middle">
-    <textPath href="#arcPath" startOffset="50%">J I S U S &nbsp; D E V</textPath>
+    <textPath href="#arcPath" startOffset="50%">JISUS DEV</textPath>
   </text>
 </svg>
 </div><div class="hero-kicker">1K · Chicago: The Mix</div><p class="hero-sub">Xscape: This Is It in the Mix</p><button class="btn btn-accent" data-play="2" type="button">Play Chicago</button></div><div class="scroll-hint">Scroll</div></section>
