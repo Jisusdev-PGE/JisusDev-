@@ -1,1 +1,35 @@
-SEE_FILE
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="cache-bust" content="2026-11-08-emergency">
+<title>JisusDev · restoring…</title>
+<style>body{margin:0;background:#05060a;color:#f6dd9a;font:14px/1.5 system-ui;display:grid;place-items:center;min-height:100dvh}</style>
+</head>
+<body>
+<p id="s">Cargando sitio…</p>
+<script>
+(async function () {
+  var urls = [
+    'https://cdn.jsdelivr.net/gh/Jisusdev-PGE/JisusDev-@1b5d9e9/index.html',
+    'https://raw.githack.com/Jisusdev-PGE/JisusDev-/1b5d9e9/index.html',
+    'https://raw.githubusercontent.com/Jisusdev-PGE/JisusDev-/1b5d9e9/index.html'
+  ];
+  for (var i = 0; i < urls.length; i++) {
+    try {
+      var r = await fetch(urls[i], { cache: 'no-store' });
+      if (!r.ok) continue;
+      var html = await r.text();
+      if (html.indexOf('three-eras') === -1 && html.indexOf('JisusDev') === -1) continue;
+      document.open();
+      document.write(html);
+      document.close();
+      return;
+    } catch (e) {}
+  }
+  document.getElementById('s').textContent = 'No se pudo restaurar automáticamente. Abre el repo y restaura el commit 1b5d9e9.';
+})();
+</script>
+</body>
+</html>
