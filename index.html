@@ -2,33 +2,505 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="cache-bust" content="2026-11-08-emergency">
-<title>JisusDev · restoring…</title>
-<style>body{margin:0;background:#05060a;color:#f6dd9a;font:14px/1.5 system-ui;display:grid;place-items:center;min-height:100dvh}</style>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07060b">
+<meta name="cache-bust" content="2026-11-08-three-eras-v1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>JisusDev · Three Eras</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07060b;
+  --text:#f4f0e8;
+  --muted:#a8a09a;
+  --gold:#e8c56a;
+  --gold2:#f6dd9a;
+  --botdf:#c43b45;
+  --scream:#c5d0e0;
+  --closet:#8b7ad4;
+  --line:rgba(232,197,106,.14);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --font:Inter,system-ui,sans-serif;
+  --display:"Playfair Display",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  color:var(--text);
+  font:16px/1.55 var(--font);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  min-height:100dvh;
+}
+.space{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%,rgba(139,122,212,.18),transparent 55%),
+    radial-gradient(ellipse 50% 40% at 0% 80%,rgba(196,59,69,.14),transparent 50%),
+    radial-gradient(ellipse 45% 35% at 100% 60%,rgba(197,208,224,.1),transparent 50%),
+    #07060b;
+}
+.stars,.stars2{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-repeat:repeat;
+}
+.stars{
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%,#fff,transparent),
+    radial-gradient(1px 1px at 28% 55%,var(--gold2),transparent),
+    radial-gradient(1.2px 1.2px at 48% 12%,#fff,transparent),
+    radial-gradient(1px 1px at 68% 72%,#fff,transparent),
+    radial-gradient(1.4px 1.4px at 82% 28%,var(--gold2),transparent),
+    radial-gradient(1px 1px at 8% 88%,#fff,transparent),
+    radial-gradient(1.2px 1.2px at 92% 48%,#fff,transparent),
+    radial-gradient(1px 1px at 55% 40%,#fff,transparent);
+  background-size:130% 130%;
+  animation:drift 45s linear infinite;
+  opacity:.75;
+}
+.stars2{
+  background-image:
+    radial-gradient(1px 1px at 18% 30%,#fff,transparent),
+    radial-gradient(1.3px 1.3px at 42% 8%,var(--gold2),transparent),
+    radial-gradient(1px 1px at 72% 60%,#fff,transparent),
+    radial-gradient(1.2px 1.2px at 90% 20%,#fff,transparent),
+    radial-gradient(1px 1px at 35% 90%,#fff,transparent);
+  background-size:150% 150%;
+  animation:drift 70s linear infinite reverse;
+  opacity:.4;
+}
+@keyframes drift{to{transform:translate3d(-3%,-5%,0)}}
+.aura{
+  position:fixed;inset:-20%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 40% 30% at 20% 20%,rgba(196,59,69,.2),transparent 60%),
+    radial-gradient(ellipse 35% 28% at 80% 15%,rgba(197,208,224,.12),transparent 60%),
+    radial-gradient(ellipse 45% 35% at 70% 85%,rgba(139,122,212,.22),transparent 60%);
+  filter:blur(40px);
+  animation:pulse 12s ease-in-out infinite alternate;
+}
+@keyframes pulse{to{opacity:.65;transform:scale(1.05)}}
+body>*{position:relative;z-index:1}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+.nav{
+  position:fixed;inset:0 0 auto;z-index:50;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(1.25rem,4vw,2.5rem);
+  transition:background .4s,border-color .4s,backdrop-filter .4s;
+  border-bottom:1px solid transparent;
+}
+.nav.solid{
+  background:rgba(7,6,11,.88);
+  backdrop-filter:blur(16px);
+  border-bottom-color:var(--line);
+}
+.logo{
+  font-family:var(--display);
+  font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+  background:linear-gradient(180deg,#fff6d0,#f6dd9a 40%,#c9a227 75%,#8a6a10);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 10px rgba(232,197,106,.3));
+  transition:filter .3s;
+}
+.logo:hover{filter:drop-shadow(0 0 16px rgba(232,197,106,.55))}
+.nav-links{display:flex;gap:.2rem}
+.nav-links a{
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);padding:.5rem .85rem;border-radius:999px;
+  transition:color .25s,text-shadow .25s,background .25s;
+}
+.nav-links a:hover{
+  color:var(--gold2);
+  text-shadow:0 0 14px rgba(232,197,106,.45);
+  background:rgba(232,197,106,.06);
+}
+.hero{
+  min-height:100dvh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:6rem 1.5rem 4rem;
+}
+.hero-kicker{
+  font-size:10px;font-weight:800;letter-spacing:.36em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.25rem;
+  opacity:0;animation:fadeUp .9s var(--ease) .15s forwards;
+}
+.hero-title{
+  font-family:var(--display);
+  font-size:clamp(2.4rem,8vw,4.8rem);
+  font-weight:700;line-height:1.05;letter-spacing:.02em;
+  margin-bottom:.85rem;
+  opacity:0;animation:fadeUp 1s var(--ease) .3s forwards;
+}
+.hero-title .dot{color:var(--closet);margin:0 .15em}
+.hero-sub{
+  max-width:28rem;margin:0 auto 2rem;
+  color:var(--muted);font-size:clamp(14px,2.2vw,16px);
+  opacity:0;animation:fadeUp 1s var(--ease) .45s forwards;
+}
+.hero-eras{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;
+  margin-bottom:2.25rem;
+  opacity:0;animation:fadeUp 1s var(--ease) .55s forwards;
+}
+.chip{
+  font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:.45rem .9rem;border-radius:999px;
+  border:1px solid transparent;
+  transition:transform .3s,box-shadow .3s;
+}
+.chip:hover{transform:translateY(-2px)}
+.chip.botdf{
+  color:#ffb4b8;border-color:rgba(196,59,69,.45);
+  background:rgba(196,59,69,.15);
+  box-shadow:0 0 20px rgba(196,59,69,.15);
+}
+.chip.scream{
+  color:#e8eef6;border-color:rgba(197,208,224,.4);
+  background:rgba(197,208,224,.1);
+  box-shadow:0 0 20px rgba(197,208,224,.12);
+}
+.chip.closet{
+  color:#d4ccf5;border-color:rgba(139,122,212,.45);
+  background:rgba(139,122,212,.15);
+  box-shadow:0 0 20px rgba(139,122,212,.15);
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:50px;padding:0 1.9rem;
+  font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  border-radius:999px;cursor:pointer;
+  transition:transform .3s,box-shadow .35s,filter .3s;
+}
+.btn-gold{
+  background:linear-gradient(180deg,#f6dd9a,#c9a227);
+  color:#1a1400;
+  box-shadow:0 0 24px rgba(232,197,106,.25);
+  opacity:0;animation:fadeUp 1s var(--ease) .65s forwards;
+}
+.btn-gold:hover,.btn-gold:active{
+  transform:translateY(-2px);
+  box-shadow:0 0 32px rgba(232,197,106,.5),0 0 60px rgba(232,197,106,.2);
+  filter:brightness(1.06);
+}
+.btn-ghost{
+  background:transparent;color:#fff;
+  border:1px solid rgba(232,197,106,.3);
+}
+.btn-ghost:hover{
+  border-color:rgba(232,197,106,.55);
+  box-shadow:0 0 22px rgba(232,197,106,.2);
+}
+.scroll-hint{
+  position:absolute;bottom:1.75rem;left:50%;transform:translateX(-50%);
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#6a6458;
+  animation:bob 2.4s ease-in-out infinite;
+}
+@keyframes bob{50%{transform:translateX(-50%) translateY(6px);opacity:.5}}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:none}
+}
+.section{
+  padding:clamp(3.5rem,8vw,6rem) clamp(1.25rem,4vw,2.5rem);
+  max-width:1080px;margin:0 auto;
+}
+.sec-label{
+  font-size:10px;font-weight:800;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.75rem;
+}
+.sec-title{
+  font-family:var(--display);
+  font-size:clamp(1.9rem,5vw,3rem);
+  font-weight:700;letter-spacing:-.02em;line-height:1.1;
+  margin-bottom:1rem;
+}
+.sec-lead{color:var(--muted);max-width:36rem;margin-bottom:2.5rem;font-size:15px}
+.mashup{
+  position:relative;isolation:isolate;overflow:hidden;
+  border-radius:28px;
+  padding:clamp(1.5rem,4vw,2.75rem);
+  border:1px solid rgba(190,170,205,.28);
+  background:
+    linear-gradient(125deg,
+      rgba(115,35,43,.28) 0%,
+      rgba(12,14,22,.92) 42%,
+      rgba(70,55,130,.28) 100%);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.35),
+    inset 0 1px rgba(255,255,255,.06);
+  transition:box-shadow .4s,transform .4s;
+}
+.mashup:hover{
+  box-shadow:
+    0 28px 70px rgba(0,0,0,.4),
+    0 0 40px rgba(139,122,212,.15),
+    inset 0 1px rgba(255,255,255,.08);
+}
+.mashup::before{
+  content:"";position:absolute;z-index:-1;inset:-50%;
+  background:
+    radial-gradient(ellipse at 15% 40%,rgba(196,59,69,.3),transparent 36%),
+    radial-gradient(ellipse at 50% 10%,rgba(197,208,224,.15),transparent 34%),
+    radial-gradient(ellipse at 88% 65%,rgba(139,122,212,.32),transparent 38%);
+  filter:blur(28px);
+  animation:mashAura 14s ease-in-out infinite alternate;
+}
+@keyframes mashAura{
+  from{transform:translate3d(-2%,0,0) scale(.96);opacity:.75}
+  to{transform:translate3d(2%,2%,0) scale(1.06);opacity:1}
+}
+.mash-top{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:1rem;margin-bottom:1.25rem;
+}
+.mash-kicker{
+  font-size:10px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);
+}
+.mash-time{
+  font-size:10px;font-weight:700;letter-spacing:.14em;
+  color:#c9c5d4;
+  border:1px solid rgba(201,197,212,.22);
+  border-radius:999px;padding:.4rem .75rem;
+}
+.mashup h2{
+  font-family:var(--display);
+  font-size:clamp(1.7rem,4.5vw,2.6rem);
+  line-height:1.08;margin-bottom:.6rem;
+}
+.mashup h2 span{color:var(--closet)}
+.mash-desc{
+  color:var(--muted);font-size:14px;max-width:40rem;margin-bottom:1.75rem;
+}
+.track{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:.65rem;margin-bottom:1.75rem;
+}
+.era{
+  min-width:0;
+  padding:1rem .9rem;
+  border-radius:16px;
+  background:rgba(5,6,12,.5);
+  border:1px solid rgba(255,255,255,.08);
+  transition:transform .35s,box-shadow .35s,border-color .35s;
+}
+.era:hover{transform:translateY(-3px)}
+.era-line{height:3px;border-radius:99px;margin-bottom:.85rem}
+.era strong{
+  display:block;font-size:clamp(9px,1.4vw,11px);
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem;
+}
+.era p{font-size:11px;color:#9a96a6;line-height:1.4}
+.era.botdf .era-line{
+  background:linear-gradient(90deg,#7e252d,#df7770);
+  box-shadow:0 0 16px rgba(196,59,69,.4);
+}
+.era.botdf:hover{
+  border-color:rgba(196,59,69,.45);
+  box-shadow:0 0 24px rgba(196,59,69,.2);
+}
+.era.scream .era-line{
+  background:linear-gradient(90deg,#7f8da5,#e1e8f1);
+  box-shadow:0 0 16px rgba(197,208,224,.3);
+}
+.era.scream:hover{
+  border-color:rgba(197,208,224,.4);
+  box-shadow:0 0 24px rgba(197,208,224,.15);
+}
+.era.closet .era-line{
+  background:linear-gradient(90deg,#51418f,#a99af1);
+  box-shadow:0 0 16px rgba(139,122,212,.4);
+}
+.era.closet:hover{
+  border-color:rgba(139,122,212,.45);
+  box-shadow:0 0 24px rgba(139,122,212,.2);
+}
+.mash-acts{display:flex;flex-wrap:wrap;gap:.65rem}
+.grid{
+  display:grid;gap:1.25rem;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+}
+.card{
+  background:rgba(12,14,22,.85);
+  border:1px solid var(--line);
+  border-radius:22px;overflow:hidden;
+  transition:transform .35s,box-shadow .35s;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 0 28px rgba(232,197,106,.2),0 0 40px rgba(90,130,255,.12);
+}
+.card-art{
+  aspect-ratio:1;background:#0a0a10;
+  display:grid;place-items:center;
+  position:relative;overflow:hidden;
+}
+.card-art img{width:100%;height:100%;object-fit:cover}
+.card-art .q{
+  font-family:var(--display);font-size:4.5rem;font-weight:700;color:var(--gold);
+  text-shadow:0 0 30px rgba(232,197,106,.35);
+}
+.card-body{padding:1.15rem 1.2rem}
+.card-body h3{font-size:14px;font-weight:600;margin-bottom:.3rem}
+.card-body p{font-size:12px;color:#8a8270}
+.about{
+  max-width:38rem;color:var(--muted);line-height:1.75;font-size:15px;
+}
+.about strong{color:var(--gold2)}
+.footer{
+  border-top:1px solid var(--line);
+  padding:2rem;text-align:center;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6a6458;
+}
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);
+}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:560px){
+  .track{grid-template-columns:1fr;gap:.5rem}
+  .era{display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:center}
+  .era-line{width:4px;height:100%;min-height:36px;margin:0}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-<p id="s">Cargando sitio…</p>
+<div class="space" aria-hidden="true"></div>
+<div class="aura" aria-hidden="true"></div>
+<div class="stars" aria-hidden="true"></div>
+<div class="stars2" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top">Jisus Dev</a>
+  <nav class="nav-links">
+    <a href="#mashup">Mashup</a>
+    <a href="#catalog">Catalog</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="hero-kicker">Pancho Music Studios · Special</div>
+    <h1 class="hero-title">Three Eras <span class="dot">·</span> One Groove</h1>
+    <p class="hero-sub">Blood on the Dance Floor × Scream × In the Closet. Un solo viaje por tres eras de Michael Jackson.</p>
+    <div class="hero-eras">
+      <span class="chip botdf">BOTDF · Red</span>
+      <span class="chip scream">Scream · Silver</span>
+      <span class="chip closet">Closet · Violet</span>
+    </div>
+    <a class="btn btn-gold" href="#mashup">Ver mashup</a>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <section class="section" id="mashup">
+    <div class="sec-label reveal">Featured</div>
+    <h2 class="sec-title reveal">The mashup</h2>
+    <p class="sec-lead reveal">14 minutos. Tres colores. Una sola pista continua.</p>
+
+    <article class="mashup reveal">
+      <div class="mash-top">
+        <span class="mash-kicker">Pancho Music Studios · Special Mashup</span>
+        <span class="mash-time">14 MINUTES · THREE ERAS</span>
+      </div>
+      <h2>THREE ERAS <span>·</span> ONE GROOVE</h2>
+      <p class="mash-desc">Blood on the Dance Floor trae el rojo y el peligro. Scream entra con acero industrial. In the Closet cierra con groove violeta. Todo enlazado en un solo flow.</p>
+      <div class="track">
+        <div class="era botdf">
+          <div class="era-line"></div>
+          <div>
+            <strong>BOTDF</strong>
+            <p>Red · Dance · Danger</p>
+          </div>
+        </div>
+        <div class="era scream">
+          <div class="era-line"></div>
+          <div>
+            <strong>SCREAM</strong>
+            <p>Silver · Industrial</p>
+          </div>
+        </div>
+        <div class="era closet">
+          <div class="era-line"></div>
+          <div>
+            <strong>IN THE CLOSET</strong>
+            <p>Violet · Groove</p>
+          </div>
+        </div>
+      </div>
+      <div class="mash-acts">
+        <span class="btn btn-gold" style="opacity:1;cursor:default">Próximamente</span>
+        <span class="btn btn-ghost" style="opacity:.7;cursor:default">Audio en camino</span>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="catalog">
+    <div class="sec-label reveal">Catalog</div>
+    <h2 class="sec-title reveal">Más del studio</h2>
+    <p class="sec-lead reveal">Remixes y drops anteriores.</p>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="card-art"><img src="Gemini_Generated_Image_q23v3fq23v3fq23v.jpe" alt="Chicago" loading="lazy"></div>
+        <div class="card-body">
+          <h3>Chicago: The Mix</h3>
+          <p>1K · Xscape: This Is It in the Mix</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="card-art"><img src="1792015668755.jpg" alt="Don't Stop 2K" loading="lazy"></div>
+        <div class="card-body">
+          <h3>Don't Stop 'Til You Get Enough</h3>
+          <p>2K Remix · This Is It in the Mix</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="card-art"><span class="q">?</span></div>
+        <div class="card-body">
+          <h3>Proyecto solista</h3>
+          <p>Clasificado · Próximamente</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="sec-label reveal">About</div>
+    <h2 class="sec-title reveal">JisusDev</h2>
+    <div class="about reveal">
+      <p><strong>Remixes</strong> inspirados en Michael Jackson, juegos HTML5 y experiencias en Roblox. Fan-made, no oficial, no monetizado. Por amor al arte.</p>
+      <p style="margin-top:1rem">© 2026 JisusDev · Pancho Music Studios</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">Fan-made · Not affiliated with the Estate of Michael Jackson</footer>
+
 <script>
-(async function () {
-  var urls = [
-    'https://cdn.jsdelivr.net/gh/Jisusdev-PGE/JisusDev-@1b5d9e9/index.html',
-    'https://raw.githack.com/Jisusdev-PGE/JisusDev-/1b5d9e9/index.html',
-    'https://raw.githubusercontent.com/Jisusdev-PGE/JisusDev-/1b5d9e9/index.html'
-  ];
-  for (var i = 0; i < urls.length; i++) {
-    try {
-      var r = await fetch(urls[i], { cache: 'no-store' });
-      if (!r.ok) continue;
-      var html = await r.text();
-      if (html.indexOf('three-eras') === -1 && html.indexOf('JisusDev') === -1) continue;
-      document.open();
-      document.write(html);
-      document.close();
-      return;
-    } catch (e) {}
+(function(){
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('solid',window.scrollY>24)}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el)});
+  }else{
+    els.forEach(function(el){el.classList.add('in')});
   }
-  document.getElementById('s').textContent = 'No se pudo restaurar automáticamente. Abre el repo y restaura el commit 1b5d9e9.';
 })();
 </script>
 </body>
