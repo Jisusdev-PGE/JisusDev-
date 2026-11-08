@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0a0810">
+<meta name="description" content="Three Eras · One Groove: un mashup fan-made de Blood on the Dance Floor, Scream e In the Closet, presentado por Pancho Music Studios.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JisusDev · Three Eras">
+<meta property="og:description" content="Blood on the Dance Floor × Scream × In the Closet. Tres eras, un solo groove.">
+<meta name="color-scheme" content="dark">
 <meta name="cache-bust" content="2026-11-08-three-eras-v2">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>JisusDev · Three Eras</title>
@@ -128,6 +133,7 @@ button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
   background:radial-gradient(circle at 40% 35%,#1a1520,#0a0810 70%);
   box-shadow:inset 0 0 20px rgba(0,0,0,.6);
 }
+.hero-disc::before{content:"";position:absolute;z-index:2;width:9%;aspect-ratio:1;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:linear-gradient(135deg,#f6dd9a,#b78b43);box-shadow:0 0 12px rgba(232,197,106,.45)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hero-kicker{
   font-size:10px;font-weight:800;letter-spacing:.36em;text-transform:uppercase;
@@ -218,6 +224,7 @@ button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
 .era.closet .era-line{background:linear-gradient(90deg,#51418f,#a99af1);box-shadow:0 0 16px rgba(155,136,224,.45)}
 .era.closet:hover{border-color:rgba(155,136,224,.5);box-shadow:0 0 24px rgba(155,136,224,.25)}
 .mash-acts{display:flex;flex-wrap:wrap;gap:.65rem}
+.status-pill{cursor:default;user-select:none;pointer-events:none}
 .grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
 .card{
   background:rgba(12,10,20,.9);border:1px solid var(--line);border-radius:22px;overflow:hidden;
@@ -245,15 +252,24 @@ button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 @media(max-width:560px){
+  .nav{padding-inline:1rem}
+  .nav-links a{font-size:9px;letter-spacing:.1em;padding:.45rem .55rem}
+  .hero-disc{width:min(220px,62vw)}
   .track{grid-template-columns:1fr}
   .era{display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:center}
   .era-line{width:4px;height:100%;min-height:36px;margin:0}
   .bg-cols{opacity:.4}
 }
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+section[id]{scroll-margin-top:82px}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:4px;border-radius:6px}
+.skip-link{position:fixed;top:8px;left:8px;z-index:100;transform:translateY(-150%);padding:.7rem 1rem;border-radius:10px;background:#f5f1ea;color:#0a0810;font-weight:700}
+.skip-link:focus{transform:translateY(0)}
+@media(max-width:360px){.logo{font-size:11px}.nav-links{gap:0}.nav-links a{font-size:8px;padding:.4rem .4rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
 <div class="bg" aria-hidden="true">
   <div class="bg-cols"><span></span><span></span><span></span></div>
   <div class="orb r"></div>
@@ -264,14 +280,14 @@ button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
 
 <header class="nav" id="nav">
   <a class="logo" href="#top">Jisus Dev</a>
-  <nav class="nav-links">
+  <nav class="nav-links" aria-label="Navegación principal">
     <a href="#mashup">Mashup</a>
     <a href="#eras">Eras</a>
     <a href="#about">About</a>
   </nav>
 </header>
 
-<main>
+<main id="main-content">
   <section class="hero" id="top">
     <div class="hero-disc" aria-hidden="true"></div>
     <div class="hero-kicker">Pancho Music Studios · Special</div>
@@ -303,8 +319,8 @@ button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
         <div class="era closet"><div class="era-line"></div><div><strong>IN THE CLOSET</strong><p>Violet · Groove</p></div></div>
       </div>
       <div class="mash-acts">
-        <span class="btn btn-main" style="opacity:1;cursor:default">Próximamente</span>
-        <span class="btn btn-ghost">Audio en camino</span>
+        <span class="btn btn-main status-pill" aria-label="Mashup próximamente">Próximamente</span>
+        <span class="btn btn-ghost status-pill" aria-label="Audio todavía en preparación">Audio en camino</span>
       </div>
     </article>
   </section>
