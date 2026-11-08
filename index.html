@@ -1,1 +1,154 @@
-PLACEHOLDER_WILL_FAIL
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0810">
+<meta name="cache-bust" content="2026-11-08-jd3">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>JisusDev · Three Eras</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0810;--text:#f5f1ea;--muted:#a9a19a;--gold:#e8c56a;--botdf:#d4454f;--scream:#d0d8e6;--closet:#9b88e0;--ease:cubic-bezier(.22,1,.36,1);--font:Inter,system-ui,sans-serif;--display:"Playfair Display",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{color:var(--text);font:16px/1.55 var(--font);background:var(--bg);min-height:100dvh;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-cols{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr 1fr;opacity:.55}
+.bg-cols span:nth-child(1){background:linear-gradient(180deg,rgba(212,69,79,.35),transparent 70%)}
+.bg-cols span:nth-child(2){background:linear-gradient(180deg,rgba(208,216,230,.2),transparent 70%)}
+.bg-cols span:nth-child(3){background:linear-gradient(180deg,rgba(155,136,224,.32),transparent 70%)}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:float 16s ease-in-out infinite alternate}
+.orb.r{width:55vmax;height:55vmax;left:-15%;top:-10%;background:rgba(212,69,79,.35)}
+.orb.s{width:45vmax;height:45vmax;left:30%;top:20%;background:rgba(208,216,230,.18);animation-delay:-5s}
+.orb.v{width:50vmax;height:50vmax;right:-12%;bottom:-15%;background:rgba(155,136,224,.32);animation-delay:-9s}
+@keyframes float{to{transform:translate(4%,6%) scale(1.08)}}
+.stars{position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 10% 20%,#ffb0b4,transparent),radial-gradient(1px 1px at 48% 15%,#e8eef6,transparent),radial-gradient(1.4px 1.4px at 78% 30%,#cbb8ff,transparent),radial-gradient(1px 1px at 25% 70%,#fff,transparent),radial-gradient(1px 1px at 90% 80%,#fff,transparent);background-size:140% 140%;animation:drift 50s linear infinite;opacity:.7}
+@keyframes drift{to{transform:translate3d(-4%,-5%,0)}}
+body>*{position:relative;z-index:1}
+a{color:inherit;text-decoration:none}
+.nav{position:fixed;inset:0 0 auto;z-index:50;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,4vw,2.5rem);border-bottom:1px solid transparent;transition:background .4s,backdrop-filter .4s}
+.nav.solid{background:rgba(10,8,16,.9);backdrop-filter:blur(16px);border-bottom-color:rgba(232,197,106,.14)}
+.logo{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:baseline;gap:.06em;filter:drop-shadow(0 0 10px rgba(212,69,79,.25)) drop-shadow(0 0 14px rgba(155,136,224,.3))}
+.logo .j{background:linear-gradient(180deg,#ffb4b8,#d4454f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo .mid{background:linear-gradient(180deg,#e8eef6,#a8b4c8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo .d{background:linear-gradient(180deg,#d4ccf5,#9b88e0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:.15rem}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:.5rem .85rem;border-radius:999px}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.hero{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 1.5rem 4rem}
+.hero-disc{width:min(280px,70vw);aspect-ratio:1;border-radius:50%;margin-bottom:1.75rem;background:conic-gradient(from 210deg,#d4454f 0deg 120deg,#c8d2e2 120deg 240deg,#9b88e0 240deg 360deg);box-shadow:0 0 60px rgba(212,69,79,.35),0 0 80px rgba(155,136,224,.3);animation:spin 28s linear infinite,fadeUp 1s var(--ease) .1s forwards;opacity:0;position:relative}
+.hero-disc::after{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#1a1520,#0a0810 70%)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-kicker{font-size:10px;font-weight:800;letter-spacing:.36em;text-transform:uppercase;background:linear-gradient(90deg,#ff8a90,#e8eef6,#b9a8f0);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:1rem;opacity:0;animation:fadeUp .9s var(--ease) .2s forwards}
+.hero-title{font-family:var(--display);font-size:clamp(2.4rem,8vw,4.6rem);font-weight:700;line-height:1.05;margin-bottom:.75rem;opacity:0;animation:fadeUp 1s var(--ease) .35s forwards}
+.hero-title em{font-style:normal;color:var(--closet)}
+.hero-sub{max-width:28rem;margin:0 auto 1.75rem;color:var(--muted);font-size:15px;opacity:0;animation:fadeUp 1s var(--ease) .45s forwards}
+.hero-eras{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem;margin-bottom:2rem;opacity:0;animation:fadeUp 1s var(--ease) .55s forwards}
+.chip{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.45rem .9rem;border-radius:999px;border:1px solid transparent}
+.chip.botdf{color:#ffb4b8;border-color:rgba(212,69,79,.5);background:rgba(212,69,79,.18)}
+.chip.scream{color:#eef2f8;border-color:rgba(208,216,230,.45);background:rgba(208,216,230,.12)}
+.chip.closet{color:#d8d0f8;border-color:rgba(155,136,224,.5);background:rgba(155,136,224,.18)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 1.9rem;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border-radius:999px}
+.btn-main{background:linear-gradient(135deg,#d4454f 0%,#9b88e0 55%,#c8d2e2 100%);color:#0a0810;box-shadow:0 0 28px rgba(155,136,224,.35);opacity:0;animation:fadeUp 1s var(--ease) .65s forwards}
+.btn-main:hover{filter:brightness(1.08)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.2)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.section{padding:clamp(3.5rem,8vw,6rem) clamp(1.25rem,4vw,2.5rem);max-width:1080px;margin:0 auto}
+.sec-label{font-size:10px;font-weight:800;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.sec-title{font-family:var(--display);font-size:clamp(1.9rem,5vw,3rem);font-weight:700;margin-bottom:1rem}
+.sec-lead{color:var(--muted);max-width:36rem;margin-bottom:2.5rem;font-size:15px}
+.mashup{position:relative;isolation:isolate;overflow:hidden;border-radius:28px;padding:clamp(1.5rem,4vw,2.75rem);border:1px solid rgba(180,160,210,.3);background:linear-gradient(125deg,rgba(120,30,40,.35),rgba(12,10,20,.95) 42%,rgba(70,55,130,.35));box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.mashup::before{content:"";position:absolute;z-index:-1;inset:-40%;background:radial-gradient(ellipse at 12% 40%,rgba(212,69,79,.4),transparent 38%),radial-gradient(ellipse at 90% 70%,rgba(155,136,224,.4),transparent 40%);filter:blur(30px);animation:mash 14s ease-in-out infinite alternate}
+@keyframes mash{to{transform:translate(2%,3%) scale(1.05)}}
+.mash-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-bottom:1.2rem}
+.mash-kicker{font-size:10px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.mash-time{font-size:10px;font-weight:700;letter-spacing:.14em;color:#c9c5d4;border:1px solid rgba(201,197,212,.22);border-radius:999px;padding:.4rem .75rem}
+.mashup h2{font-family:var(--display);font-size:clamp(1.7rem,4.5vw,2.6rem);margin-bottom:.55rem}
+.mashup h2 span{color:var(--closet)}
+.mash-desc{color:var(--muted);font-size:14px;margin-bottom:1.75rem}
+.track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin-bottom:1.75rem}
+.era{padding:1rem .9rem;border-radius:16px;background:rgba(5,6,12,.55);border:1px solid rgba(255,255,255,.08)}
+.era-line{height:3px;border-radius:99px;margin-bottom:.85rem}
+.era strong{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem}
+.era p{font-size:11px;color:#9a96a6}
+.era.botdf .era-line{background:linear-gradient(90deg,#7e252d,#df7770);box-shadow:0 0 16px rgba(212,69,79,.45)}
+.era.scream .era-line{background:linear-gradient(90deg,#7f8da5,#e1e8f1)}
+.era.closet .era-line{background:linear-gradient(90deg,#51418f,#a99af1);box-shadow:0 0 16px rgba(155,136,224,.45)}
+.mash-acts{display:flex;flex-wrap:wrap;gap:.65rem}
+.grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.card{background:rgba(12,10,20,.9);border:1px solid rgba(232,197,106,.14);border-radius:22px;overflow:hidden}
+.card-art{aspect-ratio:1;display:grid;place-items:center}
+.botdf-art{background:linear-gradient(145deg,#4a1018,#d4454f 50%,#1a080c)}
+.scream-art{background:linear-gradient(145deg,#1a1e28,#a8b4c8 45%,#0e1016)}
+.closet-art{background:linear-gradient(145deg,#1a1430,#9b88e0 50%,#0c0a16)}
+.card-art .label{font-family:var(--display);font-size:clamp(1.4rem,4vw,2rem);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.botdf-art .label{color:#ffd0d3}.scream-art .label{color:#f0f4fa}.closet-art .label{color:#e4dcff}
+.card-body{padding:1.1rem 1.2rem}
+.card-body h3{font-size:14px;margin-bottom:.3rem}.card-body p{font-size:12px;color:#8a8270}
+.about{max-width:38rem;color:var(--muted);line-height:1.75}
+.about strong{color:#f6dd9a}
+.footer{border-top:1px solid rgba(232,197,106,.14);padding:2rem;text-align:center;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6a6458}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:560px){.track{grid-template-columns:1fr}.era{display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:center}.era-line{width:4px;height:100%;min-height:36px;margin:0}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><div class="bg-cols"><span></span><span></span><span></span></div><div class="orb r"></div><div class="orb s"></div><div class="orb v"></div><div class="stars"></div></div>
+<header class="nav" id="nav">
+<a class="logo" href="#top"><span class="j">J</span><span class="mid">isus </span><span class="d">D</span><span class="mid">ev</span></a>
+<nav class="nav-links"><a href="#mashup">Mashup</a><a href="#eras">Eras</a><a href="#about">About</a></nav>
+</header>
+<main>
+<section class="hero" id="top">
+<div class="hero-disc" aria-hidden="true"></div>
+<div class="hero-kicker">Pancho Music Studios · Special</div>
+<h1 class="hero-title">Three Eras <em>·</em> One Groove</h1>
+<p class="hero-sub">Blood on the Dance Floor × Scream × In the Closet. Un solo viaje por tres eras.</p>
+<div class="hero-eras">
+<span class="chip botdf">BOTDF · Red</span>
+<span class="chip scream">Scream · Silver</span>
+<span class="chip closet">Closet · Violet</span>
+</div>
+<a class="btn btn-main" href="#mashup">Ver mashup</a>
+</section>
+<section class="section" id="mashup">
+<div class="sec-label reveal">Featured</div>
+<h2 class="sec-title reveal">The mashup</h2>
+<p class="sec-lead reveal">14 minutos. Tres colores. Una sola pista continua.</p>
+<article class="mashup reveal">
+<div class="mash-top"><span class="mash-kicker">Special Mashup</span><span class="mash-time">14 MIN · THREE ERAS</span></div>
+<h2>THREE ERAS <span>·</span> ONE GROOVE</h2>
+<p class="mash-desc">Rojo y peligro de Blood on the Dance Floor. Acero industrial de Scream. Groove violeta de In the Closet.</p>
+<div class="track">
+<div class="era botdf"><div class="era-line"></div><div><strong>BOTDF</strong><p>Red · Dance · Danger</p></div></div>
+<div class="era scream"><div class="era-line"></div><div><strong>SCREAM</strong><p>Silver · Industrial</p></div></div>
+<div class="era closet"><div class="era-line"></div><div><strong>IN THE CLOSET</strong><p>Violet · Groove</p></div></div>
+</div>
+<div class="mash-acts"><span class="btn btn-main" style="opacity:1;cursor:default">Próximamente</span><span class="btn btn-ghost">Audio en camino</span></div>
+</article>
+</section>
+<section class="section" id="eras">
+<div class="sec-label reveal">The palette</div>
+<h2 class="sec-title reveal">Tres eras</h2>
+<div class="grid">
+<article class="card reveal"><div class="card-art botdf-art"><span class="label">BOTDF</span></div><div class="card-body"><h3>Blood on the Dance Floor</h3><p>Rojo · Dance · Danger</p></div></article>
+<article class="card reveal"><div class="card-art scream-art"><span class="label">Scream</span></div><div class="card-body"><h3>Scream</h3><p>Plata · Industrial</p></div></article>
+<article class="card reveal"><div class="card-art closet-art"><span class="label">Closet</span></div><div class="card-body"><h3>In the Closet</h3><p>Violeta · Groove</p></div></article>
+</div>
+</section>
+<section class="section" id="about">
+<div class="sec-label reveal">About</div>
+<h2 class="sec-title reveal">JisusDev</h2>
+<div class="about reveal"><p><strong>Remixes</strong> inspirados en Michael Jackson. Fan-made, no oficial, no monetizado.</p><p style="margin-top:1rem">© 2026 JisusDev · Pancho Music Studios</p></div>
+</section>
+</main>
+<footer class="footer">Fan-made · Not affiliated with the Estate of Michael Jackson</footer>
+<script>
+(function(){var n=document.getElementById('nav');function s(){n.classList.toggle('solid',scrollY>24)}addEventListener('scroll',s,{passive:true});s();
+document.querySelectorAll('.reveal').forEach(function(el){if(!('IntersectionObserver'in window)){el.classList.add('in');return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});io.observe(el)});})();
+</script>
+</body>
+</html>
