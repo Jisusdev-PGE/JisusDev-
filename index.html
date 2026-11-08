@@ -266,6 +266,55 @@ section[id]{scroll-margin-top:82px}
 .skip-link:focus{transform:translateY(0)}
 @media(max-width:360px){.logo{font-size:11px}.nav-links{gap:0}.nav-links a{font-size:8px;padding:.4rem .4rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Music catalog + player + games */
+.feature-drop{display:grid;gap:1.5rem;align-items:center;margin:0 0 2.5rem;padding:1rem;border:1px solid var(--line);border-radius:22px;background:rgba(12,10,20,.78)}
+.feature-drop img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:15px}
+.feature-drop h3{font-family:var(--display);font-size:clamp(1.4rem,3vw,2rem);margin:.35rem 0}
+.feature-drop p{color:var(--muted);font-size:13px;margin-bottom:1rem}
+.feature-drop .feature-actions{display:flex;flex-wrap:wrap;gap:.55rem}
+.mix-grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr))}
+.mix{background:rgba(12,10,20,.9);border:1px solid var(--line);overflow:hidden;border-radius:20px;transition:transform .3s,box-shadow .3s}
+.mix:hover{transform:translateY(-4px);box-shadow:0 0 28px rgba(155,136,224,.2)}
+.mix-cover{position:relative;aspect-ratio:1;background:#05050a;overflow:hidden}
+.mix-cover img{width:100%;height:100%;object-fit:cover}
+.mix-play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.22);z-index:2}
+.mix-play span{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#f6dd9a,#c9a227);color:#17111d;display:grid;place-items:center;font-size:18px;transition:transform .25s,box-shadow .25s}
+.mix-play:hover span{transform:scale(1.1);box-shadow:0 0 24px rgba(232,197,106,.6)}
+.mix-body{padding:1rem 1.05rem}
+.mix-body h3{font-size:13px;font-weight:700;margin-bottom:.3rem}
+.mix-body p{font-size:11px;color:var(--muted);margin-bottom:.85rem}
+.mix-acts{display:flex;flex-wrap:wrap;gap:.4rem}
+.mix-acts .btn{min-height:36px;padding:0 .8rem;font-size:9px;letter-spacing:.1em}
+.mix.soon .mix-cover{display:grid;place-items:center;background:radial-gradient(circle,rgba(155,136,224,.2),rgba(5,5,10,.95) 70%)}
+.mix.soon .q{font-family:var(--display);font-size:5rem;color:var(--gold)}
+.mix-badge{position:absolute;top:.75rem;right:.75rem;z-index:3;padding:.3rem .6rem;border-radius:999px;background:var(--gold2);color:#17111d;font-size:9px;font-weight:800;letter-spacing:.12em}
+.game-list{display:grid;gap:.85rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.game{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;background:rgba(12,10,20,.88);border:1px solid var(--line);border-radius:17px;transition:transform .25s,box-shadow .25s}
+.game:hover{transform:translateY(-3px);box-shadow:0 0 24px rgba(155,136,224,.18)}
+.game-ico{width:44px;height:44px;flex:0 0 44px;display:grid;place-items:center;font-size:20px;background:rgba(255,255,255,.05);border-radius:13px}
+.game h3{font-size:12px}.game p{font-size:10px;color:var(--muted)}
+.solo-teaser{margin:2rem 0 2.5rem;padding:1.5rem;border-radius:20px;border:1px solid rgba(232,197,106,.25);background:linear-gradient(135deg,rgba(232,197,106,.08),rgba(10,12,20,.6));text-align:center}
+.solo-kicker{font-size:9px;font-weight:800;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.solo-title{font-family:var(--display);font-size:1.6rem;margin-bottom:.35rem}
+.solo-sub{font-size:12px;color:var(--muted)}
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal.open{opacity:1;pointer-events:auto}
+.scrim{position:absolute;inset:0;background:rgba(0,0,0,.84)}
+.sheet{position:relative;z-index:1;width:min(640px,100%);max-height:92dvh;overflow:auto;background:#0c0a14;border:1px solid var(--line);border-radius:22px 22px 0 0;transform:translateY(20px);transition:transform .3s;padding-bottom:1rem}
+.modal.open .sheet{transform:none}
+.sheet-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;padding:1.1rem 1.2rem}
+.sheet-head h3{font-family:var(--display);font-size:1.3rem}
+.sheet-head p{font-size:12px;color:var(--muted)}
+.close{width:36px;height:36px;flex:0 0 36px;border:1px solid var(--line);border-radius:50%;font-size:20px}
+.media video{display:block;width:100%;max-height:58dvh;background:#000}
+.audio-box{display:none;flex-direction:column;align-items:center;gap:1rem;padding:1rem}
+.audio-box.on{display:flex}
+.audio-box img{width:min(190px,55%);aspect-ratio:1;object-fit:cover;border-radius:16px}
+.audio-box audio{width:min(100%,420px)}
+@media(min-width:760px){.feature-drop{grid-template-columns:minmax(180px,280px) 1fr;gap:2rem;padding:1.25rem}.modal{align-items:center;padding:1rem}.sheet{border-radius:22px}}
+@media(prefers-reduced-motion:reduce){.mix,.game,.mix-play span,.modal,.sheet{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -283,6 +332,8 @@ section[id]{scroll-margin-top:82px}
   <nav class="nav-links" aria-label="Navegación principal">
     <a href="#mashup">Mashup</a>
     <a href="#eras">Eras</a>
+    <a href="#music">Music</a>
+    <a href="#games">Games</a>
     <a href="#about">About</a>
   </nav>
 </header>
@@ -345,11 +396,45 @@ section[id]{scroll-margin-top:82px}
     </div>
   </section>
 
+
+  <section class="section" id="music">
+    <div class="sec-label reveal">Pancho Music Studios</div>
+    <h2 class="sec-title reveal">Music catalog</h2>
+    <p class="sec-lead reveal">Remixes, mixes y proyectos musicales. Cada lanzamiento tiene su propio espacio.</p>
+    <article class="feature-drop reveal">
+      <img src="Gemini_Generated_Image_q23v3fq23v3fq23v.jpe" alt="Portada de Chicago: The Mix" loading="lazy">
+      <div>
+        <div class="sec-label">Featured drop · 1K+</div>
+        <h3>Chicago: The Mix</h3>
+        <p>Xscape: This Is It in the Mix</p>
+        <div class="feature-actions">
+          <button class="btn btn-main" type="button" data-play="2">Play</button>
+          <a class="btn btn-ghost" href="Chicago%20The%20mix.mp4" download>Download</a>
+          <a class="btn btn-ghost" href="https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_b5ca7c5be83f4e95bb1b2c56e3d1028f" target="_blank" rel="noopener noreferrer">BandLab</a>
+          <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=VTSwj-y_zt0" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </div>
+      </div>
+    </article>
+    <div class="solo-teaser reveal">
+      <div class="solo-kicker">Clasificado · Próximamente</div>
+      <div class="solo-title">Proyecto solista</div>
+      <p class="solo-sub">Algo se está formando en silencio. Nombre en código. Fecha desconocida.</p>
+    </div>
+    <div class="sec-label reveal">Catalog</div>
+    <h2 class="sec-title reveal">Other mixes</h2>
+    <div class="mix-grid" id="mix-grid"></div>
+  </section>
+  <section class="section" id="games">
+    <div class="sec-label reveal">Pancho Games Studios</div>
+    <h2 class="sec-title reveal">Games</h2>
+    <p class="sec-lead reveal">HTML5, Roblox y experimentos interactivos.</p>
+    <div class="game-list" id="game-list"></div>
+  </section>
   <section class="section" id="about">
     <div class="sec-label reveal">About</div>
     <h2 class="sec-title reveal">JisusDev</h2>
     <div class="about reveal">
-      <p><strong>Remixes</strong> inspirados en Michael Jackson. Fan-made, no oficial, no monetizado. Por amor al arte.</p>
+      <p><strong>Remixes</strong> inspirados en Michael Jackson, juegos HTML5 y experiencias en Roblox. Fan-made, no oficial, no monetizado. Por amor al arte.</p>
       <p style="margin-top:1rem">© 2026 JisusDev · Pancho Music Studios</p>
     </div>
   </section>
@@ -370,6 +455,73 @@ section[id]{scroll-margin-top:82px}
     },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
     els.forEach(function(el){io.observe(el)});
   }else{els.forEach(function(el){el.classList.add('in')})}
+})();
+</script>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <div class="sheet-head"><div><h3 id="m-title"></h3><p id="m-desc"></p></div><button class="close" data-close type="button" aria-label="Cerrar reproductor">×</button></div>
+    <div class="media"><video id="m-video" controls playsinline preload="none"></video><div class="audio-box" id="m-audio"><img id="m-art" alt="Portada del remix"><audio id="m-audio-el" controls preload="none"></audio></div></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const mixes=[
+    {title:"Don't Stop 'Til You Get Enough",desc:"2K Remix · This Is It in the Mix",cover:"1792015668755.jpg",audio:"AUD-20261014-WA0001.mp3",bandlab:"https://www.bandlab.com/track/61f58130-7ff7-4049-8171-1734de4d95f8?revId=a06afc26-de83-4af3-9856-1f7a47f1454c"},
+    {title:"Don't Stop 'Til You Get Enough",desc:"Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_fiajdofiajdofiaj.jpe",video:"Don't Stop 'til I Get Enough.mp4",yt:"https://www.youtube.com/watch?v=u54H4FnSOtI",bandlab:"https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_11c277cf85f34aeca59384d719fc85ef"},
+    {title:"Chicago: The Mix",desc:"1K+ · Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",yt:"https://www.youtube.com/watch?v=VTSwj-y_zt0",bandlab:"https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_b5ca7c5be83f4e95bb1b2c56e3d1028f",aura:true},
+    {title:"Three Eras · One Groove",desc:"Blood on the Dance Floor × Scream × In the Closet · Mashup de 14 minutos",soon:true},
+    {title:"Proyecto solista",desc:"Nombre en código · Fecha desconocida",soon:true},
+    {title:"Próximamente",desc:"Nuevo mix en preparación",soon:true}
+  ];
+  const games=[
+    {name:"SURGE",tag:"HTML5 · Endless flyer",icon:"⚡",url:"surge.html"},
+    {name:"Among Us Mini",tag:"HTML5 · Fan game",icon:"🔴",url:"amongus.html"},
+    {name:"Escapa del tsunami por autos",tag:"Obby · Tsunami · Roblox",icon:"🚗",url:"https://www.roblox.com/es/games/70603456155056/Escapa-de-el-tsunami-por-autos"},
+    {name:"Escape del tsunami por joyas",tag:"Obby · Tsunami · Roblox",icon:"💎",url:"https://www.roblox.com/es/games/117666384645004/Escape-del-tsunami-por-joyas"},
+    {name:"Blox War",tag:"Acción · Combate · Roblox",icon:"⚔️",url:"https://www.roblox.com/es/games/121209803244913/Blox-War"},
+    {name:"Pancho Games Studios",tag:"Comunidad · Roblox",icon:"🎮",url:"https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios"}
+  ];
+  const grid=document.getElementById("mix-grid");
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  mixes.forEach((m,i)=>{
+    const art=document.createElement("article");
+    art.className=m.soon?"mix soon":"mix";
+    if(m.soon){
+      art.innerHTML='<div class="mix-cover"><span class="q">?</span></div><div class="mix-body"><h3>'+esc(m.title)+'</h3><p>'+esc(m.desc)+'</p></div>';
+    }else{
+      const file=m.audio||m.video||"";
+      const dl=file?'<a class="btn btn-ghost" href="'+encodeURI(file)+'" download>Download</a>':"";
+      const bl=m.bandlab?'<a class="btn btn-ghost" href="'+m.bandlab+'" target="_blank" rel="noopener noreferrer">BandLab</a>':"";
+      const yt=m.yt?'<a class="btn btn-ghost" href="'+m.yt+'" target="_blank" rel="noopener noreferrer">YouTube</a>':"";
+      art.innerHTML='<div class="mix-cover"><img src="'+encodeURI(m.cover)+'" alt="Portada de '+esc(m.title)+'" loading="lazy">'+(m.aura?'<span class="mix-badge">1K+</span>':"")+'<button type="button" class="mix-play" data-play="'+i+'" aria-label="Reproducir '+esc(m.title)+'"><span>▶</span></button></div><div class="mix-body"><h3>'+esc(m.title)+'</h3><p>'+esc(m.desc)+'</p><div class="mix-acts"><button type="button" class="btn btn-main" data-play="'+i+'">Play</button>'+dl+bl+yt+'</div></div>';
+    }
+    grid.appendChild(art);
+  });
+  document.getElementById("game-list").innerHTML=games.map(g=>'<a class="game" href="'+g.url+'"'+(g.url.startsWith("http")?' target="_blank" rel="noopener noreferrer"':'')+'><div class="game-ico">'+g.icon+'</div><div><h3>'+esc(g.name)+'</h3><p>'+esc(g.tag)+'</p></div></a>').join("");
+  const modal=document.getElementById("modal"),video=document.getElementById("m-video"),audio=document.getElementById("m-audio-el"),audioBox=document.getElementById("m-audio");
+  function openPlayer(m){
+    if(!m||!(m.video||m.audio))return;
+    document.getElementById("m-title").textContent=m.title;
+    document.getElementById("m-desc").textContent=m.desc||"";
+    video.pause();audio.pause();video.removeAttribute("src");audio.removeAttribute("src");video.load();audio.load();
+    if(m.audio){video.hidden=true;audioBox.classList.add("on");document.getElementById("m-art").src=m.cover||"";audio.src=encodeURI(m.audio);audio.play().catch(()=>{});}
+    else{video.hidden=false;audioBox.classList.remove("on");video.poster=m.cover||"";video.src=encodeURI(m.video);video.play().catch(()=>{});}
+    modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
+    modal.querySelector(".close").focus();
+  }
+  function closePlayer(){
+    video.pause();audio.pause();video.removeAttribute("src");audio.removeAttribute("src");video.load();audio.load();
+    modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow="";
+  }
+  document.addEventListener("click",e=>{
+    const p=e.target.closest("[data-play]");
+    if(p){openPlayer(mixes[Number(p.getAttribute("data-play"))]);return;}
+    if(e.target.closest("[data-close]"))closePlayer();
+  });
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))closePlayer();});
 })();
 </script>
 </body>
