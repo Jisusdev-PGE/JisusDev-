@@ -145,6 +145,27 @@ img{display:block;max-width:100%}
 .logo:hover{filter:drop-shadow(0 0 10px rgba(232,197,106,.55))}
 .mix-play:hover span,.mix-play:active span{box-shadow:0 0 24px rgba(232,197,106,.7);transform:scale(1.08)}
 .feature-art:hover{box-shadow:0 0 40px rgba(232,197,106,.4),0 0 70px rgba(80,110,220,.3)}
+
+/* THREE ERAS — special mashup decoration */
+.three-eras{position:relative;isolation:isolate;overflow:hidden;margin:0 0 3.25rem;padding:clamp(1.35rem,3vw,2.25rem);border:1px solid rgba(190,170,205,.25);border-radius:26px;background:linear-gradient(112deg,rgba(115,35,43,.20),rgba(13,17,28,.88) 48%,rgba(73,57,135,.22));box-shadow:0 18px 55px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.05)}
+.three-eras::before{content:"";position:absolute;z-index:-1;inset:-45%;pointer-events:none;background:radial-gradient(ellipse at 14% 45%,rgba(185,55,62,.26),transparent 34%),radial-gradient(ellipse at 51% 15%,rgba(177,195,220,.17),transparent 32%),radial-gradient(ellipse at 88% 62%,rgba(116,91,207,.28),transparent 37%);filter:blur(22px);animation:threeErasAura 12s ease-in-out infinite alternate}
+.three-eras-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.1rem}
+.three-eras-kicker{font-size:10px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:#e8c56a}
+.three-eras-duration{font-size:10px;font-weight:700;letter-spacing:.16em;color:#c9c5d4;border:1px solid rgba(201,197,212,.2);border-radius:999px;padding:.38rem .7rem}
+.three-eras h3{font-family:var(--display);font-size:clamp(1.65rem,4vw,2.55rem);line-height:1.05;letter-spacing:.015em;margin-bottom:.55rem}
+.three-eras-lead{max-width:42rem;color:var(--muted);font-size:13px;margin-bottom:1.45rem}
+.three-eras-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem}
+.three-era{min-width:0;padding:.8rem .85rem;border-radius:14px;background:rgba(5,6,10,.48);border:1px solid rgba(255,255,255,.09)}
+.three-era-line{height:3px;border-radius:99px;margin-bottom:.7rem}
+.three-era strong{display:block;font-size:clamp(9px,1.3vw,11px);letter-spacing:.11em;text-transform:uppercase;white-space:nowrap}
+.three-era span{display:block;margin-top:.25rem;color:#aaa6b4;font-size:10px}
+.three-era.botdf .three-era-line{background:linear-gradient(90deg,#7e252d,#df7770);box-shadow:0 0 15px rgba(190,65,73,.35)}
+.three-era.scream .three-era-line{background:linear-gradient(90deg,#7f8da5,#e1e8f1);box-shadow:0 0 15px rgba(190,210,235,.25)}
+.three-era.closet .three-era-line{background:linear-gradient(90deg,#51418f,#a99af1);box-shadow:0 0 15px rgba(130,105,220,.35)}
+@keyframes threeErasAura{from{transform:translate3d(-1%,0,0) scale(.96);opacity:.72}to{transform:translate3d(1%,1%,0) scale(1.06);opacity:1}}
+@media(max-width:480px){.three-eras-track{gap:.35rem}.three-era{padding:.65rem .5rem}.three-era span{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.three-eras::before{animation:none}}
+
 .solo-teaser{margin:3rem 0 1rem;padding:1.75rem 1.5rem;border-radius:22px;border:1px solid rgba(232,197,106,.28);background:linear-gradient(135deg,rgba(232,197,106,.08),rgba(10,12,20,.6));text-align:center;position:relative;overflow:hidden}
 .solo-teaser::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle at 50% 0%,rgba(232,197,106,.2),transparent 55%);pointer-events:none;animation:pageAura 8s ease-in-out infinite}
 .solo-kicker{font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;position:relative}
@@ -173,7 +194,18 @@ img{display:block;max-width:100%}
   </text>
 </svg>
 </div><div class="hero-kicker">1K · Chicago: The Mix</div><p class="hero-sub">Xscape: This Is It in the Mix</p><button class="btn btn-accent" data-play="2" type="button">Play Chicago</button></div><div class="scroll-hint">Scroll</div></section>
-<section class="panel" id="music"><div class="panel-inner"><div class="sec-label">Music</div><h2 class="sec-title">Featured drop</h2><div class="feature"><div class="feature-art"><img src="Gemini_Generated_Image_q23v3fq23v3fq23v.jpe" alt="Chicago: The Mix"><span class="feature-badge">1K</span></div><div><h3>Chicago: The Mix</h3><p>1K · Xscape: This Is It in the Mix</p><div class="feature-acts"><button class="btn btn-accent" data-play="2" type="button">Play</button><a class="btn btn-ghost btn-sm" href="Chicago%20The%20mix.mp4" download>Download</a><a class="btn btn-ghost btn-sm" href="https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_b5ca7c5be83f4e95bb1b2c56e3d1028f" target="_blank" rel="noopener">BandLab</a><a class="btn btn-ghost btn-sm" href="https://www.youtube.com/watch?v=VTSwj-y_zt0" target="_blank" rel="noopener">YouTube</a></div></div></div>
+<section class="panel" id="music"><div class="panel-inner"><div class="sec-label">Music</div><h2 class="sec-title">Featured drop</h2>
+<div class="three-eras" aria-label="Three Eras special mashup: Blood on the Dance Floor, Scream and In the Closet">
+  <div class="three-eras-top"><span class="three-eras-kicker">Pancho Music Studios · Special Mashup</span><span class="three-eras-duration">14 MINUTES · THREE ERAS</span></div>
+  <h3>THREE ERAS <span style="color:#c7b8ef">·</span> ONE GROOVE</h3>
+  <p class="three-eras-lead">Three Michael Jackson eras, one continuous dance experience. Blood on the Dance Floor × Scream × In the Closet.</p>
+  <div class="three-eras-track">
+    <div class="three-era botdf"><div class="three-era-line"></div><strong>BOTDF</strong><span>Red · Dance</span></div>
+    <div class="three-era scream"><div class="three-era-line"></div><strong>SCREAM</strong><span>Silver · Industrial</span></div>
+    <div class="three-era closet"><div class="three-era-line"></div><strong>IN THE CLOSET</strong><span>Violet · Groove</span></div>
+  </div>
+</div>
+<div class="feature"><div class="feature-art"><img src="Gemini_Generated_Image_q23v3fq23v3fq23v.jpe" alt="Chicago: The Mix"><span class="feature-badge">1K</span></div><div><h3>Chicago: The Mix</h3><p>1K · Xscape: This Is It in the Mix</p><div class="feature-acts"><button class="btn btn-accent" data-play="2" type="button">Play</button><a class="btn btn-ghost btn-sm" href="Chicago%20The%20mix.mp4" download>Download</a><a class="btn btn-ghost btn-sm" href="https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_b5ca7c5be83f4e95bb1b2c56e3d1028f" target="_blank" rel="noopener">BandLab</a><a class="btn btn-ghost btn-sm" href="https://www.youtube.com/watch?v=VTSwj-y_zt0" target="_blank" rel="noopener">YouTube</a></div></div></div>
 <div class="solo-teaser">
 <div class="solo-kicker">Clasificado · Próximamente</div>
 <div class="solo-title">Proyecto solista</div>
