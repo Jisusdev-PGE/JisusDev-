@@ -1,275 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0a0810">
-<meta name="cache-bust" content="2026-11-08-full-v5">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#11100e">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<title>JisusDev · Three Eras</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<title>JisusDev Music Studios · Three Eras</title>
 <style>
-:root{--bg:#0a0810;--text:#f5f1ea;--muted:#a9a19a;--gold:#e8c56a;--gold2:#f6dd9a;--botdf:#d4454f;--scream:#d0d8e6;--closet:#9b88e0;--line:rgba(232,197,106,.14);--ease:cubic-bezier(.22,1,.36,1);--font:Inter,system-ui,sans-serif;--display:"Playfair Display",Georgia,serif}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{color:var(--text);font:16px/1.55 var(--font);background:var(--bg);min-height:100dvh;overflow-x:hidden}
-.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.bg-cols{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr 1fr;opacity:.55}
-.bg-cols span:nth-child(1){background:linear-gradient(180deg,rgba(212,69,79,.35),transparent 70%)}
-.bg-cols span:nth-child(2){background:linear-gradient(180deg,rgba(208,216,230,.2),transparent 70%)}
-.bg-cols span:nth-child(3){background:linear-gradient(180deg,rgba(155,136,224,.32),transparent 70%)}
-.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:float 16s ease-in-out infinite alternate}
-.orb.r{width:55vmax;height:55vmax;left:-15%;top:-10%;background:rgba(212,69,79,.35)}
-.orb.s{width:45vmax;height:45vmax;left:30%;top:20%;background:rgba(208,216,230,.18);animation-delay:-5s}
-.orb.v{width:50vmax;height:50vmax;right:-12%;bottom:-15%;background:rgba(155,136,224,.32);animation-delay:-9s}
-@keyframes float{to{transform:translate(4%,6%) scale(1.08)}}
-.stars{position:absolute;inset:0;opacity:.7;background-image:radial-gradient(1.5px 1.5px at 10% 20%,#ffb0b4,transparent),radial-gradient(1px 1px at 48% 15%,#e8eef6,transparent),radial-gradient(1.4px 1.4px at 78% 30%,#cbb8ff,transparent),radial-gradient(1px 1px at 25% 70%,#fff,transparent),radial-gradient(1px 1px at 90% 80%,#fff,transparent);background-size:140% 140%;animation:drift 50s linear infinite}
-@keyframes drift{to{transform:translate3d(-4%,-5%,0)}}
-body>*{position:relative;z-index:1}
-a{color:inherit;text-decoration:none}
-button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
-.nav{position:fixed;inset:0 0 auto;z-index:50;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,2.5rem);border-bottom:1px solid transparent;transition:background .4s,backdrop-filter .4s}
-.nav.solid{background:rgba(10,8,16,.9);backdrop-filter:blur(16px);border-bottom-color:var(--line)}
-.logo{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:baseline;gap:.06em;filter:drop-shadow(0 0 10px rgba(212,69,79,.25)) drop-shadow(0 0 14px rgba(155,136,224,.3))}
-.logo .j{background:linear-gradient(180deg,#ffb4b8,#d4454f);-webkit-background-clip:text;background-clip:text;color:transparent}
-.logo .mid{background:linear-gradient(180deg,#e8eef6,#a8b4c8);-webkit-background-clip:text;background-clip:text;color:transparent}
-.logo .d{background:linear-gradient(180deg,#d4ccf5,#9b88e0);-webkit-background-clip:text;background-clip:text;color:transparent}
-.nav-links{display:flex;flex-wrap:wrap;gap:.1rem;justify-content:flex-end}
-.nav-links a{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.45rem .55rem;border-radius:999px}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
-.hero{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 1.25rem 4rem}
-.hero-disc{width:min(240px,65vw);aspect-ratio:1;border-radius:50%;margin-bottom:1.5rem;background:conic-gradient(from 210deg,#d4454f 0deg 120deg,#c8d2e2 120deg 240deg,#9b88e0 240deg 360deg);box-shadow:0 0 60px rgba(212,69,79,.35),0 0 80px rgba(155,136,224,.3);animation:spin 28s linear infinite,fadeUp 1s var(--ease) .1s forwards;opacity:0;position:relative}
-.hero-disc::after{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#1a1520,#0a0810 70%)}
-@keyframes spin{to{transform:rotate(360deg)}}
-.hero-kicker{font-size:10px;font-weight:800;letter-spacing:.32em;text-transform:uppercase;background:linear-gradient(90deg,#ff8a90,#e8eef6,#b9a8f0);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:1rem;opacity:0;animation:fadeUp .9s var(--ease) .2s forwards}
-.hero-title{font-family:var(--display);font-size:clamp(2.2rem,7vw,4.2rem);font-weight:700;line-height:1.05;margin-bottom:.75rem;opacity:0;animation:fadeUp 1s var(--ease) .35s forwards}
-.hero-title em{font-style:normal;color:var(--closet)}
-.hero-sub{max-width:28rem;margin:0 auto 1.5rem;color:var(--muted);font-size:15px;opacity:0;animation:fadeUp 1s var(--ease) .45s forwards}
-.hero-eras{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1.75rem;opacity:0;animation:fadeUp 1s var(--ease) .55s forwards}
-.chip{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .8rem;border-radius:999px;border:1px solid transparent}
-.chip.botdf{color:#ffb4b8;border-color:rgba(212,69,79,.5);background:rgba(212,69,79,.18)}
-.chip.scream{color:#eef2f8;border-color:rgba(208,216,230,.45);background:rgba(208,216,230,.12)}
-.chip.closet{color:#d8d0f8;border-color:rgba(155,136,224,.5);background:rgba(155,136,224,.18)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.4rem;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:999px}
-.btn-main{background:linear-gradient(135deg,#d4454f 0%,#9b88e0 55%,#c8d2e2 100%);color:#0a0810;box-shadow:0 0 24px rgba(155,136,224,.3)}
-.btn-main.anim{opacity:0;animation:fadeUp 1s var(--ease) .65s forwards}
-.btn-main:hover{filter:brightness(1.08)}
-.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.22)}
-.btn-ghost:hover{border-color:rgba(155,136,224,.5)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.section{padding:clamp(3rem,7vw,5rem) clamp(1.15rem,4vw,2.5rem);max-width:1080px;margin:0 auto}
-.sec-label{font-size:10px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.65rem}
-.sec-title{font-family:var(--display);font-size:clamp(1.7rem,4.5vw,2.8rem);font-weight:700;margin-bottom:.85rem}
-.sec-lead{color:var(--muted);max-width:36rem;margin-bottom:2rem;font-size:14px}
-.mashup{position:relative;isolation:isolate;overflow:hidden;border-radius:24px;padding:clamp(1.25rem,3vw,2.25rem);border:1px solid rgba(180,160,210,.3);background:linear-gradient(125deg,rgba(120,30,40,.35),rgba(12,10,20,.95) 42%,rgba(70,55,130,.35));box-shadow:0 20px 50px rgba(0,0,0,.4);margin-bottom:2rem}
-.mashup::before{content:"";position:absolute;z-index:-1;inset:-40%;background:radial-gradient(ellipse at 12% 40%,rgba(212,69,79,.4),transparent 38%),radial-gradient(ellipse at 90% 70%,rgba(155,136,224,.4),transparent 40%);filter:blur(30px);animation:mash 14s ease-in-out infinite alternate}
-@keyframes mash{to{transform:translate(2%,3%) scale(1.05)}}
-.mash-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem;margin-bottom:1rem}
-.mash-kicker{font-size:10px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
-.mash-time{font-size:10px;font-weight:700;letter-spacing:.12em;color:#c9c5d4;border:1px solid rgba(201,197,212,.22);border-radius:999px;padding:.35rem .65rem}
-.mashup h2{font-family:var(--display);font-size:clamp(1.5rem,4vw,2.3rem);margin-bottom:.5rem}
-.mashup h2 span{color:var(--closet)}
-.mash-desc{color:var(--muted);font-size:13px;margin-bottom:1.4rem}
-.track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem;margin-bottom:1.4rem}
-.era{padding:.85rem .75rem;border-radius:14px;background:rgba(5,6,12,.55);border:1px solid rgba(255,255,255,.08)}
-.era-line{height:3px;border-radius:99px;margin-bottom:.7rem}
-.era strong{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.25rem}
-.era p{font-size:10px;color:#9a96a6}
-.era.botdf .era-line{background:linear-gradient(90deg,#7e252d,#df7770);box-shadow:0 0 14px rgba(212,69,79,.4)}
-.era.scream .era-line{background:linear-gradient(90deg,#7f8da5,#e1e8f1)}
-.era.closet .era-line{background:linear-gradient(90deg,#51418f,#a99af1);box-shadow:0 0 14px rgba(155,136,224,.4)}
-.mix-grid{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr))}
-.mix{background:rgba(12,10,20,.9);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .3s,box-shadow .3s}
-.mix:hover{transform:translateY(-3px);box-shadow:0 0 26px rgba(155,136,224,.2)}
-.mix-cover{position:relative;aspect-ratio:1;background:#05050a}
-.mix-cover img{width:100%;height:100%;object-fit:cover}
-.mix-play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.25);z-index:2}
-.mix-play span{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#f6dd9a,#c9a227);color:#17111d;display:grid;place-items:center;font-size:16px}
-.mix-body{padding:.9rem}
-.mix-body h3{font-size:13px;font-weight:700;margin-bottom:.25rem}
-.mix-body p{font-size:11px;color:var(--muted);margin-bottom:.7rem}
-.mix-acts{display:flex;flex-wrap:wrap;gap:.35rem}
-.mix-acts .btn{min-height:34px;padding:0 .7rem;font-size:9px}
-.mix-badge{position:absolute;top:.65rem;right:.65rem;z-index:3;padding:.25rem .55rem;border-radius:999px;background:var(--gold2);color:#17111d;font-size:9px;font-weight:800}
-.game-list{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
-.game{display:flex;align-items:center;gap:.9rem;padding:.95rem 1rem;background:rgba(12,10,20,.88);border:1px solid var(--line);border-radius:16px;transition:transform .25s,box-shadow .25s}
-.game:hover{transform:translateY(-3px);box-shadow:0 0 22px rgba(155,136,224,.18)}
-.game-ico{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;font-size:18px;background:rgba(255,255,255,.05);border-radius:12px}
-.game h3{font-size:12px}.game p{font-size:10px;color:var(--muted)}
-.solo-teaser{margin:1.5rem 0 0;padding:1.35rem;border-radius:18px;border:1px solid rgba(232,197,106,.25);background:linear-gradient(135deg,rgba(232,197,106,.08),rgba(10,12,20,.6));text-align:center}
-.solo-kicker{font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
-.solo-title{font-family:var(--display);font-size:1.4rem;margin-bottom:.3rem}
-.solo-sub{font-size:12px;color:var(--muted)}
-.about{max-width:38rem;color:var(--muted);line-height:1.7;font-size:14px}
-.about strong{color:var(--gold2)}
-.footer{border-top:1px solid var(--line);padding:1.75rem;text-align:center;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6a6458}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
-.reveal.in{opacity:1;transform:none}
-.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
-.modal.open{opacity:1;pointer-events:auto}
-.scrim{position:absolute;inset:0;background:rgba(0,0,0,.84)}
-.sheet{position:relative;z-index:1;width:min(640px,100%);max-height:92dvh;overflow:auto;background:#0c0a14;border:1px solid var(--line);border-radius:20px 20px 0 0;transform:translateY(16px);transition:transform .3s;padding-bottom:1rem}
-.modal.open .sheet{transform:none}
-.sheet-head{display:flex;justify-content:space-between;gap:1rem;padding:1rem 1.1rem}
-.sheet-head h3{font-family:var(--display);font-size:1.2rem}
-.sheet-head p{font-size:12px;color:var(--muted)}
-.close{width:34px;height:34px;flex:0 0 34px;border:1px solid var(--line);border-radius:50%;font-size:18px}
-.media video{display:block;width:100%;max-height:55dvh;background:#000}
-.media video[hidden]{display:none}
-.audio-box{display:none;flex-direction:column;align-items:center;gap:1rem;padding:1rem}
-.audio-box.on{display:flex}
-.audio-box img{width:min(180px,55%);aspect-ratio:1;object-fit:cover;border-radius:14px}
-.audio-box audio{width:min(100%,400px)}
-@media(min-width:720px){.modal{align-items:center;padding:1rem}.sheet{border-radius:20px}}
-@media(max-width:560px){.track{grid-template-columns:1fr}.era{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:center}.era-line{width:4px;height:100%;min-height:32px;margin:0}.nav-links a{font-size:9px;padding:.4rem .4rem}}
-section[id]{scroll-margin-top:76px}
+:root{--bg:#11100e;--panel:#1b1916;--ink:#f6f1e8;--muted:#bdb5a8;--red:#c8323e;--red2:#f05a5f;--white:#f2f0e9;--beige:#cbb895;--beige2:#eadbbd;--line:rgba(255,255,255,.14);font-family:Arial,Helvetica,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);line-height:1.5}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(110deg,rgba(200,50,62,.18),transparent 36%,rgba(242,240,233,.08) 52%,transparent 68%,rgba(203,184,149,.18)),radial-gradient(circle at 50% 0,#28231e,transparent 55%)}
+.nav{position:sticky;top:0;z-index:10;background:rgba(17,16,14,.94);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:16px clamp(16px,5vw,64px);backdrop-filter:blur(10px)}.logo{font-weight:900;letter-spacing:.15em}.logo b{color:var(--red)}.logo i{color:var(--beige);font-style:normal}.links{display:flex;gap:8px;flex-wrap:wrap}.links a{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:8px}.links a:hover{color:#fff}
+.hero{max-width:1100px;margin:auto;padding:90px 20px 80px;text-align:center}.disc{width:min(230px,60vw);aspect-ratio:1;border-radius:50%;margin:0 auto 28px;background:conic-gradient(var(--red) 0 120deg,var(--white) 120deg 240deg,var(--beige) 240deg);box-shadow:0 0 70px rgba(200,50,62,.25),0 0 90px rgba(203,184,149,.2)}.kicker,.label{font-size:11px;letter-spacing:.25em;text-transform:uppercase;font-weight:800;color:var(--beige2)}h1,h2,h3{margin:0 0 12px}h1{font-size:clamp(38px,8vw,84px);line-height:1}h1 span{color:var(--beige)}.hero p{max-width:580px;margin:18px auto;color:var(--muted);font-size:17px}.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:24px 0}.chip{padding:8px 13px;border-radius:99px;border:1px solid}.chip.botdf{color:#ff9ca0;border-color:var(--red);background:rgba(200,50,62,.16)}.chip.scream{color:#111;background:var(--white);border-color:var(--white)}.chip.closet{color:#17130e;border-color:var(--beige);background:var(--beige)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:99px;padding:11px 17px;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em}.btn.main{background:var(--red);border-color:var(--red);color:#fff}.btn:hover{filter:brightness(1.12)}
+.section{max-width:1100px;margin:auto;padding:64px 20px}.section>p{color:var(--muted);max-width:600px}.feature{border:1px solid rgba(203,184,149,.35);background:linear-gradient(120deg,rgba(200,50,62,.2),rgba(20,19,17,.96) 45%,rgba(203,184,149,.16));border-radius:24px;padding:28px;margin-top:24px}.eras{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}.era{padding:16px;border-radius:14px;background:rgba(0,0,0,.3);border-top:4px solid}.era.botdf{border-color:var(--red)}.era.scream{border-color:var(--white)}.era.closet{border-color:var(--beige)}.era small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:24px}.card{background:rgba(27,25,22,.92);border:1px solid var(--line);border-radius:18px;overflow:hidden}.cover{aspect-ratio:1;background:#090909;position:relative}.cover img{width:100%;height:100%;object-fit:cover}.cover button{position:absolute;inset:0;border:0;background:rgba(0,0,0,.2);color:#fff;font-size:34px}.body{padding:16px}.body h3{font-size:16px}.body p{font-size:13px;color:var(--muted);min-height:40px}.actions{display:flex;gap:7px;flex-wrap:wrap}.actions .btn{font-size:10px;padding:9px 11px}.game{display:flex;gap:14px;align-items:center;padding:18px}.game-icon{font-size:28px}.game p{margin:0;color:var(--muted);font-size:13px}.about{color:var(--muted);max-width:700px}.footer{text-align:center;border-top:1px solid var(--line);padding:28px;color:#80786e;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.modal{display:none;position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.82);align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}.dialog{width:min(700px,100%);background:#171512;border:1px solid var(--beige);border-radius:18px;overflow:hidden}.dialog-head{display:flex;justify-content:space-between;gap:15px;padding:18px}.close{border:1px solid var(--line);border-radius:50%;width:36px;height:36px;background:none;color:#fff}.media video{display:block;width:100%;max-height:65vh;background:#000}.audio{display:none;align-items:center;flex-direction:column;gap:16px;padding:24px}.audio.on{display:flex}.audio img{width:180px;aspect-ratio:1;object-fit:cover;border-radius:12px}.audio audio{width:100%}
+@media(max-width:650px){.nav{align-items:flex-start;gap:10px;flex-direction:column}.eras{grid-template-columns:1fr}.hero{padding-top:60px}.links a{padding-left:0}}
 </style>
 </head>
 <body>
-<div class="bg" aria-hidden="true"><div class="bg-cols"><span></span><span></span><span></span></div><div class="orb r"></div><div class="orb s"></div><div class="orb v"></div><div class="stars"></div></div>
-<header class="nav" id="nav">
-<a class="logo" href="#top"><span class="j">J</span><span class="mid">isus </span><span class="d">D</span><span class="mid">ev</span></a>
-<nav class="nav-links">
-<a href="#mashup">Mashup</a><a href="#music">Music</a><a href="#games">Games</a><a href="#about">About</a>
-</nav>
-</header>
-<main>
-<section class="hero" id="top">
-<div class="hero-disc" aria-hidden="true"></div>
-<div class="hero-kicker">Pancho Music Studios · Special</div>
-<h1 class="hero-title">Three Eras <em>·</em> One Groove</h1>
-<p class="hero-sub">Blood on the Dance Floor × Scream × In the Closet. Un solo viaje por tres eras.</p>
-<div class="hero-eras">
-<span class="chip botdf">BOTDF · Red</span>
-<span class="chip scream">Scream · Silver</span>
-<span class="chip closet">Closet · Violet</span>
-</div>
-<a class="btn btn-main anim" href="#mashup">Ver mashup</a>
-</section>
-
-<section class="section" id="mashup">
-<div class="sec-label reveal">Featured</div>
-<h2 class="sec-title reveal">The mashup</h2>
-<p class="sec-lead reveal">14 minutos. Tres colores. Una sola pista continua.</p>
-<article class="mashup reveal">
-<div class="mash-top"><span class="mash-kicker">Special Mashup</span><span class="mash-time">14 MIN · THREE ERAS</span></div>
-<h2>THREE ERAS <span>·</span> ONE GROOVE</h2>
-<p class="mash-desc">Rojo y peligro de Blood on the Dance Floor. Acero industrial de Scream. Groove violeta de In the Closet.</p>
-<div class="track">
-<div class="era botdf"><div class="era-line"></div><div><strong>BOTDF</strong><p>Red · Dance · Danger</p></div></div>
-<div class="era scream"><div class="era-line"></div><div><strong>SCREAM</strong><p>Silver · Industrial</p></div></div>
-<div class="era closet"><div class="era-line"></div><div><strong>IN THE CLOSET</strong><p>Violet · Groove</p></div></div>
-</div>
-<div style="display:flex;flex-wrap:wrap;gap:.55rem">
-<span class="btn btn-main" style="cursor:default">Próximamente</span>
-<span class="btn btn-ghost">Audio en camino</span>
-</div>
-</article>
-</section>
-
-<section class="section" id="music">
-<div class="sec-label reveal">Catalog</div>
-<h2 class="sec-title reveal">Remixes</h2>
-<p class="sec-lead reveal">Drops y mixes anteriores.</p>
-<div class="mix-grid" id="mix-grid"></div>
-<div class="solo-teaser reveal">
-<div class="solo-kicker">Clasificado</div>
-<div class="solo-title">Proyecto solista</div>
-<p class="solo-sub">Originales en camino · Stay tuned</p>
-</div>
-</section>
-
-<section class="section" id="games">
-<div class="sec-label reveal">Play</div>
-<h2 class="sec-title reveal">Juegos</h2>
-<p class="sec-lead reveal">Roblox + HTML5.</p>
-<div class="game-list" id="game-list"></div>
-</section>
-
-<section class="section" id="about">
-<div class="sec-label reveal">About</div>
-<h2 class="sec-title reveal">JisusDev</h2>
-<div class="about reveal">
-<p><strong>Remixes</strong> inspirados en Michael Jackson, juegos HTML5 y experiencias en Roblox. Fan-made, no oficial, no monetizado. Por amor al arte.</p>
-<p style="margin-top:1rem">© 2026 JisusDev · Pancho Music Studios</p>
-</div>
-</section>
+<header class="nav"><a class="logo" href="#top"><b>J</b>ISUS <i>D</i>EV</a><nav class="links"><a href="#mashup">Mashup</a><a href="#music">Music</a><a href="#games">Games</a><a href="#about">About</a></nav></header>
+<main id="top">
+<section class="hero"><div class="disc"></div><div class="kicker">Pancho Music Studios · Three Eras</div><h1>Three Eras <span>·</span> One Groove</h1><p>Blood on the Dance Floor, Scream e In the Closet unidos en una experiencia musical.</p><div class="chips"><span class="chip botdf">BOTDF · rojo</span><span class="chip scream">Scream · blanco</span><span class="chip closet">In the Closet · beige</span></div><a class="btn main" href="#music">Ver catálogo</a></section>
+<section class="section" id="mashup"><div class="label">Featured</div><h2>The mashup</h2><p>Un viaje por tres eras, con el contraste visual y sonoro de cada videoclip.</p><article class="feature"><div class="kicker">Special Mashup · 14 min</div><h2>THREE ERAS · ONE GROOVE</h2><div class="eras"><div class="era botdf"><b>Blood on the Dance Floor</b><br><small>Rojo · peligro · dance</small></div><div class="era scream"><b>Scream</b><br><small>Blanco · negro · industrial</small></div><div class="era closet"><b>In the Closet</b><br><small>Beige · negro · groove</small></div></div><span class="btn">Audio en camino</span></article></section>
+<section class="section" id="music"><div class="label">Catalog</div><h2>Remixes</h2><p>Escucha los mixes y abre sus enlaces de BandLab.</p><div class="grid" id="mix-grid"></div></section>
+<section class="section" id="games"><div class="label">Play</div><h2>Juegos</h2><p>HTML5, Roblox y proyectos de Pancho Games Studios.</p><div class="grid" id="game-list"></div></section>
+<section class="section" id="about"><div class="label">About</div><h2>JisusDev</h2><p class="about"><b>Remixes</b> inspirados en Michael Jackson, juegos HTML5 y experiencias en Roblox. Fan-made, no oficial y no monetizado. Por amor al arte.<br><br>© 2026 JisusDev · Pancho Music Studios</p></section>
 </main>
 <footer class="footer">Fan-made · Not affiliated with the Estate of Michael Jackson</footer>
-
-<div class="modal" id="modal" aria-hidden="true">
-<div class="scrim" data-close></div>
-<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-title">
-<div class="sheet-head">
-<div><h3 id="m-title">—</h3><p id="m-desc"></p></div>
-<button class="close" type="button" data-close aria-label="Cerrar">×</button>
-</div>
-<div class="media">
-<video id="m-video" controls playsinline></video>
-<div class="audio-box" id="m-audio">
-<img id="m-art" alt="">
-<audio id="m-audio-el" controls></audio>
-</div>
-</div>
-</div>
-</div>
-
+<div class="modal" id="modal"><div class="dialog"><div class="dialog-head"><div><h3 id="m-title">—</h3><p id="m-desc"></p></div><button class="close" data-close>×</button></div><div class="media"><video id="m-video" controls playsinline></video><div class="audio" id="m-audio"><img id="m-art" alt=""><audio id="m-audio-el" controls></audio></div></div></div></div>
 <script>
 (function(){
-var nav=document.getElementById("nav");
-function onScroll(){nav.classList.toggle("solid",scrollY>24)}
-addEventListener("scroll",onScroll,{passive:true});onScroll();
-document.querySelectorAll(".reveal").forEach(function(el){
-  if(!("IntersectionObserver"in window)){el.classList.add("in");return}
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
-  io.observe(el);
-});
-function esc(s){return String(s).replace(/[&<>"']/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]})}
 var mixes=[
-  {title:"Chicago: The Mix",desc:"1K · Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",bandlab:"https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_b5ca7c5be83f4e95bb1b2c56e3d1028f",badge:"1K"},
-  {title:"Don't Stop 'Til You Get Enough",desc:"2K Remix · This Is It in the Mix",cover:"1792015668755.jpg",video:"Don't Stop 'til I Get Enough.mp4",audio:"AUD-20261014-WA0001.mp3",bandlab:"https://www.bandlab.com/track/61f58130-7ff7-4049-8171-1734de4d95f8?revId=a06afc26-de83-4af3-9856-1f7a47f1454c",badge:"2K"},
-  {title:"Thriller Night",desc:"Wave · Demo",cover:"Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe",audio:"Thriller_nightwav.wav"}
-];
+{title:"Chicago: The Mix",desc:"1K · Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",bandlab:"https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_b5ca7c5be83f4e95bb1b2c56e3d1028f",badge:"1K"},
+{title:"Don't Stop 'Til You Get Enough",desc:"2K Remix · This Is It in the Mix",cover:"1792015668755.jpg",video:"Don't Stop 'til I Get Enough.mp4",audio:"AUD-20261014-WA0001.mp3",bandlab:"https://www.bandlab.com/track/61f58130-7ff7-4049-8171-1734de4d95f8?revId=a06afc26-de83-4af3-9856-1f7a47f1454c",badge:"2K"},
+{title:"Thriller Night",desc:"Wave · Demo",cover:"Gemini_Generated_Image_n4bdlon4bdlon4bd.jpe",audio:"Thriller_nightwav.wav",badge:"Demo"}];
 var games=[
-  {name:"Among Us Mini",tag:"HTML5 · Fan game",icon:"🔴",url:"amongus.html"},
-  {name:"Escapa del tsunami por autos",tag:"Obby · Tsunami · Roblox",icon:"🚗",url:"https://www.roblox.com/es/games/70603456155056/Escapa-de-el-tsunami-por-autos"},
-  {name:"Escape del tsunami por joyas",tag:"Obby · Tsunami · Roblox",icon:"💎",url:"https://www.roblox.com/es/games/117666384645004/Escape-del-tsunami-por-joyas"},
-  {name:"Blox War",tag:"Acción · Combate · Roblox",icon:"⚔️",url:"https://www.roblox.com/es/games/121209803244913/Blox-War"},
-  {name:"Pancho Games Studios",tag:"Comunidad · Roblox",icon:"🎮",url:"https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios"}
-];
-document.getElementById("mix-grid").innerHTML=mixes.map(function(m,i){
-  var badge=m.badge?'<span class="mix-badge">'+esc(m.badge)+'</span>':'';
-  var acts='<button class="btn btn-main play-btn" type="button" data-i="'+i+'">Play</button>';
-  if(m.bandlab)acts+='<a class="btn btn-ghost" href="'+esc(m.bandlab)+'" target="_blank" rel="noopener">BandLab</a>';
-  if(m.video)acts+='<a class="btn btn-ghost" href="'+encodeURI(m.video)+'" download>Download</a>';
-  return '<article class="mix reveal"><div class="mix-cover">'+badge+'<img src="'+esc(m.cover)+'" alt="" loading="lazy"><button class="mix-play play-btn" type="button" data-i="'+i+'" aria-label="Play"><span>▶</span></button></div><div class="mix-body"><h3>'+esc(m.title)+'</h3><p>'+esc(m.desc)+'</p><div class="mix-acts">'+acts+'</div></div></article>';
-}).join("");
-document.getElementById("game-list").innerHTML=games.map(function(g){
-  var ext=g.url.indexOf("http")===0;
-  return '<a class="game reveal" href="'+esc(g.url)+'"'+(ext?' target="_blank" rel="noopener noreferrer"':'')+'><div class="game-ico">'+g.icon+'</div><div><h3>'+esc(g.name)+'</h3><p>'+esc(g.tag)+'</p></div></a>';
-}).join("");
-
-document.querySelectorAll("#mix-grid .reveal, #game-list .reveal").forEach(function(el){el.classList.add("in")});
-var modal=document.getElementById("modal"),video=document.getElementById("m-video"),audio=document.getElementById("m-audio-el"),audioBox=document.getElementById("m-audio"),art=document.getElementById("m-art");
-function closePlayer(){
-  modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow="";
-  video.pause();video.removeAttribute("src");video.load();video.hidden=true;
-  audio.pause();audio.removeAttribute("src");audioBox.classList.remove("on");
-}
-function openPlayer(m){
-  document.getElementById("m-title").textContent=m.title;
-  document.getElementById("m-desc").textContent=m.desc||"";
-  audioBox.classList.remove("on");video.hidden=true;
-  if(m.video){video.hidden=false;video.src=m.video;video.play().catch(function(){})}
-  else if(m.audio){audioBox.classList.add("on");art.src=m.cover||"";audio.src=m.audio;audio.play().catch(function(){})}
-  modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
-}
-document.addEventListener("click",function(e){
-  var btn=e.target.closest(".play-btn");
-  if(btn){openPlayer(mixes[+btn.getAttribute("data-i")]);return}
-  if(e.target.closest("[data-close]"))closePlayer();
-});
-addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("open"))closePlayer()});
+{name:"Among Us Mini",tag:"HTML5 · Fan game",icon:"🔴",url:"amongus.html"},
+{name:"Escapa del tsunami por autos",tag:"Obby · Roblox",icon:"🚗",url:"https://www.roblox.com/es/games/70603456155056/Escapa-de-el-tsunami-por-autos"},
+{name:"Escape del tsunami por joyas",tag:"Obby · Roblox",icon:"💎",url:"https://www.roblox.com/es/games/117666384645004/Escape-del-tsunami-por-joyas"},
+{name:"Blox War",tag:"Acción · Roblox",icon:"⚔️",url:"https://www.roblox.com/es/games/121209803244913/Blox-War"},
+{name:"Pancho Games Studios",tag:"Comunidad · Roblox",icon:"🎮",url:"https://www.roblox.com/es/communities/993576115/Pancho-Games-Studios"}];
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]})}
+document.getElementById("mix-grid").innerHTML=mixes.map(function(m,i){var a='<button class="btn main play" data-i="'+i+'">Play</button>';if(m.bandlab)a+='<a class="btn" href="'+esc(m.bandlab)+'" target="_blank" rel="noopener">BandLab</a>';if(m.video)a+='<a class="btn" href="'+encodeURI(m.video)+'" download>Download</a>';return '<article class="card"><div class="cover">'+(m.badge?'<span class="chip closet" style="position:absolute;top:10px;right:10px">'+m.badge+'</span>':'')+'<img src="'+esc(m.cover)+'" alt=""><button class="play" data-i="'+i+'" aria-label="Reproducir">▶</button></div><div class="body"><h3>'+esc(m.title)+'</h3><p>'+esc(m.desc)+'</p><div class="actions">'+a+'</div></div></article>'}).join("");
+document.getElementById("game-list").innerHTML=games.map(function(g){return '<a class="card game" href="'+esc(g.url)+'"'+(g.url.indexOf("http")===0?' target="_blank" rel="noopener"':'')+'><div class="game-icon">'+g.icon+'</div><div><h3>'+esc(g.name)+'</h3><p>'+esc(g.tag)+'</p></div></a>'}).join("");
+var modal=document.getElementById("modal"),video=document.getElementById("m-video"),audio=document.getElementById("m-audio-el"),box=document.getElementById("m-audio"),art=document.getElementById("m-art");
+function close(){modal.classList.remove("open");video.pause();video.removeAttribute("src");video.load();video.style.display="block";audio.pause();audio.removeAttribute("src");box.classList.remove("on")}
+function open(m){document.getElementById("m-title").textContent=m.title;document.getElementById("m-desc").textContent=m.desc;video.style.display="none";box.classList.remove("on");if(m.video){video.style.display="block";video.src=m.video;video.play().catch(function(){})}else if(m.audio){box.classList.add("on");art.src=m.cover;audio.src=m.audio;audio.play().catch(function(){})}modal.classList.add("open")}
+document.addEventListener("click",function(e){var p=e.target.closest(".play");if(p){open(mixes[+p.dataset.i]);return}if(e.target.closest("[data-close]")||e.target===modal)close()});document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 })();
 </script>
 </body>
