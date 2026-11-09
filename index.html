@@ -224,7 +224,7 @@ document.querySelectorAll(".reveal").forEach(function(el){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
   io.observe(el);
 });
-function esc(s){return String(s).replace(/[&<>"']/g,function(c){return({"&":"&","<":"<",">":">",'"':""","'":"&#39;"})[c]})}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]})}
 var mixes=[
   {title:"Chicago: The Mix",desc:"1K · Xscape: This Is It in the Mix",cover:"Gemini_Generated_Image_q23v3fq23v3fq23v.jpe",video:"Chicago The mix.mp4",bandlab:"https://www.bandlab.com/track/94e54f180c844045977c2e2361cbfbea_b5ca7c5be83f4e95bb1b2c56e3d1028f",badge:"1K"},
   {title:"Don't Stop 'Til You Get Enough",desc:"2K Remix · This Is It in the Mix",cover:"1792015668755.jpg",video:"Don't Stop 'til I Get Enough.mp4",audio:"AUD-20261014-WA0001.mp3",bandlab:"https://www.bandlab.com/track/61f58130-7ff7-4049-8171-1734de4d95f8?revId=a06afc26-de83-4af3-9856-1f7a47f1454c",badge:"2K"},
