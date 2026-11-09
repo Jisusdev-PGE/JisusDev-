@@ -248,6 +248,8 @@ document.getElementById("game-list").innerHTML=games.map(function(g){
   var ext=g.url.indexOf("http")===0;
   return '<a class="game reveal" href="'+esc(g.url)+'"'+(ext?' target="_blank" rel="noopener noreferrer"':'')+'><div class="game-ico">'+g.icon+'</div><div><h3>'+esc(g.name)+'</h3><p>'+esc(g.tag)+'</p></div></a>';
 }).join("");
+
+document.querySelectorAll("#mix-grid .reveal, #game-list .reveal").forEach(function(el){el.classList.add("in")});
 var modal=document.getElementById("modal"),video=document.getElementById("m-video"),audio=document.getElementById("m-audio-el"),audioBox=document.getElementById("m-audio"),art=document.getElementById("m-art");
 function closePlayer(){
   modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow="";
